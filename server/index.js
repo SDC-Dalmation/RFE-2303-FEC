@@ -9,6 +9,8 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+
+// PRODUCTS ROUTES
 app.get('/listProducts', (req, res) => {
   helpers.listProducts()
     .then((products) => {
@@ -41,6 +43,8 @@ app.post('/relatedProducts', (req, res) => {
   })
 })
 
+
+// REVIEWS ROUTES
 app.post('/listReviews', (req, res) => {
   helpers.listReviews(req.body.product_id)
     .then((reviews) => {
@@ -66,17 +70,25 @@ app.post('/reviewMetadata', (req, res) => {
 })
 
 app.post('/addReview', (req, res) => {
-  // console.log('req.body: ',req.body);
   helpers.addReview(req.body)
     .then((review) => {
-      res.status(200).send(review.data)
+      send(review.data)
     })
     .catch((err) => {
       res.send(err);
     })
 })
 
+app.post('/reportReview', (req, res) => {
+  helpers.reportReview(req.body.review_id)
+    .then((result) => {
+      console.log('reported review: ', result.data)
+      res.send(result.data)
+    })
+})
 
+
+// CART ROUTES
 app.get('/getCartItems', (req, res) => {
   helpers.getCartItems()
     .then((cartItems) => {
@@ -94,6 +106,7 @@ app.post('/postCartItem', (req, res) => {
 })
 
 
+// Q&A ROUTES
 app.get('/listQuestions/:product_id', (req, res) => {
   helpers.listQuestions(req.params.product_id)
     .then((questions) => {
@@ -110,7 +123,7 @@ app.get('/listAnswers/:question_id', (req, res) => {
     })
 })
 
-app.get('/addQuestion', (req, res) => {
+app.post('/addQuestion', (req, res) => {
   helpers.addQuestion(req.body.product_id, req.body.body, req.body.name, req.body.email)
     .then((question) => {
       console.log('answers: ', question.data);
@@ -122,11 +135,11 @@ app.post('/addAnswer', (req, res) => {
   helpers.addAnswer(req.body.question_id, req.body.body, req.body.name, req.body.email, req.body.photos)
     .then((answer) => {
       console.log('answer added: ', answer.data);
-      res.sent(answer.data);
+      res.send(answer.data);
     })
 })
 
-app.put('/markQuestion/:question_id', (req, res) => {
+app.get('/markQuestionHelpful/:question_id', (req, res) => {
   helpers.markQuestionHelpful(req.params.question_id)
     .then((question) => {
       console.log('marked: ', question.data);
@@ -134,6 +147,32 @@ app.put('/markQuestion/:question_id', (req, res) => {
     })
 })
 
+app.post('/markAnswerHelpful', (req, res) => {
+  helpers.markAnswerHelpful(req.body.answer_id)
+    .then((answer) => {
+      console.log('marked answer: ', answer.data);
+      res.send(answer.data);
+    })
+})
+
+app.post('/reportQuestion', (req, res) => {
+  helpers.reportQuestion(req.body.question_id)
+    .then((result) => {
+      console.log('reported question: ', result.data)
+      res.send(result.data)
+    })
+})
+
+app.post('/reportAnswer', (req, res) => {
+  helpers.reportAnswer(req.body.answer_id)
+    .then((result) => {
+      console.log('reported answer: ', result.data)
+      res.send(result.data)
+    })
+})
+
+
+// INTERACTION ROUTES
 app.post('/logInteraction', (req, res) => {
   helpers.logInteraction(req.body.element, req.body.widget, req.body.time)
     .then((interaction) => {

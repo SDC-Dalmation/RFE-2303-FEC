@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const url = process.env.URL;
 
-
+//Products
 module.exports.listProducts =  () => {
   return axios.get(`${url}/products`, {
     headers: {
@@ -51,6 +51,14 @@ module.exports.reviewMetadata = (product_id) => {
       Authorization: process.env.API_KEY
       }
     })
+  }
+
+  module.exports.reportReview = (review_id) => {
+    return axios.put(`${url}/reviews/${review_id}/report`, {}, {
+      headers: {
+        Authorization: process.env.API_KEY
+        }
+      })
   }
 
   module.exports.markReviewHelpful = (review_id) => {
@@ -129,24 +137,40 @@ module.exports.addAnswer = function (question_id, body, name, email, photos) {
 }
 
 module.exports.markQuestionHelpful = function (question_id) {
-  return axios.put(`${url}/qa/questions/`, {
-    question_id: question_id
-  }, {
+  return axios.put(`${url}/qa/questions/${question_id}/helpful`, {}, {
     headers: {
       Authorization: process.env.API_KEY
     }
   });
 }
 
+module.exports.markAnswerHelpful = (answer_id) => {
+  return axios.put(`${url}/qa/answers/${answer_id}/helpful`, {}, {
+    headers: {
+      Authorization: process.env.API_KEY
+      }
+    })
+}
 
+module.exports.reportQuestion = (question_id) => {
+  return axios.put(`${url}/qa/questions/${question_id}/report`, {}, {
+    headers: {
+      Authorization: process.env.API_KEY
+      }
+    })
+}
 
-
-
+module.exports.reportAnswer = (answer_id) => {
+  return axios.put(`${url}/qa/answers/${answer_id}/report`, {}, {
+    headers: {
+      Authorization: process.env.API_KEY
+      }
+    })
+}
 
 
 
 //Cart API
-
 module.exports.getCartItems = function () {
   return axios.get(`${url}/cart`, {
     headers: {
