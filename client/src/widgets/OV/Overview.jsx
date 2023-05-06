@@ -1,11 +1,11 @@
 import React, {useState, useEffect}  from 'react';
 
 
-function Overview() {
+function Overview({currentProduct}) {
 
   return(
     <div>
-      Overview
+     Overview
     </div>
   )
 }
