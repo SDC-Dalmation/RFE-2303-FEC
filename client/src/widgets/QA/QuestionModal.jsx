@@ -8,9 +8,12 @@ function QuestionModal ({ productID, onClose }) {
 
     // Read the form data
     const form = e.target;
-    console.log('Target1', e.target[0].value);
-    console.log('Target2', e.target[1].value);
-    console.log('Target3', e.target[2].value);
+    let body = e.target[0].value;
+    let name = e.target[1].value;
+    let email = e.target[2].value;
+    axios.post('/addQuestion', {product_id: productID, body: body, name: name, email: email}).then((res) => {console.log('posted question: ', res.data)}).then(
+      () => onClose()
+    )
   }
 
   return(
