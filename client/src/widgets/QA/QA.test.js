@@ -11,3 +11,4 @@ import QA from './QA';
 test('renders the landing page', () => {
   render(<App />);
 });
+
