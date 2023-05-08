@@ -1,6 +1,13 @@
-import renderer from 'react-test-renderer';
+/**
+ * @jest-environment jsdom
+ */
+
+import { render, screen } from '@testing-library/react';
+import App from '../../App';
+import QuestionList from './QuestionList';
+import Question from './Question';
 import QA from './QA';
 
-test('Ensuring that we can run tests', () => {
-  expect(2 + 2).toBe(4);
+test('renders the landing page', () => {
+  render(<App />);
 });

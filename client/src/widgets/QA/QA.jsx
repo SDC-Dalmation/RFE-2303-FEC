@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
+import QuestionModal from './QuestionModal.jsx';
+import { createPortal } from 'react-dom';
 
 function QA ({currentProduct}) {
 
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
+  const [showQuestionModal, setShowQuestionModal] = useState(false);
 
   useEffect(() => {axios.get(`/listQuestions/${currentProduct.id}`)
   .then((res) => {
@@ -13,11 +16,18 @@ function QA ({currentProduct}) {
   })
 }, []);
 
+
 if (questions.length > 0) {
 
   return(
     <div>
+      Questions & Answers
       <QuestionList questions={questions}/>
+      <button onClick={() => setShowQuestionModal(true)}>Add a Question</button>
+      {showQuestionModal && createPortal(
+        <QuestionModal onClose={() => setShowQuestionModal(false)} />,
+        document.getElementById("modal")
+      )}
     </div>
   );
 }

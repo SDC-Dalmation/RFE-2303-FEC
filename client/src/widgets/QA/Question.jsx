@@ -5,7 +5,15 @@ function QuestionList ({question}) {
 
   return(
     <div>
-      Q: {question.question_body}
+      <div>
+        Q: {question.question_body}
+      </div>
+      <div>
+        Helpful? Yes{`(${question.question_helpfulness})`}
+      </div>
+      <div>
+        Add Answer
+      </div>
     </div>
   );
 }
