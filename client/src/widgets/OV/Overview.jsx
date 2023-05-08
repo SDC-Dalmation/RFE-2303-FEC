@@ -8,14 +8,13 @@ function Overview({currentProduct}) {
   const [currentStyle, setCurrentStyle] = useState([]);
   const [allProductStyles, setAllProductStyles] = useState([]);
 
-  axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{console.log('styles:', res.data)})
 
   if (currentProduct) {
     return(
       <div>
        Overview
-       <ProductInfo currentProduct={currentProduct} />
-       <StyleSelector currentProduct={currentProduct} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
+       <ProductInfo currentProduct={currentProduct}/>
+       <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
       </div>
     )
   } else {
