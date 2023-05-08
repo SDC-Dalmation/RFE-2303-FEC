@@ -25,7 +25,7 @@ if (questions.length > 0) {
       <QuestionList questions={questions}/>
       <button onClick={() => setShowQuestionModal(true)}>Add a Question</button>
       {showQuestionModal && createPortal(
-        <QuestionModal onClose={() => setShowQuestionModal(false)} />,
+        <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)} />,
         document.getElementById("modal")
       )}
     </div>
