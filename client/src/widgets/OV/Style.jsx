@@ -1,8 +1,6 @@
 import React from 'react';
 
 function Style({style, styleBtnHandler}) {
-
-
   return (
     <div>
     <div onClick={styleBtnHandler()} >{style.name}</div>
