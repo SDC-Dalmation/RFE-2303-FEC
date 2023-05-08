@@ -3,7 +3,7 @@ import axios from 'axios';
 import Question from './Question.jsx';
 
 function QuestionList ({questions}) {
-  let questionSlice = questions.slice(0, 6);
+  let questionSlice = questions.slice(0, 4);
   return(
     <div>
       {questionSlice.map((question, index) => {
