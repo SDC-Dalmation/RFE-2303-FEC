@@ -20,16 +20,14 @@ if (products.length > 0) {
   return(
     <div>
 <button onClick={() => console.log(currentProduct)}>Current product</button>
-      {/* {JSON.stringify(currentProduct)} */}
-      {/* <OV currentProduct={currentProduct}/> */}
-      {/* <Outfit products={products} currentProduct={currentProduct}/>
+      <OV currentProduct={currentProduct}/>
+      <Outfit products={products} currentProduct={currentProduct}/>
       <QA currentProduct={currentProduct}/>
-      <RR currentProduct={currentProduct}/> */}
-      We have a product
+      <RR currentProduct={currentProduct}/>
     </div>
   );
 } else {
-  return (<div>HI loading</div>)
+  return (<div>Loading...</div>)
 }
 
 }
