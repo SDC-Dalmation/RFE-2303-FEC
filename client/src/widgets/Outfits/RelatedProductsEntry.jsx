@@ -19,7 +19,6 @@ const RelatedProductsEntry = ({product}) => {
       product_id: product
     })
       .then((info) => {
-        console.log('info',info.data.results[0].photos[0].thumbnail_url)
         setProductStyle(info.data.results[0].photos[0].thumbnail_url);
     })
   }, [])
@@ -28,8 +27,8 @@ const RelatedProductsEntry = ({product}) => {
     return (
       <div style={{
         border: '1px solid grey',
-        padding: 100}}>
-        <img style={{width: 250, height: 250}} src={productStyle}/>
+        }}>
+        <img style={{width: 200, height: 200}} src={productStyle}/>
         <div>{productInfo.category}</div>
         <div>{productInfo.name}</div>
         <div>{`$${productInfo.default_price}`}</div>
@@ -39,8 +38,8 @@ const RelatedProductsEntry = ({product}) => {
     return (
       <div style={{
         border: '1px solid grey',
-        padding: 100}}>
-        <img style={{width: 250, height: 250}} src={'https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png'}/>
+        padding: 10}}>
+        <img style={{width: 200, height: 200}} src={'https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png'}/>
         <div>{productInfo.category}</div>
         <div>{productInfo.name}</div>
         <div>{`$${productInfo.default_price}`}</div>
