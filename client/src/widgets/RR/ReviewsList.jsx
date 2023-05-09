@@ -10,7 +10,7 @@ function ReviewsList ({currentProduct}) {
   const [limit, setLimit] = useState(2);
 
   useEffect(() => {
-    axios.post('/listReviews', {product_id: currentProduct.id, sortType: "newest"})
+    axios.post('/listReviews', {product_id: currentProduct.id, sortType: "relevant"})
       .then((res) => {
         setReviews(res.data.results)
         })
@@ -24,7 +24,7 @@ function ReviewsList ({currentProduct}) {
     <div>
       <h4>Reviews List</h4>
       <div>
-        <Sort />
+        <Sort currentProduct={currentProduct} reviews={reviews} setReviews={setReviews} />
         <div className="scrollable">
         {
           reviews.slice(0, limit).map((review, index) => {
