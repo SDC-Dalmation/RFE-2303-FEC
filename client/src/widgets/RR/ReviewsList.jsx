@@ -10,7 +10,7 @@ function ReviewsList ({currentProduct}) {
   const [limit, setLimit] = useState(2);
 
   useEffect(() => {
-    axios.post('/listReviews', {product_id: currentProduct.id})
+    axios.post('/listReviews', {product_id: currentProduct.id, sortType: "newest"})
       .then((res) => {
         setReviews(res.data.results)
         })

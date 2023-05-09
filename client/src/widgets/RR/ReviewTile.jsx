@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from "react";
+import StarRatings from "react-star-ratings";
 
 function ReviewTile ({review}) {
+  const [rating, setRating] = useState(review.rating);
   return(
     <div className="tile">
-      <div>Rating: {review.rating}</div>
+      <div>{review.rating}</div>
+      <StarRatings rating={review.rating} starRatedColor="blue" numberOfStars={5} name="rating" starDimension="20px"
+      starSpacing="1px"/>
       <div>Date: {review.date}</div>
       <p>Summary: {review.summary}</p>
       <p>Body: {review.body}</p>
