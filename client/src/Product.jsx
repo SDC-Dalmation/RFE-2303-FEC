@@ -4,7 +4,7 @@ import OV from './widgets/OV/Overview.jsx';
 import Outfit from './widgets/Outfits/Outfit.jsx';
 import RR from './widgets/RR/RR.jsx';
 
-function Product ({products, currentProduct}) {
+function Product ({products, currentProduct, setCurrentProduct}) {
 
   // const [currentProduct, setCurrentProduct] = useState({});
 
@@ -21,7 +21,7 @@ if (products.length > 0) {
     <div>
       <button onClick={() => console.log(currentProduct)}>Current product</button>
       <OV currentProduct={currentProduct}/>
-      <Outfit products={products} currentProduct={currentProduct}/>
+      <Outfit products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <QA currentProduct={currentProduct}/>
       <RR currentProduct={currentProduct}/>
     </div>

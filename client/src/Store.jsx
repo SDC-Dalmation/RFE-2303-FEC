@@ -18,7 +18,7 @@ function Store () {
   return(
     <div>
       <p>store</p>
-      <Product products={products} currentProduct={currentProduct}/>
+      <Product products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
     </div>
   );
 }

@@ -4,13 +4,13 @@ import RelatedProductsCarousel from "./relatedProductsCarousel.jsx";
 import YourOutfits from "./YourOutfits.jsx";
 
 
-const Outfit = ({products, currentProduct}) => {
+const Outfit = ({products, currentProduct, setCurrentProduct}) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [relatedProductsArray, setRelatedProductsArray] = useState([]);
 
   useEffect(() => {
     axios.post('/relatedProducts', {
-      product_id: 37311
+      product_id: currentProduct.id
     })
       .then((relatedItems) => {
       setRelatedProducts(relatedItems.data);
@@ -20,11 +20,11 @@ const Outfit = ({products, currentProduct}) => {
   if (relatedProducts.length > 0) {
 
     return (
-      <div>
+      <div data-testid="normalRender">
         <br></br>
         <>Related Products</>
         <br></br>
-        <RelatedProductsCarousel relatedProducts={relatedProducts} products={products}/>
+        <RelatedProductsCarousel relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>
         <br></br>
         <>Your Outfit</>
         <br></br>
@@ -32,7 +32,7 @@ const Outfit = ({products, currentProduct}) => {
       </div>
     )
   } else {
-    return (<div>Loading...</div>)
+    return (<div data-testid="loadRender">Loading...</div>)
   }
 };
 
