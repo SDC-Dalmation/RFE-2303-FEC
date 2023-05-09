@@ -14,16 +14,17 @@ function Product ({products, currentProduct}) {
 
   // setCurrentProduct(products[0])
 if (products.length > 0) {
-  console.log('all products: ', products);
-  console.log('current product ', currentProduct);
+  //console.log('all products: ', products);
+  //console.log('current product ', currentProduct);
 
   return(
     <div>
+    <RR currentProduct={currentProduct}/>
 <button onClick={() => console.log(currentProduct)}>Current product</button>
       <OV currentProduct={currentProduct}/>
       <Outfit products={products} currentProduct={currentProduct}/>
       <QA currentProduct={currentProduct}/>
-      <RR currentProduct={currentProduct}/>
+
     </div>
   );
 } else {
