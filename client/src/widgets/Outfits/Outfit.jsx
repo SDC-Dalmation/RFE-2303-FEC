@@ -28,7 +28,7 @@ const Outfit = ({products, currentProduct}) => {
         <br></br>
         <>Your Outfit</>
         <br></br>
-        <YourOutfits/>
+        <YourOutfits currentProduct={currentProduct}/>
       </div>
     )
   } else {
