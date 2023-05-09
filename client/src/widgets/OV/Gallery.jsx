@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ExtendedGallery from './ExtendedGallery.jsx';
+import GalleryPhoto from './GalleryPhoto.jsx';
 
 function Gallery({currentProduct, currentStyle}) {
 
@@ -14,20 +15,10 @@ function Gallery({currentProduct, currentStyle}) {
     return (
       <div>
         <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
-        <div >
-          {currentStyle.photos.map((photo) => {
-            if (photo === currentStyle.photos[0]) {
-              return(
-                <div>
-                  <img  src={photo.thumbnail_url} width="50px" height="50px"/>
-                </div>)
-            } else {
-              return(
-                <div>
-                  <img src={photo.thumbnail_url} width="50px" height="50px"/>
-                </div>)
-            }
-          })}
+        <div width='400px' height='100px'>
+          {currentStyle.photos.map((photo, index) => (
+            <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle}/>
+          ))}
         </div>
       </div>
     )
