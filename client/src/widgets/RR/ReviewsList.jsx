@@ -30,7 +30,7 @@ function ReviewsList ({currentProduct}) {
         <div className="scrollable">
         {
           reviews.slice(0, limit).map((review, index) => {
-            return (<ReviewTile key={index}/>)
+            return (<ReviewTile key={index} review={review}/>)
           })
         }
         </div>

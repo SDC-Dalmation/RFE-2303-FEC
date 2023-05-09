@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 
-function ReviewTile () {
+function ReviewTile ({review}) {
   return(
     <div>
-      <p>Review Tile</p>
+      <p>{review.body}</p>
     </div>
   );
 }
