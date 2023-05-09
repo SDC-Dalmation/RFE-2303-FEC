@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 
-function QuestionModal ({ productID, onClose }) {
+function QuestionModal ({ productID, onClose, prodName }) {
 
   function submitQuestion(e) {
     e.preventDefault();
@@ -29,6 +29,8 @@ function QuestionModal ({ productID, onClose }) {
       "top": "10%",
       "left": "20%",
       "bottom": "10%"}}>
+      <h3>Ask Your Question</h3>
+      <h4>About the {prodName}</h4>
       <form onSubmit={submitQuestion}>
       <label>
         Your Question: <textarea name="myQuestion" placeholder="Question..." maxLength="1000" required/>
