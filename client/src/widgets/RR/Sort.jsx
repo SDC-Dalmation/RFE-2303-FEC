@@ -3,7 +3,13 @@ import React, {useState, useEffect} from "react";
 function Sort () {
   return(
     <div>
-      <p>sort dropdown</p>
+      <label>Sort By:</label>
+      <select>
+        <option value="relevance">Relevance</option>
+        <option value="newest">Newest</option>
+        <option value="helpfulness">Helpfulness</option>
+
+      </select>
     </div>
   );
 }
