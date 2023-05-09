@@ -18,9 +18,7 @@ function ExtendedGallery({handleExtendedBtn, showModal}) {
   } else {
     modalClassName = 'default-gallery-view';
     return (
-      <div className={modalClassName}>
         <button onClick={handleExtendedBtn}>extended</button>
-      </div>
     )
   }
 
