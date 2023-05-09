@@ -12,7 +12,6 @@ function Answer ({answer}) {
       <div>
         A: {answer.body}
       </div>
-      <br></br>
       <div>
         by {answer.answerer_name}, {months[answerDate.getMonth()]} {answerDate.getDate()}, {answerDate.getFullYear()} |
         Helpful? Yes{`(${answer.helpfulness})`} |
