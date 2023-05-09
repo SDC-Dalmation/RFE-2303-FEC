@@ -27,7 +27,7 @@ function ReviewsList ({currentProduct}) {
       <h4>Reviews List</h4>
       <div>
         <Sort />
-        <div>
+        <div className="scrollable">
         {
           reviews.slice(0, limit).map((review, index) => {
             return (<ReviewTile key={index}/>)
