@@ -1,26 +1,34 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import ExtendedGallery from './ExtendedGallery.jsx';
 
 function Gallery({currentProduct, currentStyle}) {
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleExtendedBtn = function(e) {
+    e.preventDefault;
+    setShowModal(!showModal);
+  }
 
   if (currentStyle) {
     return (
       <div>
-        {currentStyle.photos.map((photo) => {
-          if (photo === currentStyle.photos[0]) {
-            return(
-              <div>
-                <img className="gallery-photo-default" src={photo.thumbnail_url}/>
-              </div>
-            )
-          } else {
-            return(
-              <div>
-                <img className="gallery-photo" src={photo.thumbnail_url}/>
-              </div>
-            )
-          }
-        })}
+        <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
+        <div >
+          {currentStyle.photos.map((photo) => {
+            if (photo === currentStyle.photos[0]) {
+              return(
+                <div>
+                  <img  src={photo.thumbnail_url} width="50px" height="50px"/>
+                </div>)
+            } else {
+              return(
+                <div>
+                  <img src={photo.thumbnail_url} width="50px" height="50px"/>
+                </div>)
+            }
+          })}
+        </div>
       </div>
     )
   } else {
