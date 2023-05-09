@@ -38,7 +38,7 @@ module.exports.relatedProducts = (product_id) => {
 
 //Reviews
 module.exports.listReviews = (product_id) => {
-return axios.get(`${url}/reviews?product_id=${product_id}&sort="newest"&count=50`, {
+return axios.get(`${url}/reviews?product_id=${product_id}&sort=newest&count=50`, {
   headers: {
     Authorization: process.env.API_KEY
     }

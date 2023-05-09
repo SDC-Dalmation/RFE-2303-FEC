@@ -16,8 +16,6 @@ function ReviewsList ({currentProduct}) {
         })
   }, [])
 
-  console.log('reviews list: ', reviews);
-
   let handleMoreReviews = () => {
    setLimit(limit + 2);
   }
