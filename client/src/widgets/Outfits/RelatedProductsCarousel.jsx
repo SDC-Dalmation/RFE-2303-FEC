@@ -6,11 +6,13 @@ const RelatedProductsCarousel = ({relatedProducts, products}) => {
     alert(`Stop clicking me! I'm not finished >:(`)
   }
 
+
+
   return (
     <div style={{
       display: 'flex',
       flexWrap: 'nowrap',
-      overflow: 'hidden',
+      overflow: 'auto',
       flexDirection: 'row'}} onClick={() => message()}>
       <button>
         {"<"}
