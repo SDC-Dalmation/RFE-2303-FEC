@@ -9,11 +9,10 @@ const YourOutfits = ({currentProduct}) => {
   }, [items]);
 
   const addOutfit = () => {
-    var test = items.forEach(item => {
-      if (item.id === currentProduct.id)
-        return true;
+    var test = items.map(item => {
+      return item.id
     })
-    if (items.length === 0 || test) {
+    if (items.length === 0 || !test.includes(currentProduct.id)) {
       setItems([...items, currentProduct])
     }
   }

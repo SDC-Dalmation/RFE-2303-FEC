@@ -1,24 +1,19 @@
 import React, {useState} from "react";
 import RelatedProductsEntry from "./RelatedProductsEntry.jsx"
 
-const RelatedProductsCarousel = ({relatedProducts, products}) => {
-  const message = () => {
-    alert(`Stop clicking me! I'm not finished >:(`)
-  }
-
-
+const RelatedProductsCarousel = ({relatedProducts, setCurrentProduct}) => {
 
   return (
     <div style={{
       display: 'flex',
       flexWrap: 'nowrap',
       overflow: 'auto',
-      flexDirection: 'row'}} onClick={() => message()}>
+      flexDirection: 'row'}}>
       <button>
         {"<"}
       </button>
       {relatedProducts.map((product, index) => (
-        <RelatedProductsEntry key={index} product={product}/>
+        <RelatedProductsEntry key={index} product={product} setCurrentProduct={setCurrentProduct}/>
       ))}
       <button>
       {">"}

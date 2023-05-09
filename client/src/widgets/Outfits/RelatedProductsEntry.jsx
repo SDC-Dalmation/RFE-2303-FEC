@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios"
 
-const RelatedProductsEntry = ({product}) => {
+const RelatedProductsEntry = ({product, setCurrentProduct}) => {
   const [productInfo, setProductInfo] = useState({});
   const [productStyle, setProductStyle] = useState({});
 
@@ -23,11 +23,20 @@ const RelatedProductsEntry = ({product}) => {
     })
   }, [])
 
+  const changeProduct = () => {
+    axios.post('/productInformation', {
+      product_id: product
+    })
+      .then((info) => {
+        setCurrentProduct(info.data);
+    })
+  }
+
   if (productStyle) {
     return (
       <div style={{
         border: '1px solid grey',
-        }}>
+        }} onClick={changeProduct}>
         <img style={{width: 200, height: 200}} src={productStyle}/>
         <div>{productInfo.category}</div>
         <div>{productInfo.name}</div>
@@ -38,7 +47,7 @@ const RelatedProductsEntry = ({product}) => {
     return (
       <div style={{
         border: '1px solid grey',
-        padding: 10}}>
+        padding: 10}} onClick={changeProduct}>
         <img style={{width: 200, height: 200}} src={'https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image.png'}/>
         <div>{productInfo.category}</div>
         <div>{productInfo.name}</div>
