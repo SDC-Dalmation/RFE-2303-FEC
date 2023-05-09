@@ -46,7 +46,7 @@ app.post('/relatedProducts', (req, res) => {
 
 // REVIEWS ROUTES
 app.post('/listReviews', (req, res) => {
-  helpers.listReviews(req.body.product_id)
+  helpers.listReviews(req.body.product_id, req.body.sortType)
     .then((reviews) => {
       console.log('Reviews Information: ', reviews.data);
       res.send(reviews.data);

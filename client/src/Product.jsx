@@ -19,12 +19,11 @@ if (products.length > 0) {
 
   return(
     <div>
-    <RR currentProduct={currentProduct}/>
-<button onClick={() => console.log(currentProduct)}>Current product</button>
+      <button onClick={() => console.log(currentProduct)}>Current product</button>
       <OV currentProduct={currentProduct}/>
       <Outfit products={products} currentProduct={currentProduct}/>
       <QA currentProduct={currentProduct}/>
-
+      <RR currentProduct={currentProduct}/>
     </div>
   );
 } else {
