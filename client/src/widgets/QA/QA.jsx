@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 function QA ({currentProduct}) {
 
   const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState([]);
+
   const [showQuestionModal, setShowQuestionModal] = useState(false);
 
   useEffect(() => {axios.get(`/listQuestions/${currentProduct.id}`)
