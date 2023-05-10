@@ -4,12 +4,25 @@ import axios from 'axios';
 function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
 
   const [helpfulness, setHelpfulness] = useState(answer.helpfulness);
+  let [reported, changeReport] = useState(false);
+
+  let reportTracker = (<span onClick={() => {reportAnswer()}}> Report </span>);
+  if (reported) {
+    reportTracker = (<span> Reported </span>);
+  }
 
   const markAnswerHelpful = function () {
     if (markHelpful(answer.id, helpfulQA, setHelpfulQA)) {
       axios.post(`/markAnswerHelpful`, {answer_id: answer.id})
       .then(() => setHelpfulness(helpfulness + 1));
     }
+  }
+
+  const reportAnswer = function () {
+    changeReport(true);
+    axios.post('/reportAnswer', {
+        answer_id: answer.id
+      })
   }
 
   let answerDate = new Date(answer.date);
@@ -24,7 +37,7 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
       <div>
         by {answer.answerer_name}, {months[answerDate.getMonth()]} {answerDate.getDate()}, {answerDate.getFullYear()} |
         <span onClick={() => {markAnswerHelpful()}}> Helpful? Yes{`(${helpfulness})`}</span> |
-        Report
+        {reportTracker}
       </div>
       <div>
         {answer.photos.map((picture, index) => {
