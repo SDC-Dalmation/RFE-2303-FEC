@@ -14,8 +14,6 @@ function Overview({currentProduct}) {
     // when the page renders, grab all the styles for this product and set the current style to be the first style in the list
   useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); setCurrentStyle(res.data.results[0]);})},[])
 
-  useEffect(()=>{axios.post('/productInformation', {product_id: currentProduct.id}).then((res) => {console.log('sent product_id, heres the product info: ', res.data)})},[])
-
   if (currentProduct) {
     return(
       <div>

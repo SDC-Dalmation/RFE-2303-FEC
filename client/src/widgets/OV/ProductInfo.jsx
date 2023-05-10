@@ -5,8 +5,6 @@ function ProductInfo({currentProduct, currentStyle}) {
 
   const [currentPrice, setCurrentPrice] = useState(currentProduct.default_price)
 
-  console.log(currentStyle)
-
   return (
     <div>
       <p className="product-category">{currentProduct.category}</p>
