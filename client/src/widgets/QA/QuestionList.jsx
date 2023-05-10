@@ -3,10 +3,44 @@ import axios from 'axios';
 import Question from './Question.jsx';
 
 function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
-  let questionSlice = questions.slice(0, 4);
+
+  let [shownQuestions, setShownQuestions] = useState(questions.slice(0, 4));
+
+  const displayCSS = {
+    color : "black",
+  }
+
+  const scrollCSS = {
+    color : "black",
+    height : "90vh",
+    overflow : "auto",
+  };
+
+  let shownCSS = displayCSS;
+  if (shownQuestions.length > 4) {
+    shownCSS = scrollCSS;
+  }
+
+  const showQuestionList = function () {
+    setShownQuestions(questions);
+    // document.getElementById('questionList').setAttribute("style", );
+    shownCSS = scrollCSS;
+  }
+
+  let additionalQuestionButton = (<div></div>);
+
+  if (questions.length > 4) {
+    additionalQuestionButton = (<span onClick={() => showQuestionList()}>More Answered Questions</span>);
+    if (shownQuestions.length > 4) {
+      additionalQuestionButton = (<span onClick={() => setShownQuestions(questions.slice(0, 4))}>Collapse Question List</span>)
+    }
+  }
+
+
+
   return(
-    <div>
-      {questionSlice.map((question, index) => {
+    <div id="questionList" style={shownCSS}>
+      {shownQuestions.map((question, index) => {
         return (<Question question={question}
           prodName={prodName}
           markHelpful={markHelpful}
@@ -14,6 +48,9 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
           setHelpfulQA={setHelpfulQA}
            key={index}/>)
       })}
+      <div>
+        {additionalQuestionButton}
+      </div>
     </div>
   );
 }
