@@ -4,7 +4,7 @@ import RelatedProductsEntry from "./RelatedProductsEntry.jsx"
 const RelatedProductsCarousel = ({relatedProducts, setCurrentProduct}) => {
 
   return (
-    <div style={{
+    <div data-testid="ProductsCarousel" style={{
       display: 'flex',
       flexWrap: 'nowrap',
       overflow: 'auto',
