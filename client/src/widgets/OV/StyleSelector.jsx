@@ -14,7 +14,7 @@ function StyleSelector({currentProduct, setCurrentStyle, setAllProductStyles, al
 
   return (
     <div>
-      <div className="style-title">Styles</div>
+      <div className="style-title" style={{'marginTop': '10px'}}>Styles</div>
       <div style={{'display': 'flex'}}>
         {allProductStyles.map((style, index) => (
           <Style style={style} key={index} styleBtnHandler={styleBtnHandler}/>
