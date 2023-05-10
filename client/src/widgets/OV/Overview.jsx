@@ -30,7 +30,7 @@ function Overview({currentProduct}) {
         <div >
           <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr}/>
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
-          <AddToCart />
+          <AddToCart currentStyle={currentStyle}/>
         </div>
        </div>
       </div>
