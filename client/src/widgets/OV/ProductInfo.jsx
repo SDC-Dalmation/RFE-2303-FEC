@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import StarRatings from "react-star-ratings";
 
-function ProductInfo({currentProduct}) {
+function ProductInfo({currentProduct, currentStyle}) {
 
   const [currentPrice, setCurrentPrice] = useState(currentProduct.default_price)
 

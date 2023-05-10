@@ -21,7 +21,7 @@ function Overview({currentProduct}) {
        <div style={{'display': 'flex'}}>
         <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic}/>
         <div >
-          <ProductInfo currentProduct={currentProduct}/>
+          <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle}/>
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
           <AddToCart />
         </div>

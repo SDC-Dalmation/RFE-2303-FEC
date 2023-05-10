@@ -22,15 +22,15 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
   if (currentStyle) {
     return (
       <div>
-          <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
-          <div style={{'display': 'flex', 'flexDirection': 'column', 'marginRight': '20px'}}>
-            <MainGalleryPhoto setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle}/>
-              <div style={{'display': 'flex', 'justifyContent': 'center', 'alignSelf': 'flex-end'}}>
-              {currentStyle.photos.map((photo, index) => (
-                <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn}/>
-              ))}
-              </div>
-          </div>
+        <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
+        <div style={{'display': 'flex', 'flexDirection': 'column', 'marginRight': '20px'}}>
+          <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle}/>
+            <div style={{'display': 'flex', 'justifyContent': 'center', 'alignSelf': 'flex-end'}}>
+            {currentStyle.photos.map((photo, index) => (
+              <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn}/>
+            ))}
+            </div>
+        </div>
       </div>
     )
   } else {

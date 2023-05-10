@@ -1,10 +1,10 @@
 import React from 'react';
 
-function MainGalleryPhoto({setMainGalleryPic, mainGalleryPic, currentStyle}) {
+function MainGalleryPhoto({handleExtendedBtn, setMainGalleryPic, mainGalleryPic, currentStyle}) {
 
   if (mainGalleryPic) {
     return(
-      <img src={mainGalleryPic}/>
+      <img onClick={handleExtendedBtn} src={mainGalleryPic}/>
     )
   } else {
     return(
