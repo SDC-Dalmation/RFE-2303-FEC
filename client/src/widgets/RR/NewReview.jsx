@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from "react";
 import StarRatings from "react-star-ratings";
+import axios from "axios";
+import Characteristics from "./Characteristics.jsx"
 
 function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const [rating, setRating] = useState(0);
   const [option, setOption] = useState("");
   const [recommend, setRecommend] = useState(false);
 
-
   const changeRating = (newRating, name) => {
     setRating(newRating);
   }
 
   const handleOptionChange = (e) => {
-    e.preventDefault();
     setOption(e.target.value);
   }
 
@@ -64,7 +64,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
           <div style={{"marginLeft": "10px"}}>{ratingText[rating]}</div>
           </div>
 
-          <div className="radio">Do you recommend this product?
+          <div className="recommend-radio">Do you recommend this product?
             <label>
               <input
                 type="radio"
@@ -85,7 +85,8 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
             </label>
           </div>
 
-          <div>Characteristics</div>
+          <Characteristics currentProduct={currentProduct}/>
+
           <input placeholder="enter summary"/>
           <input placeholder="enter review body"/>
           <div>photos</div>
