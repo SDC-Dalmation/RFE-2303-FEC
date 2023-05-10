@@ -2,14 +2,15 @@ import React from 'react';
 
 function MainGalleryPhoto({setMainGalleryPic, mainGalleryPic, currentStyle}) {
 
-
-  if (mainGalleryPic === 0) {
-    setMainGalleryPic(currentStyle.photos[0].thumbnail_url)
+  if (mainGalleryPic) {
+    return(
+      <img src={mainGalleryPic}/>
+    )
+  } else {
+    return(
+      <div></div>
+    )
   }
-
-  return(
-    <img src={mainGalleryPic} />
-  )
 }
 
 export default MainGalleryPhoto;

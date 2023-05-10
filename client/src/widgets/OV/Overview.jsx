@@ -3,6 +3,7 @@ import axios from 'axios';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import Gallery from './Gallery.jsx';
+import AddToCart from './AddToCart.jsx';
 
 function Overview({currentProduct}) {
 
@@ -22,6 +23,7 @@ function Overview({currentProduct}) {
         <div >
           <ProductInfo currentProduct={currentProduct}/>
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
+          <AddToCart />
         </div>
        </div>
       </div>
