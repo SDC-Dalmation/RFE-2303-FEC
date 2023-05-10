@@ -15,9 +15,11 @@ function StyleSelector({currentProduct, setCurrentStyle, setAllProductStyles, al
   return (
     <div>
       <div className="style-title">Styles</div>
-      {allProductStyles.map((style, index) => (
-        <Style style={style} key={index} styleBtnHandler={styleBtnHandler}/>
-      ))}
+      <div style={{'display': 'flex'}}>
+        {allProductStyles.map((style, index) => (
+          <Style style={style} key={index} styleBtnHandler={styleBtnHandler}/>
+        ))}
+      </div>
     </div>
   )
 }
