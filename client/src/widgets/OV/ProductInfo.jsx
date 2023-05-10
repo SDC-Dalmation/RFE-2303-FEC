@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import StarRatings from "react-star-ratings";
 
-function ProductInfo({currentProduct, currentStyle}) {
+function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr}) {
 
   const [currentPrice, setCurrentPrice] = useState(currentProduct.default_price)
+
+  useEffect(()=>{setCurrentPrice(currentProduct.default_price)}, checkIfProductChangedArr)
 
   return (
     <div>

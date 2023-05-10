@@ -3,7 +3,7 @@ import ExtendedGallery from './ExtendedGallery.jsx';
 import GalleryPhoto from './Photos/GalleryPhoto.jsx';
 import MainGalleryPhoto from './Photos/MainGalleryPhoto.jsx';
 
-function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPic}) {
+function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPic, checkIfProductChangedArr}) {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -23,9 +23,9 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
     return (
       <div>
         <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
-        <div style={{'display': 'flex', 'flexDirection': 'column', 'marginRight': '20px'}}>
-          <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle}/>
-            <div style={{'display': 'flex', 'justifyContent': 'center', 'alignSelf': 'flex-end'}}>
+        <div style={{'display': 'flex', 'flexDirection': 'column', 'marginRight': '20px', 'padding': '5px', 'border': '1px solid black', 'borderRadius': '3px'}}>
+          <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr}/>
+            <div className="gallery-carousel" style={{'display': 'flex', 'justifyContent': 'center', 'alignSelf': 'flex-end', 'marginTop': '10px'}}>
             {currentStyle.photos.map((photo, index) => (
               <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn}/>
             ))}
