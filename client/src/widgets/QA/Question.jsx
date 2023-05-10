@@ -22,10 +22,10 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
   }
 
 
-let displayAnswers = (<div></div>);
-if (answers.length > 0) {
-  displayAnswers = <AnswerList answers={answers} markHelpful={markHelpful} helpfulQA={helpfulQA} setHelpfulQA={setHelpfulQA}/>
-}
+  let displayAnswers = (<div></div>);
+  if (answers.length > 0) {
+    displayAnswers = <AnswerList answers={answers} markHelpful={markHelpful} helpfulQA={helpfulQA} setHelpfulQA={setHelpfulQA}/>
+  }
 
   return(
     <div>
