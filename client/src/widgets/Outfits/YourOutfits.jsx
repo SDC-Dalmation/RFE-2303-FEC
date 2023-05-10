@@ -36,7 +36,7 @@ const YourOutfits = ({currentProduct}) => {
     )
   } else {
     return (
-      <div style={{
+      <div data-testid="addOutfit" style={{
         display: 'flex',
         flexWrap: 'nowrap',
         overflow: 'auto',

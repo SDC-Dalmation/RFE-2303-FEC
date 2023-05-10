@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from '../../App';
-import Outfit from "./Outfit.jsx"
+import Outfit from "./Outfit.jsx";
 
 
 describe(Outfit, () => {
@@ -41,7 +40,8 @@ describe(Outfit, () => {
       created_at: '2021-08-13T14:37:33.145Z',
       updated_at: '2021-08-13T14:37:33.145Z'
     }
-    const {queryByTestId} = render(<Outfit products={products} currentProduct={currentProduct} setCurrentProduct={Outfit.setCurrentProduct}/>);
+    const changeProduct = jest.fn();
+    const {queryByTestId} = render(<Outfit products={products} currentProduct={currentProduct} setCurrentProduct={changeProduct}/>);
     expect(queryByTestId('loadRender')).toBeTruthy();
     expect(queryByTestId('normalRender')).toBeNull();
 
