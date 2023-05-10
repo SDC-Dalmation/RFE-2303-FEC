@@ -1,33 +1,49 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 
-function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
+function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto, addThumbnail }) {
 
   let lessThan5Photos = count;
-  console.log('COUNT', count);
 
   let photoButton = (<div>Photo Limit Reached</div>);
   if (lessThan5Photos < 5) {
     photoButton= (
       <div>
         <label htmlFor="addPhoto">Add a Photo</label>
-        <input type="file" accept="image/*"></input>
+        <input type="file" accept="image/*" ></input>
         <button type="submit">Submit Photo</button>
       </div>
     )
   }
 
-  function submitPhoto(e) {
+  async function addThumbnail(photoFile) {
+
+    const img = document.createElement("img");
+    img.classList.add("obj");
+    img.setAttribute("height", "50px");
+    // img.file = photoFile;
+    const reader = new FileReader();
+    await reader.readAsDataURL(photoFile);
+    reader.addEventListener("load", function () {
+      img.src = reader.result;
+      thumbnails.appendChild(img)
+      let allPhotos = photos.slice();
+      allPhotos.push(URL.createObjectURL(photoFile));
+      setPhotos(allPhotos);
+      addedPhoto(lessThan5Photos + 1);
+    })
+
+}
+
+  function submitPhoto (e) {
     e.preventDefault();
-
     // Read the form data
-    let photo = e.target[0].value;
-    let allPhotos = photos.slice();
-    allPhotos.push(photo);
-    setPhotos(allPhotos);
-    console.log('PHOTO URL', allPhotos);
-    addedPhoto(lessThan5Photos + 1);
-
+    let photo = e.target[0].files[0];
+    // let allPhotos = photos.slice();
+    // allPhotos.push(photo);
+    // setPhotos(allPhotos);
+    // addedPhoto(lessThan5Photos + 1);
+    addThumbnail(photo);
 
     onClose();
   }
