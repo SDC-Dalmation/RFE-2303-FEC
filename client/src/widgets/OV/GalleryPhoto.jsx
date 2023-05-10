@@ -1,19 +1,12 @@
 import React from 'react';
 
-function GalleryPhoto({photo, currentStyle}) {
+function GalleryPhoto({photo, currentStyle, handlePicBtn}) {
 
+  return(
 
-  if (photo === currentStyle.photos[0]) {
-    return(
-      <img  src={photo.thumbnail_url} width="75px" height="75px"/>
-    )
-  } else {
-    return(
-      <img src={photo.thumbnail_url} width="50px" height="50px"/>
-    )
-  }
+    <img src={photo.thumbnail_url} width="50px" height="50px" onClick={handlePicBtn(photo.thumbnail_url)}/>
 
-
+  )
 }
 
 export default GalleryPhoto;
