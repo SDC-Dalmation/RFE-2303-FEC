@@ -35,14 +35,14 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
         A: {answer.body}
       </div>
       <div>
-        by {answer.answerer_name}, {months[answerDate.getMonth()]} {answerDate.getDate()}, {answerDate.getFullYear()} |
-        <span onClick={() => {markAnswerHelpful()}}> Helpful? Yes{`(${helpfulness})`}</span> |
-        {reportTracker}
-      </div>
-      <div>
         {answer.photos.map((picture, index) => {
           return (<img src={picture} height="50px" key={index}></img>)
         })}
+      </div>
+      <div>
+        by {answer.answerer_name}, {months[answerDate.getMonth()]} {answerDate.getDate()}, {answerDate.getFullYear()} |
+        <span onClick={() => {markAnswerHelpful()}}> Helpful? Yes{`(${helpfulness})`}</span> |
+        {reportTracker}
       </div>
     </div>
   );
