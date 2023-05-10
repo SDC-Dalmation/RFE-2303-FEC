@@ -8,6 +8,11 @@ import NewReview from "./NewReview.jsx";
 function ReviewsList ({currentProduct}) {
   const [reviews, setReviews] = useState([]);
   const [limit, setLimit] = useState(2);
+  var [showModal, setShowModal] = useState(false);
+
+  const handleClick = () => {
+    setShowModal(true);
+  }
 
   useEffect(() => {
     axios.post('/listReviews', {product_id: currentProduct.id, sortType: "relevant"})
@@ -33,7 +38,8 @@ function ReviewsList ({currentProduct}) {
         }
         </div>
         <button onClick={handleMoreReviews}>More Reviews</button>
-        <NewReview />
+        <button onClick={handleClick}>New Review</button>
+        {showModal ? <NewReview reviews={reviews} setReviews={setReviews} setShowModal={setShowModal} currentProduct={currentProduct}/>:null}
       </div>
     </div>
   );
