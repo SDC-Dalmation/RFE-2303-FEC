@@ -19,8 +19,10 @@ function Overview({currentProduct}) {
         Overview
        <div style={{'display': 'flex'}}>
         <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic}/>
-        <ProductInfo currentProduct={currentProduct}/>
-        <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
+        <div >
+          <ProductInfo currentProduct={currentProduct}/>
+          <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
+        </div>
        </div>
       </div>
     )

@@ -23,9 +23,9 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
     return (
       <div>
           <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
-          <div style={{'display': 'flex'}}>
+          <div style={{'display': 'flex', 'flex-direction': 'column', 'margin-right': '20px'}}>
             <MainGalleryPhoto setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle}/>
-              <div style={{'display': 'flex', 'justifyContent': 'center'}}>
+              <div style={{'display': 'flex', 'justifyContent': 'center', 'align-self': 'flex-end'}}>
               {currentStyle.photos.map((photo, index) => (
                 <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn}/>
               ))}
