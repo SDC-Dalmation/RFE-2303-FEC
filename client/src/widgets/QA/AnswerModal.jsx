@@ -8,22 +8,34 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
   const [showPhotoModal, setShowPhotoModal] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [photoCount, incrementPhotoCount] = useState(0);
+  const [thumbNails, setThumbnails] = useState([]);
 
   const [savedAnswer, setSavedAnswer] = useState("");
   const [savedEmail, setSavedEmail] = useState("");
   const [savedName, setSavedName] = useState("");
 
+  let pics = (<div></div>);
+  if (photos.length > 0) {
+    pics = photos.map((photo, index) => {
+      return (<img height="50px" src={`${photo}`} key={index}></img>)
+    })
+  }
 
 
   function submitAnswer(e) {
     e.preventDefault();
+
+    const image = "https://www.uhaul.com/MovingSupplies/Image/GetMedia/?id=8390&media=8185";
+    let imageArray = photos.map((photo) => {
+      return image;
+    })
 
     // Read the form data
     const form = e.target;
     let body = e.target[0].value;
     let name = e.target[1].value;
     let email = e.target[2].value;
-    axios.post('/addAnswer', {question_id: questionID, body: body, name: name, email: email, photos: photos}).then(
+    axios.post('/addAnswer', {question_id: questionID, body: body, name: name, email: email, photos: imageArray}).then(
       () => onClose()
     )
   }
@@ -68,6 +80,7 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
       </label>
       <button onClick={() => {setShowPhotoModal(true)}}>Add Photo</button>
       <div id="thumbnails">
+        {pics}
       </div>
       <br></br>
         <button type="submit">Submit Answer</button>

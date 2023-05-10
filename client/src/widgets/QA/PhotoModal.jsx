@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 
-function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto, addThumbnail }) {
+function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
 
   let lessThan5Photos = count;
 
@@ -18,20 +18,23 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto, addThumbna
 
   async function addThumbnail(photoFile) {
 
-    const img = document.createElement("img");
-    img.classList.add("obj");
-    img.setAttribute("height", "50px");
-    // img.file = photoFile;
-    const reader = new FileReader();
-    await reader.readAsDataURL(photoFile);
-    reader.addEventListener("load", function () {
-      img.src = reader.result;
-      thumbnails.appendChild(img)
-      let allPhotos = photos.slice();
-      allPhotos.push(URL.createObjectURL(photoFile));
-      setPhotos(allPhotos);
-      addedPhoto(lessThan5Photos + 1);
-    })
+    let allPhotos = photos.slice();
+    let photoURL = URL.createObjectURL(photoFile);
+    allPhotos.push(photoURL);
+    setPhotos(allPhotos);
+    addedPhoto(lessThan5Photos + 1);
+
+
+    // const reader = new FileReader();
+    // await reader.readAsDataURL(photoFile);
+    // reader.addEventListener("load", function () {
+    //   let allPhotos = photos.slice();
+    //   console.log(reader.result);
+    //   let photoURL = URL.createObjectURL(photoFile);
+    //   allPhotos.push(photoURL);
+    //   setPhotos(allPhotos);
+    //   addedPhoto(lessThan5Photos + 1);
+    // })
 
 }
 
@@ -39,10 +42,6 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto, addThumbna
     e.preventDefault();
     // Read the form data
     let photo = e.target[0].files[0];
-    // let allPhotos = photos.slice();
-    // allPhotos.push(photo);
-    // setPhotos(allPhotos);
-    // addedPhoto(lessThan5Photos + 1);
     addThumbnail(photo);
 
     onClose();
