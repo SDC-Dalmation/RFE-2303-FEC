@@ -4,14 +4,22 @@ import AnswerList from './AnswerList.jsx';
 import { createPortal } from 'react-dom';
 import AnswerModal from './AnswerModal.jsx';
 
-function Question ({question, prodName}) {
+function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
   const [answers, setAnswers] = useState([]);
   const [showAnswerModal, setShowAnswerModal] = useState(false);
+  const [helpfulness, setHelpfulness] = useState(question.question_helpfulness);
 
   useEffect(() => {
     setAnswers(Object.values(question.answers));
   }, []);
+
+  const markQuestionHelpful = function () {
+    if (markHelpful(question.question_id, helpfulQA, setHelpfulQA)) {
+      axios.get(`/markQuestionHelpful/${question.question_id}`)
+      .then(() => setHelpfulness(helpfulness + 1));
+    }
+  }
 
 
 let displayAnswers = (<div></div>);
@@ -22,7 +30,8 @@ if (answers.length > 0) {
   return(
     <div>
       <div>
-        Q: {question.question_body} | Helpful? Yes{`(${question.question_helpfulness})`} |
+        Q: {question.question_body} |
+        <span onClick={() => markQuestionHelpful()}>Helpful? Yes{`(${helpfulness})`}</span> |
         <span onClick={() => setShowAnswerModal(true)}> Add Answer</span>
       </div>
       {displayAnswers}

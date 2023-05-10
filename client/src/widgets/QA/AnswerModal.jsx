@@ -9,6 +9,12 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
   const [photos, setPhotos] = useState([]);
   const [photoCount, incrementPhotoCount] = useState(0);
 
+  const [savedAnswer, setSavedAnswer] = useState("");
+  const [savedEmail, setSavedEmail] = useState("");
+  const [savedName, setSavedName] = useState("");
+
+
+
   function submitAnswer(e) {
     e.preventDefault();
 
@@ -20,6 +26,11 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
     axios.post('/addAnswer', {question_id: questionID, body: body, name: name, email: email, photos: photos}).then(
       () => onClose()
     )
+  }
+
+  if (showPhotoModal) {
+    return  <PhotoModal photos={photos} setPhotos={setPhotos} onClose={() => setShowPhotoModal(false)}
+    count={photoCount} addedPhoto={incrementPhotoCount} />
   }
 
   return(
@@ -39,28 +50,33 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
       <h4>{productName} : {questionBody}</h4>
       <form onSubmit={submitAnswer}>
       <label>
-        Your Answer: <textarea name="myAnswer" placeholder="Answer..." maxLength="1000" required/>
+        Your Answer: <textarea value={savedAnswer} onChange={e => {
+          setSavedAnswer(e.target.value);
+        }} name="myAnswer" placeholder="Answer..." maxLength="1000" required/>
       </label>
       <br></br>
       <label>
-        Your Display Name: <input name="myName" placeholder="Example: jackson11!" maxLength="60" required/>
+        Your Display Name: <input value={savedName} onChange={e => {
+          setSavedName(e.target.value);
+        }}name="myName" placeholder="Example: jackson11!" maxLength="60" required/>
       </label>
       <p>For privacy reasons, do not use your full name or email address</p>
       <label htmlFor="email">
-        Your Email: <input type="email" name="myEmail" placeholder="Example: jack@email.com" maxLength="60" required/>
+        Your Email: <input value={savedEmail} onChange={e => {
+          setSavedEmail(e.target.value);
+        }}type="email" name="myEmail" placeholder="Example: jack@email.com" maxLength="60" required/>
       </label>
       <button onClick={() => {setShowPhotoModal(true)}}>Add Photo</button>
-      <div>
-
+      <div id="thumbnails">
       </div>
       <br></br>
         <button type="submit">Submit Answer</button>
       </form>
-      {showPhotoModal && createPortal(
+      {/* {showPhotoModal && createPortal(
         <PhotoModal photos={photos} setPhotos={setPhotos} onClose={() => setShowPhotoModal(false)}
-        count={photoCount} addedPhoto={incrementPhotoCount}/>,
+        count={photoCount} addedPhoto={incrementPhotoCount} addThumbnail={addThumbnail}/>,
         document.getElementById("modal")
-      )}
+      )} */}
       <button onClick={onClose}>Close out</button>
     </div>
   );
