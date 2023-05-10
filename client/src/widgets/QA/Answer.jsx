@@ -17,6 +17,11 @@ function Answer ({answer}) {
         Helpful? Yes{`(${answer.helpfulness})`} |
         Report
       </div>
+      <div>
+        {answer.photos.map((picture, index) => {
+          return (<img src={picture} height="50px" key={index}></img>)
+        })}
+      </div>
     </div>
   );
 }
