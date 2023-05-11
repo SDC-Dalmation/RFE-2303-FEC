@@ -10,6 +10,17 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
   const [showAnswerModal, setShowAnswerModal] = useState(false);
   const [helpfulness, setHelpfulness] = useState(question.question_helpfulness);
 
+  const bodyStyle = {
+    fontFamily: "Arial",
+    fontSize: "15px",
+  }
+
+  const helperStyle = {
+    float: "right",
+    fontFamily: "Arial",
+    fontSize: "8px",
+  }
+
   useEffect(() => {
     setAnswers(Object.values(question.answers));
   }, [question]);
@@ -30,8 +41,11 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
   return(
     <div>
       <div>
-        Q: {question.question_body} | <span onClick={() => markQuestionHelpful()}> Helpful? Yes{`(${helpfulness})`}</span> |
-        <span onClick={() => setShowAnswerModal(true)}> Add Answer</span>
+        <span style={bodyStyle}>Q: {question.question_body}</span>
+        <span style={helperStyle}>
+          <span onClick={() => markQuestionHelpful()}> Helpful? Yes{`(${helpfulness})`}</span> |
+          <span onClick={() => setShowAnswerModal(true)}> Add Answer</span>
+        </span>
       </div>
       {displayAnswers}
       {showAnswerModal && createPortal(
