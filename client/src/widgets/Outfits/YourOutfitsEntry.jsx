@@ -13,7 +13,8 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
     })
   })
 
-  const deleteOutfit = (item) => {
+  const deleteOutfit = (e) => {
+    e.preventDefault()
     const filtered = items.filter((outfit) => {
       return outfit.id !== item.id
     })
@@ -26,7 +27,7 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
       border: '1px solid grey',
       }}>
       <button style={{position: 'absolute', right: 0, top: 0}}
-      onClick={() => deleteOutfit(item)}>X</button>
+      onClick={deleteOutfit}>X</button>
       <img style={{width: 200, height: 200}} src={productStyle}/>
       <div>{item.category}</div>
       <div>{item.name}</div>
