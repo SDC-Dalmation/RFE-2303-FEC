@@ -30,25 +30,20 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     }
   }
 
-  let questionsToDisplay = shownQuestions;
-  if (filterString.length > 2) {
-    questionsToDisplay = shownQuestions.filter((question) => {
-      console.log('QUESTIONN', question.question_body.toLowerCase());
-      return question.question_body.toLowerCase().includes(filterString.toLowerCase());
-    })
-  }
 
   return(
     <div>
       <QuestionSearch filterString={filterString} setFilterString={setFilterString}/>
     <div id="questionList" style={shownCSS}>
-      {questionsToDisplay.map((question, index) => {
-        return (<Question question={question}
-          prodName={prodName}
-          markHelpful={markHelpful}
-          helpfulQA={helpfulQA}
-          setHelpfulQA={setHelpfulQA}
-           key={index}/>)
+      {shownQuestions.map((question, index) => {
+        if (question.question_body.toLowerCase().includes(filterString.toLowerCase())) {
+          return (<Question question={question}
+            prodName={prodName}
+            markHelpful={markHelpful}
+            helpfulQA={helpfulQA}
+            setHelpfulQA={setHelpfulQA}
+            key={index}/>)
+          }
       })}
     </div>
     <div>

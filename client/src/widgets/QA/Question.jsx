@@ -12,7 +12,7 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
   useEffect(() => {
     setAnswers(Object.values(question.answers));
-  }, []);
+  }, [question]);
 
   const markQuestionHelpful = function () {
     if (markHelpful(question.question_id, helpfulQA, setHelpfulQA)) {
