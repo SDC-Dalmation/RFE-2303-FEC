@@ -31,7 +31,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
   }
 
   let questionsToDisplay = shownQuestions;
-  if (filterString.length > 3) {
+  if (filterString.length > 2) {
     questionsToDisplay = shownQuestions.filter((question) => {
       console.log('QUESTIONN', question.question_body.toLowerCase());
       return question.question_body.toLowerCase().includes(filterString.toLowerCase());
