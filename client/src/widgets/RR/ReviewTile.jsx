@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import StarRatings from "react-star-ratings";
 import axios from "axios";
+import PhotoModal from "./PhotoModal.jsx"
 
 function ReviewTile ({review}) {
   const [rating, setRating] = useState(review.rating);
@@ -99,6 +100,8 @@ function ReviewTile ({review}) {
           }
         </p>
       </div>
+
+      <PhotoModal review={review}/>
 
       {review.recommend ? <div>I recommend this product ✔️</div>: null}
 
