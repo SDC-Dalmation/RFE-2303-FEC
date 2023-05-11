@@ -8,7 +8,8 @@ const YourOutfits = ({currentProduct}) => {
     localStorage.setItem('items', JSON.stringify(items));
   }, [items]);
 
-  const addOutfit = () => {
+  const addOutfit = (e) => {
+    e.preventDefault()
     var test = items.map(item => {
       return item.id
     })
@@ -23,13 +24,11 @@ const YourOutfits = ({currentProduct}) => {
         display: 'flex',
         flexWrap: 'nowrap',
         overflow: 'auto',
-        flexDirection: 'row'}} onClick={addOutfit}>
-        <div style={{
+        flexDirection: 'row'}}>
+        <div onClick={addOutfit} style={{
       border: '1px solid grey',
-      padding: 100}} >
-        <div onClick={addOutfit}>
+      padding: 100}}>
         {'+'}
-        </div>
         </div>
         {items.map((item, index) => (
           <YourOutfitsEntry key={index} item={item} items={items} setItems={setItems}/>
