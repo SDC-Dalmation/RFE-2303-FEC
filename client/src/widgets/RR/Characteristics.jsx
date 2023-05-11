@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-function Characteristics ({currentProduct}) {
+function Characteristics ({currentProduct, charOptions, setCharOptions}) {
   const [characteristics, setCharacteristics] = useState([]);
-  const [options, setOptions] = useState({});
   const [descriptions, setDescriptions] = useState({});
 
   useEffect(() => {
@@ -14,7 +13,6 @@ function Characteristics ({currentProduct}) {
   }, [])
 
   //set initial descriptions to be none selected
-
   useEffect(() => {
     const initialDescriptions = {};
     characteristics.forEach((characteristic) => {
@@ -25,7 +23,7 @@ function Characteristics ({currentProduct}) {
 
   const handleOptionChange = (e, characteristic) => {
     const value = e.target.value;
-    setOptions((prevState) => ({
+    setCharOptions((prevState) => ({
       ...prevState,
       [characteristic]: value,
     }));
@@ -74,7 +72,7 @@ function Characteristics ({currentProduct}) {
                         <input
                           type="radio"
                           value={value}
-                          checked={options[characteristic]===value.toString()}
+                          checked={charOptions[characteristic]===value.toString()}
                           onChange={(e) => handleOptionChange(e, characteristic)}
                         />
                         {value}

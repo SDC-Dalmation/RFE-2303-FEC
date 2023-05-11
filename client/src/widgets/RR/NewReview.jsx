@@ -7,6 +7,9 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const [rating, setRating] = useState(0);
   const [option, setOption] = useState("");
   const [recommend, setRecommend] = useState(false);
+  const [charOptions, setCharOptions] = useState({});
+  const [summary, setSummary] = useState("");
+  const [body, setBody] = useState("");
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -30,6 +33,16 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
 
   const handleSubmit = () => {
     let form = e.target
+  }
+
+  const handleSummaryChange = (e) => {
+    var summaryText = e.target.value;
+    setSummary(summaryText);
+  }
+
+  const handleBodyChange = (e) => {
+    let bodyText = e.target.value;
+    setBody(bodyText);
   }
 
   const ratingText = {
@@ -84,14 +97,41 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
               No
             </label>
           </div>
+          <div className="characteristic-and-inputs">
+            <Characteristics
+            currentProduct={currentProduct}
+            charOptions={charOptions}
+            setCharOptions ={setCharOptions}/>
 
-          <Characteristics currentProduct={currentProduct}/>
+            <div className="add-review-inputs">
+              <label style={{"marginTop": "10px"}}>Review Summary (60 characters max)</label>
 
-          <input placeholder="enter summary"/>
-          <input placeholder="enter review body"/>
-          <div>photos</div>
-          <input placeholder="enter name"/>
-          <input placeholder="enter email"/>
+              <input
+              type="text"
+              name="summary"
+              value={summary}
+              placeholder= "Example: Best purchase ever!"
+              maxLength="60"
+              onChange={handleSummaryChange}
+              />
+
+              <label style={{"marginTop": "10px"}}>Review Body (1000 characters max)</label>
+              <input
+              placeholder="Why did you like the product or not?"
+              name="body"
+              value={body}
+              maxLength="1000"
+              minLength="50"
+              onChange={handleBodyChange}
+              />
+              {body.length<=50 ? <div style={{"fontSize": "small"}}>{`Minimum required characters left: ${50 - body.length}`}</div>: <div style={{"fontSize": "small"}}>Minimum reached</div>}
+
+              <div>photos</div>
+
+              <input placeholder="enter name"/>
+              <input placeholder="enter email"/>
+            </div>
+          </div>
         </form>
 
       </div>
