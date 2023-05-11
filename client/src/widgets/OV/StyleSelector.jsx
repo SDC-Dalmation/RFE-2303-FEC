@@ -13,9 +13,10 @@ function StyleSelector({currentProduct, setCurrentStyle, setAllProductStyles, al
   }
 
   return (
-    <div>
-      <div className="style-title" style={{'marginTop': '10px'}}>Styles</div>
-      <div style={{'display': 'flex'}}>
+    <div style={{'display': 'flex', 'flexDirection': 'column'}}>
+      <p style={{'fontWeight': '700'}}>Styles</p>
+      <div style={{'marginTop': '10px', 'marginRight': '10px', 'alignContent': 'center'}}></div>
+      <div style={{'display': 'flex', 'flexWrap': 'wrap', 'height': '100%', 'width': '100%'}}>
         {allProductStyles.map((style, index) => (
           <Style style={style} key={index} styleBtnHandler={styleBtnHandler}/>
         ))}
