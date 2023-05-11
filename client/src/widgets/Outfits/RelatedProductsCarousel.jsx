@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import RelatedProductsEntry from "./RelatedProductsEntry.jsx"
 
-const RelatedProductsCarousel = ({relatedProducts, setCurrentProduct}) => {
-
+const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentProduct}) => {
   return (
     <div data-testid="ProductsCarousel" style={{
       display: 'flex',
@@ -13,7 +12,7 @@ const RelatedProductsCarousel = ({relatedProducts, setCurrentProduct}) => {
         {"<"}
       </button>
       {relatedProducts.map((product, index) => (
-        <RelatedProductsEntry key={index} product={product} setCurrentProduct={setCurrentProduct}/>
+        <RelatedProductsEntry key={index} product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/>
       ))}
       <button>
       {">"}

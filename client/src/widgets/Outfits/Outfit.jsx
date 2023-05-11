@@ -24,7 +24,7 @@ const Outfit = ({products, currentProduct, setCurrentProduct}) => {
         <br></br>
         <>Related Products</>
         <br></br>
-        <RelatedProductsCarousel relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>
+        <RelatedProductsCarousel currentProduct={currentProduct} relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>
         <br></br>
         <>Your Outfit</>
         <br></br>
