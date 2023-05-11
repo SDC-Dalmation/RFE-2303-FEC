@@ -5,6 +5,12 @@ import QuestionSearch from './QuestionSearch.jsx';
 
 function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
+  const listStyle = {
+    margin: "2vh",
+    fontFamily: "Arial"
+  }
+
+
   let [shownQuestions, setShownQuestions] = useState(questions.slice(0, 4));
   let [filterString, setFilterString] = useState("");
 
@@ -32,7 +38,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
 
 
   return(
-    <div>
+    <div style = {listStyle}>
       <QuestionSearch filterString={filterString} setFilterString={setFilterString}/>
     <div id="questionList" style={shownCSS}>
       {shownQuestions.map((question, index) => {

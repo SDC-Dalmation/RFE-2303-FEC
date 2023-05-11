@@ -3,6 +3,16 @@ import axios from 'axios';
 
 function QuestionSearch ({filterString, setFilterString}) {
 
+  const searchStyle = {
+    fontSize: "15px",
+    height: "6vh",
+    marginBottom: "4vh",
+    fontFamily: "Arial",
+
+    width: "80vh",
+  }
+
+
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -17,6 +27,7 @@ function QuestionSearch ({filterString, setFilterString}) {
     <div>
       <label>
         <input
+          style={searchStyle}
           value={searchTerm}
           onChange={e => {
             setSearchTerm(e.target.value);

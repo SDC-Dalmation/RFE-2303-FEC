@@ -5,12 +5,12 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
 
   let lessThan5Photos = count;
 
-  let photoButton = (<div>Photo Limit Reached</div>);
+  let photoButton = (<div id="photoLimit">Photo Limit Reached</div>);
   if (lessThan5Photos < 5) {
     photoButton= (
       <div>
         <label htmlFor="addPhoto">Add a Photo</label>
-        <input type="file" accept="image/*" ></input>
+        <input id="addPhoto"type="file" accept="image/*" ></input>
         <button type="submit">Submit Photo</button>
       </div>
     )

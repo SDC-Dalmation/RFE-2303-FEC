@@ -4,7 +4,14 @@ import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
 import { createPortal } from 'react-dom';
 
+
 function QA ({currentProduct}) {
+
+  const titleStyle = {
+    fontSize: "15px",
+    margin: "2vh",
+    fontFamily: "Arial"
+  }
 
   const [questions, setQuestions] = useState([]);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
@@ -29,8 +36,8 @@ function QA ({currentProduct}) {
   if (questions.length > 0) {
 
     return(
-      <div>
-        Questions & Answers
+      <div style={{width: "60%"}}>
+        <span style={titleStyle}>Questions & Answers</span>
         <QuestionList questions={questions}
         prodName={currentProduct.name}
         markHelpful={markHelpful}
