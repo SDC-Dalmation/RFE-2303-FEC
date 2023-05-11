@@ -10,6 +10,9 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const [charOptions, setCharOptions] = useState({});
   const [summary, setSummary] = useState("");
   const [body, setBody] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -43,6 +46,16 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const handleBodyChange = (e) => {
     let bodyText = e.target.value;
     setBody(bodyText);
+  }
+
+  const handleNameChange = (e) => {
+    let nameText = e.target.value;
+    setName(nameText);
+  }
+
+  const handleEmailChange = (e) => {
+    let emailText = e.target.value;
+    setEmail(emailText);
   }
 
   const ratingText = {
@@ -115,7 +128,9 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
               onChange={handleSummaryChange}
               />
 
-              <label style={{"marginTop": "10px"}}>Review Body (1000 characters max)</label>
+              <label style={{"marginTop": "10px"}}>
+              Review Body (1000 characters max)
+              </label>
               <input
               placeholder="Why did you like the product or not?"
               name="body"
@@ -124,12 +139,42 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
               minLength="50"
               onChange={handleBodyChange}
               />
-              {body.length<=50 ? <div style={{"fontSize": "small"}}>{`Minimum required characters left: ${50 - body.length}`}</div>: <div style={{"fontSize": "small"}}>Minimum reached</div>}
 
-              <div>photos</div>
+              <div style={{ fontSize: "small", marginBottom: "10px" }}>
+              {body.length <= 50
+                ? `Minimum required characters left: ${50 - body.length}`
+                : "Minimum reached"}
+              </div>
 
-              <input placeholder="enter name"/>
-              <input placeholder="enter email"/>
+              <button>Add Photos</button>
+
+              <label style={{"marginTop": "10px"}}>
+              Username
+              </label>
+              <input
+              placeholder="Example: jackson11!"
+              name="name"
+              value={name}
+              maxLength="60"
+              onChange={handleNameChange}
+              />
+              <div style={{"fontSize": "small", "marginBottom": "10px"}}>
+              For privacy reasons, do not use your full name or email address
+              </div>
+
+              <label style={{"marginTop": "10px"}}>
+              E-Mail
+              </label>
+              <input
+              placeholder="Example: jackson11@email.com"
+              name="email"
+              value={email}
+              maxLength="60"
+              onChange={handleEmailChange}
+              />
+              <div style={{"fontSize": "small", "marginBottom": "10px"}}>
+              For authentication reasons, you will not be emailed
+              </div>
             </div>
           </div>
         </form>
