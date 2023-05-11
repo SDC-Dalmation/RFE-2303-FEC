@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import Question from './Question.jsx';
+import QuestionSearch from './QuestionSearch.jsx';
 
 function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
   let [shownQuestions, setShownQuestions] = useState(questions.slice(0, 4));
+  let [filterString, setFilterString] = useState("");
 
   const displayCSS = {
     color : "black",
@@ -28,10 +30,19 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     }
   }
 
+  let questionsToDisplay = shownQuestions;
+  if (filterString.length > 3) {
+    questionsToDisplay = shownQuestions.filter((question) => {
+      console.log('QUESTIONN', question.question_body.toLowerCase());
+      return question.question_body.toLowerCase().includes(filterString.toLowerCase());
+    })
+  }
+
   return(
     <div>
+      <QuestionSearch filterString={filterString} setFilterString={setFilterString}/>
     <div id="questionList" style={shownCSS}>
-      {shownQuestions.map((question, index) => {
+      {questionsToDisplay.map((question, index) => {
         return (<Question question={question}
           prodName={prodName}
           markHelpful={markHelpful}
