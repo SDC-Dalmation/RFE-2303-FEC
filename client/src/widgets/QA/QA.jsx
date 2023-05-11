@@ -26,8 +26,6 @@ function QA ({currentProduct}) {
     return true;
   }
 
-
-
   if (questions.length > 0) {
 
     return(
