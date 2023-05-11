@@ -1,20 +1,21 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-function Characteristics ({currentProduct}) {
+function Characteristics ({currentProduct, charOptions, setCharOptions, responses, setResponses}) {
   const [characteristics, setCharacteristics] = useState([]);
-  const [options, setOptions] = useState({});
   const [descriptions, setDescriptions] = useState({});
+  const [details, setDetails] = useState({})
 
   useEffect(() => {
     axios.post('/reviewMetadata', {product_id: currentProduct.id})
     .then((res) => {
       setCharacteristics(Object.keys(res.data.characteristics));
+      setDetails(res.data.characteristics);
     })
   }, [])
 
-  //set initial descriptions to be none selected
 
+  //set initial descriptions to be none selected
   useEffect(() => {
     const initialDescriptions = {};
     characteristics.forEach((characteristic) => {
@@ -25,12 +26,15 @@ function Characteristics ({currentProduct}) {
 
   const handleOptionChange = (e, characteristic) => {
     const value = e.target.value;
-    setOptions((prevState) => ({
+    setCharOptions((prevState) => ({
       ...prevState,
-      [characteristic]: value,
+      [details[characteristic].id.toString()]: Number(value),
     }));
 
     setDescription(characteristic, getDescription(characteristic, value));
+
+    let updatedResponse = {...responses, characteristics: charOptions};
+    setResponses(updatedResponse);
   }
 
   const setDescription = (characteristic, description) => {
@@ -74,7 +78,7 @@ function Characteristics ({currentProduct}) {
                         <input
                           type="radio"
                           value={value}
-                          checked={options[characteristic]===value.toString()}
+                          checked={charOptions[details[characteristic].id]===value}
                           onChange={(e) => handleOptionChange(e, characteristic)}
                         />
                         {value}
