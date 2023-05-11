@@ -27,7 +27,6 @@ function ReviewsList ({currentProduct}) {
 
   return(
     <div>
-      <h4>Reviews List</h4>
       <div>
         <Sort currentProduct={currentProduct} reviews={reviews} setReviews={setReviews} />
         <div className="scrollable">
