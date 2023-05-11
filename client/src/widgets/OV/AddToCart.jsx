@@ -1,44 +1,71 @@
 import React, {useEffect, useState} from 'react';
 
-function AddToCart({currentStyle}) {
+function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedArr}) {
 
   // definitely a better way to do this, went a lil crazy with useState
   const [currentSize, setCurrentSize] = useState('')
   const [currentQuantity, setCurrentQuantity] = useState(0)
-  const [quantityArr, setQuantityArr] = useState(['-'])
+  const [quantityArr, setQuantityArr] = useState([])
   const [firstLoad, setFirstLoad] = useState(true)
 
+  var arrOfOptions;
+
+  // This function grabs the value of the size selector and sets the currentSize state
+  // it then sets the currentQuantity based on which size was selected
+
+  const sizeSelectorHandler = function() {
+    // grab the selector html element
+    var size = document.querySelector('#size-selector');
+    setCurrentSize(size.value)
+    // get the index of the selected option
+    var index = document.getElementById('size-selector').selectedIndex;
+    // read the html of that selected option
+    var placeholder = document.getElementById('placeholder')
+
+    if (placeholder) {
+      var num = 1
+    } else {
+      var num = 0;
+    }
+    // set the quantity to be the same quantity as the selected style size
+    setCurrentQuantity(arrOfOptions[index - num][1][1].quantity)
+    // create an array of numbers based on the quantity, and make that array the quantityArr
+    setQuantityArr(quantityArrMaker(arrOfOptions[index - num][1][1].quantity))
+    // makes it so that the placeholders disappear
+    setFirstLoad(false);
+  }
+
+  // creates an array of numbers based on the quantity
+  const quantityArrMaker = function (num) {
+    if (num > 15) {
+      num = 15;
+    }
+    return Array.from({length: num}, (_, i) => i + 1)
+  }
+
+  // if the style changes, this will update the arrOfOptions, and update the quantity
+  useEffect(()=>{
+    if (currentStyle) {
+      arrOfOptions = Object.entries(Object.entries(currentStyle.skus));
+      var index = document.getElementById('size-selector').selectedIndex;
+      var selected = document.getElementById('size-selector').selectedOptions;
+      var placeholder = document.getElementById('placeholder')
+      if (placeholder) {
+        var num = 1
+      } else {
+        var num = 0;
+      }
+      if (currentSize) {
+        setCurrentQuantity(arrOfOptions[index - num][1][1].quantity)
+        setQuantityArr(quantityArrMaker(arrOfOptions[index - num][1][1].quantity))
+        setFirstLoad(true)
+      }
+    }
+  }, checkIfStyleChangedArr)
 
   if (currentStyle) {
     // creates array of the object of SKUs
-    var arrOfOptions = Object.entries(Object.entries(currentStyle.skus))
-
-
-    // creates an array of numbers based on the quantity
-    const quantityArrMaker = function (num) {
-      if (num > 15) {
-        num = 15;
-      }
-      return Array.from({length: num}, (_, i) => i + 1)
-    }
-
-    // This function grabs the value of the size selector and sets the currentSize state
-    // it then sets the currentQuantity based on which size was selected
-    const sizeSelectorHandler = function() {
-        var size = document.querySelector('#size-selector');
-        setCurrentSize(size.value)
-        var index = document.getElementById('size-selector').selectedIndex;
-        if (index !== 0) {
-          if (firstLoad) {
-            var num = 1;
-          } else {
-            var num = 0;
-          }
-          setCurrentQuantity(arrOfOptions[index - num][1][1].quantity)
-          setQuantityArr(quantityArrMaker(arrOfOptions[index - num][1][1].quantity))
-        }
-        setFirstLoad(false);
-    }
+    arrOfOptions = Object.entries(Object.entries(currentStyle.skus))
 
 
     return(
@@ -47,7 +74,7 @@ function AddToCart({currentStyle}) {
           <div>
             <select id="size-selector" name="size selector" onChange={sizeSelectorHandler}>
               {/* if its the first load, it will start on an empty selection */}
-              {firstLoad ? <option></option> : null}
+              {firstLoad ? <option id="placeholder" default></option> : null}
               {arrOfOptions.map((option, index) => {
                 if (option[1][1].quantity === 0) {
                   return(
@@ -64,17 +91,7 @@ function AddToCart({currentStyle}) {
         <div style={{'marginTop': '3px'}}>Quantity Selector</div>
           <div>
             <select id="quantity-selector" name="quantity selector" >
-              {quantityArr.map((num, index) => {
-                if (num === '-') {
-                  return (
-                    <option disabled>{num}</option>
-                  )
-                } else {
-                  return (
-                    <option>{num}</option>
-                  )
-                }
-              })}
+              {firstLoad ? <option disabled default>-</option> : quantityArr.map((num, index) => {return (<option>{num}</option>)})}
             </select>
         </div>
         <button style={{'marginTop': '3px'}}>Add To Cart</button>
