@@ -26,11 +26,13 @@ const YourOutfits = ({currentProduct}) => {
         flexDirection: 'row'}} onClick={addOutfit}>
         <div style={{
       border: '1px solid grey',
-      padding: 100}} onClick={addOutfit}>
+      padding: 100}} >
+        <div onClick={addOutfit}>
         {'+'}
         </div>
+        </div>
         {items.map((item, index) => (
-          <YourOutfitsEntry key={index} item={item}/>
+          <YourOutfitsEntry key={index} item={item} items={items} setItems={setItems}/>
         ))}
       </div>
     )
