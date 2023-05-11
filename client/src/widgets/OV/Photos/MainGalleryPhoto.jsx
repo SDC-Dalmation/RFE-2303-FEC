@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 
-function MainGalleryPhoto({handleExtendedBtn, setMainGalleryPic, mainGalleryPic, currentStyle, checkIfProductChangedArr}) {
+function MainGalleryPhoto({handleExtendedBtn, setMainGalleryPic, mainGalleryPic, currentStyle, checkIfProductChangedArr, checkIfStyleChangedArr}) {
 
   var imageToShow = currentStyle.photos[0].url;
 
   useEffect(()=>{imageToShow = currentStyle.photos[0].url}, checkIfProductChangedArr)
+
+  useEffect(()=>{setMainGalleryPic(currentStyle.photos[0].url)}, checkIfStyleChangedArr)
 
   if (mainGalleryPic) {
     return(
