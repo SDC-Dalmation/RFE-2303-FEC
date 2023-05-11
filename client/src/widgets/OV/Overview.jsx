@@ -13,6 +13,8 @@ function Overview({currentProduct}) {
 
   const checkIfProductChangedArr = [currentProduct]
 
+  const checkIfStyleChangedArr = [currentStyle]
+
 
     // when the page renders, grab all the styles for this product and set the current style to be the first style in the list
   useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); setCurrentStyle(res.data.results[0]);})},[])
@@ -26,7 +28,7 @@ function Overview({currentProduct}) {
       <div>
         Overview
        <div style={{'display': 'flex', 'border': '1px solid black', 'borderRadius': '3px', 'padding': '5px'}} >
-        <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr}/>
+        <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
         <div >
           <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr}/>
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
