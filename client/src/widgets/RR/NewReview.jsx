@@ -12,10 +12,23 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [responses, setResponses] = useState({
+    product_id: currentProduct.id,
+    rating: null,
+    summary: "summary",
+    body: "",
+    recommend: null,
+    name: "",
+    email: "",
+    photos: ['photo.url', 'nextphoto.url'],
+    characteristics: {125031: 5, 125032: 5, 125033: 5, 125034: 5}
+  })
 
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
+    let updatedResponse = {...responses, rating: newRating};
+    setResponses(updatedResponse);
   }
 
   const handleOptionChange = (e) => {
@@ -25,38 +38,65 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   useEffect(() => {
     if (option === "Yes") {
       setRecommend(true);
+      let updatedResponse = {...responses, recommend: true};
+      setResponses(updatedResponse);
     } else {
       setRecommend(false);
+      let updatedResponse = {...responses, recommend: false};
+      setResponses(updatedResponse);
     }
   }, [option])
 
   const handleClose = () => {
+    axios.post('/addReview', responses)
+      .then((response) => {
+        console.log('review posted: ', response);
+      })
+      .catch((err) => {
+        console.log('Error in posting review: ', err);
+      })
     setShowModal(false);
   }
 
   const handleSubmit = () => {
-    let form = e.target
+    let form = e.target;
+
   }
 
   const handleSummaryChange = (e) => {
     var summaryText = e.target.value;
     setSummary(summaryText);
+    let updatedResponse = {...responses, [e.target.name]: summaryText};
+    setResponses(updatedResponse);
   }
 
   const handleBodyChange = (e) => {
     let bodyText = e.target.value;
     setBody(bodyText);
+    let updatedResponse = {...responses, [e.target.name]: bodyText};
+    setResponses(updatedResponse);
   }
 
   const handleNameChange = (e) => {
     let nameText = e.target.value;
     setName(nameText);
+    let updatedResponse = {...responses, [e.target.name]: nameText};
+    setResponses(updatedResponse);
   }
 
   const handleEmailChange = (e) => {
     let emailText = e.target.value;
     setEmail(emailText);
+    let updatedResponse = {...responses, [e.target.name]: emailText};
+    setResponses(updatedResponse);
   }
+  //handlechange functions have repeated code, I am trying to make one function for all:
+  //const handleChange = (e) => {
+  //  let value = e.target.value;
+  //  let updatedResponse = {...responses, [e.target.name]: value};
+  //  setResponses(updatedResponse);
+  //  console.log(responses)
+  //}
 
   const ratingText = {
     1: "Poor",
@@ -65,6 +105,8 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     4: "Good",
     5: "Great"
   }
+
+  console.log(responses);
 
   return(
     <div className="modal">
@@ -95,6 +137,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
               <input
                 type="radio"
                 value="Yes"
+                name="recommend"
                 checked={option==="Yes"}
                 onChange={handleOptionChange}
               />
@@ -104,6 +147,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
               <input
                 type="radio"
                 value="No"
+                name="recommend"
                 checked={option==="No"}
                 onChange={handleOptionChange}
               />
@@ -114,7 +158,10 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
             <Characteristics
             currentProduct={currentProduct}
             charOptions={charOptions}
-            setCharOptions ={setCharOptions}/>
+            setCharOptions ={setCharOptions}
+            responses={responses}
+            setResponses={setResponses}
+            />
 
             <div className="add-review-inputs">
               <label style={{"marginTop": "10px"}}>Review Summary (60 characters max)</label>

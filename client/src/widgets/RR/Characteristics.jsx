@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-function Characteristics ({currentProduct, charOptions, setCharOptions}) {
+function Characteristics ({currentProduct, charOptions, setCharOptions, responses, setResponses}) {
   const [characteristics, setCharacteristics] = useState([]);
   const [descriptions, setDescriptions] = useState({});
 
@@ -29,6 +29,9 @@ function Characteristics ({currentProduct, charOptions, setCharOptions}) {
     }));
 
     setDescription(characteristic, getDescription(characteristic, value));
+
+    //let updatedResponse = {...responses, characteristics: charOptions};
+    //setResponses(updatedResponse);
   }
 
   const setDescription = (characteristic, description) => {
