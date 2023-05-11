@@ -4,13 +4,16 @@ import axios from "axios";
 function Characteristics ({currentProduct, charOptions, setCharOptions, responses, setResponses}) {
   const [characteristics, setCharacteristics] = useState([]);
   const [descriptions, setDescriptions] = useState({});
+  const [details, setDetails] = useState({})
 
   useEffect(() => {
     axios.post('/reviewMetadata', {product_id: currentProduct.id})
     .then((res) => {
       setCharacteristics(Object.keys(res.data.characteristics));
+      setDetails(res.data.characteristics);
     })
   }, [])
+
 
   //set initial descriptions to be none selected
   useEffect(() => {
@@ -25,13 +28,13 @@ function Characteristics ({currentProduct, charOptions, setCharOptions, response
     const value = e.target.value;
     setCharOptions((prevState) => ({
       ...prevState,
-      [characteristic]: value,
+      [details[characteristic].id.toString()]: Number(value),
     }));
 
     setDescription(characteristic, getDescription(characteristic, value));
 
-    //let updatedResponse = {...responses, characteristics: charOptions};
-    //setResponses(updatedResponse);
+    let updatedResponse = {...responses, characteristics: charOptions};
+    setResponses(updatedResponse);
   }
 
   const setDescription = (characteristic, description) => {
@@ -75,7 +78,7 @@ function Characteristics ({currentProduct, charOptions, setCharOptions, response
                         <input
                           type="radio"
                           value={value}
-                          checked={charOptions[characteristic]===value.toString()}
+                          checked={charOptions[details[characteristic].id]===value}
                           onChange={(e) => handleOptionChange(e, characteristic)}
                         />
                         {value}

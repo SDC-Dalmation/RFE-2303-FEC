@@ -21,7 +21,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     name: "",
     email: "",
     photos: ['photo.url', 'nextphoto.url'],
-    characteristics: {125031: 5, 125032: 5, 125033: 5, 125034: 5}
+    characteristics: null
   })
 
 
@@ -90,13 +90,6 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     let updatedResponse = {...responses, [e.target.name]: emailText};
     setResponses(updatedResponse);
   }
-  //handlechange functions have repeated code, I am trying to make one function for all:
-  //const handleChange = (e) => {
-  //  let value = e.target.value;
-  //  let updatedResponse = {...responses, [e.target.name]: value};
-  //  setResponses(updatedResponse);
-  //  console.log(responses)
-  //}
 
   const ratingText = {
     1: "Poor",
