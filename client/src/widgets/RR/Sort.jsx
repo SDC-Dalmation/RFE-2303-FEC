@@ -16,11 +16,11 @@ function Sort ({currentProduct, reviews, setReviews}) {
 
   return(
     <div>
-      <label>Sort By:</label>
+      <label>Reviews sorted by:</label>
       <select value={value} onChange={handleChange}>
-        <option value="relevant">Relevant</option>
+        <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>
-        <option value="helpful">Helpful</option>
+        <option value="helpful">Helpfulness</option>
       </select>
     </div>
   );
