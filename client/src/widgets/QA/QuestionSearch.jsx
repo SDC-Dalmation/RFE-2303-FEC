@@ -5,18 +5,21 @@ function QuestionSearch ({filterString, setFilterString}) {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  if (searchTerm.length >= 3) {
-    setFilterString(searchTerm);
-  }
+  useEffect(() => {
+    if (searchTerm.length > 2) {
+      setFilterString(searchTerm);
+    } else {
+      setFilterString('');
+    }
+  }, [searchTerm])
 
   return (
     <div>
       <label>
         <input
-          value={filterString}
+          value={searchTerm}
           onChange={e => {
-            setFilterString(e.target.value);
-            console.log(filterString);
+            setSearchTerm(e.target.value);
           }}
           placeholder="Have a question? Search for answers…"
         />
