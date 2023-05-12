@@ -9,9 +9,11 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
   if (lessThan5Photos < 5) {
     photoButton= (
       <div>
-        <label htmlFor="addPhoto">Add a Photo</label>
-        <input id="addPhoto"type="file" accept="image/*" ></input>
-        <button type="submit">Submit Photo</button>
+        <label htmlFor="addPhoto" style={{"marginBottom": "2vh"}}>Add a Photo</label>
+        <br></br>
+        <input id="addPhoto"type="file" accept="image/*" style={{"marginBottom": "2vh"}}></input>
+        <br></br>
+        <button type="submit" style={{"marginBottom": "2vh"}}>Submit Photo</button>
       </div>
     )
   }
@@ -49,17 +51,21 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
 
   return(
     <div style={{"display": "flex",
-      "justifyContent": "space-evenly",
-      "alignItems": "left",
-      "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
-      "backgroundColor": "white",
-      "border": "2px solid rgb(240, 240, 240)",
-      "borderRadius": "12px",
-      "position": "fixed",
-      "width": "80%",
-      "top": "10%",
-      "left": "20%",
-      "bottom": "10%"}}>
+    "flexDirection": "column",
+    "justifyContent": "center",
+    "alignItems": "left",
+    "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
+    "backgroundColor": "white",
+    "border": "2px solid rgb(240, 240, 240)",
+    "borderRadius": "12px",
+    "padding": "1vh",
+    "paddingLeft": "20vh",
+    "paddingRight": "20vh",
+    "position": "fixed",
+    "top": "5vh",
+    "left": "40vh",
+    "right": "20vh",
+    "bottom": "5vh"}}>
       <h3>Submit Your Photo</h3>
       <form onSubmit={submitPhoto}>
         {photoButton}
