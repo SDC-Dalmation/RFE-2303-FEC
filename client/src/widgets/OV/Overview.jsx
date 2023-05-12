@@ -36,7 +36,7 @@ function Overview({currentProduct}) {
         <div >
           <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} allRatingsObj={allRatingsObj} />
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle}/>
-          <AddToCart currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
+          <AddToCart selectedStyle={selectedStyle} currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
         </div>
        </div>
       </div>
