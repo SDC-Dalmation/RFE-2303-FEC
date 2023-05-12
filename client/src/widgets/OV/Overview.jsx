@@ -21,7 +21,7 @@ function Overview({currentProduct}) {
   useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); setCurrentStyle(res.data.results[0]);})},[])
 
   // might be a better way to do this, but this checks if the currentProduct has been changed at all
-  useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); setCurrentStyle(res.data.results[0]);})}, checkIfProductChangedArr)
+  useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); console.log('styles: ', res.data.results); setCurrentStyle(res.data.results[0]);})}, checkIfProductChangedArr)
 
   useEffect(()=>{axios.post('/reviewMetadata', {product_id: currentProduct.id}).then((res) => {setAllRatingsObj(res.data.ratings)})}, checkIfProductChangedArr)
 
@@ -33,7 +33,7 @@ function Overview({currentProduct}) {
        <div style={{'display': 'flex', 'border': '1px solid black', 'borderRadius': '3px', 'padding': '5px'}} >
         <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
         <div >
-          <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} allRatingsObj={allRatingsObj}/>
+          <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} allRatingsObj={allRatingsObj} />
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
           <AddToCart currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
         </div>

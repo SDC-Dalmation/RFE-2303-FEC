@@ -6,6 +6,8 @@ import RR from './widgets/RR/RR.jsx';
 
 function Product ({products, currentProduct, setCurrentProduct}) {
 
+  const[num, setNum] = useState(1)
+
   // const [currentProduct, setCurrentProduct] = useState({});
 
 
@@ -21,9 +23,14 @@ if (products.length > 0) {
   return(
     <div>
       <button onClick={() => {
-        var randNum = Math.floor(Math.random() * 5);
-        setCurrentProduct(products[randNum])
-      }}>random product</button>
+        console.log(products[num])
+        setCurrentProduct(products[num])
+        if (num === 15) {
+          setNum(0)
+        } else {
+          setNum(num + 1)
+        }
+      }}>next product</button>
       <OV currentProduct={currentProduct}/>
       <Outfit products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <QA currentProduct={currentProduct}/>
