@@ -17,9 +17,13 @@ if (products.length > 0) {
   //console.log('all products: ', products);
   //console.log('current product ', currentProduct);
 
+
   return(
     <div>
-      <button onClick={() => console.log(currentProduct)}>Current product</button>
+      <button onClick={() => {
+        var randNum = Math.floor(Math.random() * 5);
+        setCurrentProduct(products[randNum])
+      }}>random product</button>
       <OV currentProduct={currentProduct}/>
       <Outfit products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <QA currentProduct={currentProduct}/>
