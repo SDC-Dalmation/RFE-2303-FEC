@@ -10,6 +10,10 @@ function ReviewTile ({review}) {
   const [buttonYesColor, setButtonYesColor] = useState("blue");
   const [showMore, setShowMore] = useState(false);
 
+  useEffect(() => {
+    setHelpfulness(review.helpfulness);
+  }, [review])
+
   const body = review.body;
 
   const formatDate = (string) => {

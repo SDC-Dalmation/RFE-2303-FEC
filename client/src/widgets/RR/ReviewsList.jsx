@@ -19,7 +19,7 @@ function ReviewsList ({currentProduct}) {
       .then((res) => {
         setReviews(res.data.results)
         })
-  }, [])
+  }, [currentProduct])
 
   let handleMoreReviews = () => {
    setLimit(limit + 2);

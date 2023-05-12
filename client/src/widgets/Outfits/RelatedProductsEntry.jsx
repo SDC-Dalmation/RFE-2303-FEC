@@ -64,7 +64,8 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
     return (
       <div style={{
         border: '1px solid grey',
-        position: 'relative'
+        position: 'relative',
+        padding: 5
         }} >
           <div>
           <img onClick={openModal} style={{width: 20, height: 20, position: 'relative', float: "right"}} src={'https://t3.ftcdn.net/jpg/01/82/37/42/360_F_182374246_4f3x34AyBdCii4kGtK6s8PNT4AVYgHRa.jpg'}/>
