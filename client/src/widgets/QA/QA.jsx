@@ -12,7 +12,6 @@ function QA ({currentProduct}) {
     margin: "2vh",
     fontFamily: "Arial"
   }
-
   const [questions, setQuestions] = useState([]);
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [helpfulQA, setHelpfulQA] = useState(JSON.parse(localStorage.getItem('helpfulQA')) || []);
@@ -21,7 +20,7 @@ function QA ({currentProduct}) {
   .then((res) => {
     setQuestions(res.data.results);
   })
-}, []);
+}, [currentProduct]);
 
   const markHelpful = function (itemID, helpfulQA, setHelpfulQA) {
     if (helpfulQA.includes(itemID)) {
@@ -42,7 +41,8 @@ function QA ({currentProduct}) {
         prodName={currentProduct.name}
         markHelpful={markHelpful}
         helpfulQA={helpfulQA}
-        setHelpfulQA={setHelpfulQA}/>
+        setHelpfulQA={setHelpfulQA}
+        currentProduct={currentProduct}/>
         <button onClick={() => setShowQuestionModal(true)}>Add a Question</button>
         {showQuestionModal && createPortal(
           <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)}
@@ -54,7 +54,12 @@ function QA ({currentProduct}) {
   }
   return(
     <div>
-      No Questions Yet... Add One!
+      <button onClick={() => setShowQuestionModal(true)}>Add a Question</button>
+        {showQuestionModal && createPortal(
+          <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)}
+          prodName={currentProduct.name}/>,
+          document.getElementById("modal")
+        )}
     </div>
   )
 

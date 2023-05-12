@@ -94,7 +94,7 @@ module.exports.reviewMetadata = (product_id) => {
 //Questions and Answers API
 
 module.exports.listQuestions = function (product_id) {
-  return axios.get(`${url}/qa/questions?product_id=${product_id}&page=1&count=100`, {
+  return axios.get(`${url}/qa/questions?product_id=${product_id}&page=1&count=1000`, {
     headers: {
       Authorization: process.env.API_KEY
     }
