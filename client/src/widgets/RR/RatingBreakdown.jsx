@@ -49,7 +49,7 @@ function RatingBreakdown ({currentProduct}) {
   ? newDecimals = 50
   : oldDecimals > 62 && oldDecimals <= 87
   ? newDecimals = 75
-  : newDecimals = 0
+  : newDecimals = 0;
 
   let averageRatingRounded = Number(starRating.toString()[0] + "." + newDecimals.toString())
 
