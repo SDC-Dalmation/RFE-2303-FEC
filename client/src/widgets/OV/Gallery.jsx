@@ -17,7 +17,6 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
       e.preventDefault;
       setMainGalleryPic(photo);
     }
-    console.log('changed')
   }
 
   if (currentStyle) {
