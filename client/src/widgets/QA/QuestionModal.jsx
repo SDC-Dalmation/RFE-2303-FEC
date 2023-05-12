@@ -18,33 +18,40 @@ function QuestionModal ({ productID, onClose, prodName }) {
 
   return(
     <div style={{"display": "flex",
-      "justifyContent": "space-evenly",
+      "flexDirection": "column",
+      "justifyContent": "center",
       "alignItems": "left",
       "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
       "backgroundColor": "white",
       "border": "2px solid rgb(240, 240, 240)",
       "borderRadius": "12px",
+      "padding": "1vh",
+      "paddingLeft": "20vh",
+      "paddingRight": "20vh",
       "position": "fixed",
-      "width": "80%",
-      "top": "10%",
-      "left": "20%",
-      "bottom": "10%"}}>
+      "top": "5vh",
+      "left": "40vh",
+      "right": "20vh",
+      "bottom": "5vh"}}>
       <h3>Ask Your Question</h3>
       <h4>About the {prodName}</h4>
       <form onSubmit={submitQuestion}>
+        <h5>Your Question:</h5>
       <label>
-        Your Question: <textarea name="myQuestion" placeholder="Question..." maxLength="1000" required/>
+        <textarea name="myQuestion" placeholder="Question..." maxLength="1000" style={{"width": "100%"}}required/>
       </label>
       <br></br>
+        <h5>Your Display Name:</h5>
       <label>
-        Your Display Name: <input name="myName" placeholder="Example: jackson11!" maxLength="60" required/>
+        <input name="myName" placeholder="Example: jackson11!" maxLength="60" style={{"width": "50%"}}required/>
       </label>
       <p>For privacy reasons, do not use your full name or email address</p>
+      <h5>Your Email: </h5>
       <label htmlFor="email">
-        Your Email: <input type="email" name="myEmail" placeholder="Example: abc1@abc.com" maxLength="60" required/>
+        <input type="email" name="myEmail" placeholder="Example: abc1@abc.com" maxLength="60" style={{"width": "50%"}} required/>
       </label>
       <br></br>
-        <button type="submit">Submit Question</button>
+        <button type="submit" style={{"marginTop": "3vh", "marginBottom": "3vh",}}>Submit Question</button>
       </form>
       <button onClick={onClose}>Close out</button>
     </div>
