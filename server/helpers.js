@@ -5,7 +5,7 @@ const url = process.env.URL;
 
 //Products
 module.exports.listProducts =  () => {
-  return axios.get(`${url}/products`, {
+  return axios.get(`${url}/products?count=15`, {
     headers: {
       Authorization: process.env.API_KEY
     }

@@ -6,6 +6,8 @@ import RR from './widgets/RR/RR.jsx';
 
 function Product ({products, currentProduct, setCurrentProduct}) {
 
+  const[num, setNum] = useState(1)
+
   // const [currentProduct, setCurrentProduct] = useState({});
 
 
@@ -17,9 +19,18 @@ if (products.length > 0) {
   //console.log('all products: ', products);
   //console.log('current product ', currentProduct);
 
+
   return(
     <div>
-      <button onClick={() => console.log(currentProduct)}>Current product</button>
+      <button onClick={() => {
+        console.log(products[num])
+        setCurrentProduct(products[num])
+        if (num === 15) {
+          setNum(0)
+        } else {
+          setNum(num + 1)
+        }
+      }}>next product</button>
       <OV currentProduct={currentProduct}/>
       <Outfit products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       <QA currentProduct={currentProduct}/>
