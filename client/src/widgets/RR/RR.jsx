@@ -12,8 +12,8 @@ function RR ({currentProduct}) {
       <h4>Ratings and Reviews</h4>
       <div className="Breakdown-List">
         <div className="Breakdowns">
-          <RatingBreakdown />
-          <ProductBreakdown />
+          <RatingBreakdown currentProduct={currentProduct}/>
+          <ProductBreakdown currentProduct={currentProduct}/>
         </div>
         <div className="Reviews-List">
           <ReviewsList currentProduct={currentProduct}/>

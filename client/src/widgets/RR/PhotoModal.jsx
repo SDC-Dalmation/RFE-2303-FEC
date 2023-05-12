@@ -57,6 +57,11 @@ function PhotoModal ({review}) {
         </span>
         <img
         src={selectedPhoto.url}
+        style={{
+          width: "500px",
+          height: "500px",
+          objectFit: "cover"
+        }}
         />
       </div>
     </div>
