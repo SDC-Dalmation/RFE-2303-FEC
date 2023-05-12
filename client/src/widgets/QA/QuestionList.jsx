@@ -3,15 +3,19 @@ import axios from 'axios';
 import Question from './Question.jsx';
 import QuestionSearch from './QuestionSearch.jsx';
 
-function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
-
+function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA, currentProduct}) {
   const listStyle = {
     margin: "2vh",
     fontFamily: "Arial"
   }
 
+  let [shownQuestions, setShownQuestions] = useState([]);
+  // let [shownQuestions, setShownQuestions] = useState(questions.slice(0, 4));
 
-  let [shownQuestions, setShownQuestions] = useState(questions.slice(0, 4));
+  useEffect(() => {
+    setShownQuestions(questions.slice(0, 4));
+  }, [questions])
+
   let [filterString, setFilterString] = useState("");
 
   const displayCSS = {
@@ -27,12 +31,12 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
   let shownCSS = displayCSS;
 
   let additionalQuestionButton = (<div></div>);
-
   if (questions.length > 4) {
-    additionalQuestionButton = (<span onClick={() => setShownQuestions(questions)}>More Answered Questions</span>);
+    additionalQuestionButton = (<span onClick={() => {
+      setShownQuestions(questions)}}>More Answered Questions</span>);
     if (shownQuestions.length > 4) {
       shownCSS = scrollCSS;
-      additionalQuestionButton = (<span onClick={() => setShownQuestions(questions.slice(0, 4))}>Collapse Question List</span>)
+      additionalQuestionButton = (<span onClick={() => setShownQuestions(shownQuestions.slice(0, 4))}>Collapse Question List</span>)
     }
   }
 
