@@ -5,10 +5,10 @@ import Style from './Style.jsx';
 function StyleSelector({currentProduct, setCurrentStyle, setAllProductStyles, allProductStyles}) {
 
 
-  const styleBtnHandler = function() {
+  const styleBtnHandler = function(index) {
     return function(e) {
       e.preventDefault;
-      alert('clicked it');
+      setCurrentStyle(allProductStyles[index])
     }
   }
 
@@ -18,7 +18,7 @@ function StyleSelector({currentProduct, setCurrentStyle, setAllProductStyles, al
       <div style={{'marginTop': '10px', 'marginRight': '10px', 'alignContent': 'center'}}></div>
       <div style={{'display': 'flex', 'flexWrap': 'wrap', 'height': '100%', 'width': '100%'}}>
         {allProductStyles.map((style, index) => (
-          <Style style={style} key={index} styleBtnHandler={styleBtnHandler}/>
+          <Style style={style} index={index} styleBtnHandler={styleBtnHandler}/>
         ))}
       </div>
     </div>
