@@ -22,69 +22,49 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
   }
 
   return (
-    <div className="carousel-container"
-      style={{
-      width: '100%',
+    <div style={{
+      position: 'relative',
       display: 'flex',
-      flexDirection: 'column',
-      }}>
-      <div className="carousel-wrapper"
-        style={{
-        display: 'flex',
-        width: '100%',
-        position: 'relative',
-        }}>
-        <button style={{
-          position: 'absolute',
-          zIndex: 1,
-          top: '50%',
-          transform: `translateY(-50%)`,
-          width: 24,
-          height: 48,
-          borderRadius: 5,
-          backgroundColor: 'white',
-          border: '1px solid #ddd',
-          left: 24
-        }} onClick={prev}>
-        {"<"}
-        </button>
-        <div className="carousel-content-wrapper"
-          style={{
-          overflow: 'hidden',
-          width: '100%',
-          height: '100%',
-          }}>
-            <div className="carousel-content"
-              style={{
-              display: 'flex',
-              transition: 'all 250ms linear',
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-              width: '100%',
-              flexShrink: 0,
-              flexGrow: 1,
-              transform: `translateX(-${currentIndex * 100}%)`
-            }}>
-              {relatedProducts.map((product, index) => (
-                <RelatedProductsEntry key={index} product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/>
-            ))}
+      border: '1px solid black',
+      borderRadius: 3,
+      padding: 5,
+      margin: 10,
+      width: '50%'
+    }}>
+      <button style={{
+        position: 'absolute',
+        zIndex: 1,
+        top: '50%',
+        transform: `translateY(-50%)`,
+        width: 24,
+        height: 48,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        border: '1px solid #ddd',
+        left: 24
+      }} onClick={prev}>
+      {"<"}
+      </button>
+        {relatedProducts.map((product, index) => (
+          <div key={index}>
+            {index === currentIndex && <RelatedProductsEntry product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/>}
           </div>
-        </div>
-        <button style={{
-          position: 'absolute',
-          zIndex: 1,
-          top: '50%',
-          transform: 'translateY(-50%)',
-          width: 24,
-          height: 48,
-          borderRadius: 5,
-          backgroundColor: 'white',
-          border: '1px solid #ddd',
-          right: 24
-        }} onClick={next}>
-          {">"}
-        </button>
-      </div>
+          )
+        )}
+      <button style={{
+        position: 'absolute',
+        zIndex: 1,
+        top: '50%',
+        transform: 'translateY(-50%)',
+        width: 24,
+        height: 48,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        border: '1px solid #ddd',
+        right: 24
+      }} onClick={next}>
+        {">"}
+      </button>
     </div>
   )
 }
