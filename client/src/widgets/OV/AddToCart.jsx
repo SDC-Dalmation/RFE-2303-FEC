@@ -19,7 +19,7 @@ function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedA
     setCurrentSize(size.value)
     // get the index of the selected option
     var index = document.getElementById('size-selector').selectedIndex;
-    // read the html of that selected option
+    // check if the placeholder is rendered
     var placeholder = document.getElementById('placeholder')
 
     if (placeholder) {
@@ -55,7 +55,7 @@ function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedA
       } else {
         var num = 0;
       }
-      if (currentSize) {
+      if (currentSize && firstLoad === false) {
         setCurrentQuantity(arrOfOptions[index - num][1][1].quantity)
         setQuantityArr(quantityArrMaker(arrOfOptions[index - num][1][1].quantity))
         setFirstLoad(true)
@@ -72,21 +72,35 @@ function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedA
       <div>
         <div style={{'marginTop': '3px'}}>Size Selector</div>
           <div>
-            <select id="size-selector" name="size selector" onChange={sizeSelectorHandler}>
               {/* if its the first load, it will start on an empty selection */}
-              {firstLoad ? <option id="placeholder" default></option> : null}
-              {arrOfOptions.map((option, index) => {
-                if (option[1][1].quantity === 0) {
-                  return(
-                    <option disabled>OUT OF STOCK</option>
-                  )
-                } else {
-                  return(
-                    <option value={option[1][1].size} name={index}>{option[1][1].size}</option>
-                  )
-                }
-              })}
-            </select>
+              {firstLoad ?
+              <select id="size-selector" name="size selector" onChange={sizeSelectorHandler}>
+                <option id="placeholder" default>select size</option>
+                {arrOfOptions.map((option, index) => {
+                  if (option[1][1].quantity === 0 || option[1][1].quantity === null) {
+                    return(
+                      <option disabled>OUT OF STOCK</option>
+                    )
+                  } else {
+                    return(
+                      <option value={option[1][1].size} name={index}>{option[1][1].size}</option>
+                    )
+                  }
+              })}</select> :
+              <select id="size-selector" name="size selector" onChange={sizeSelectorHandler}>
+                {arrOfOptions.map((option, index) => {
+                  if (option[1][1].quantity === 0 || option[1][1].quantity === null) {
+                    return(
+                      <option disabled>OUT OF STOCK</option>
+                    )
+                  } else {
+                    return(
+                      <option value={option[1][1].size} name={index}>{option[1][1].size}</option>
+                    )
+                  }
+             })}
+              </select>}
+
         </div>
         <div style={{'marginTop': '3px'}}>Quantity Selector</div>
           <div>
@@ -94,7 +108,7 @@ function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedA
               {firstLoad ? <option disabled default>-</option> : quantityArr.map((num, index) => {return (<option>{num}</option>)})}
             </select>
         </div>
-        <button style={{'marginTop': '3px'}}>Add To Cart</button>
+        {firstLoad ?  <button style={{'marginTop': '3px'}} disabled>Add To Cart</button> :  <button style={{'marginTop': '3px'}}>Add To Cart</button>}
       </div>
     )
   } else {
