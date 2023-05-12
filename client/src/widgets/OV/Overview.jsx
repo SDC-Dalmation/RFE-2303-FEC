@@ -30,7 +30,7 @@ function Overview({currentProduct}) {
        <div style={{'display': 'flex', 'border': '1px solid black', 'borderRadius': '3px', 'padding': '5px'}} >
         <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
         <div >
-          <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr}/>
+          <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} setAllProductStyles={setAllProductStyles}/>
           <AddToCart currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
         </div>
