@@ -8,8 +8,8 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
   const [hasSale, setHasSale] = useState(false)
 
 
-  useEffect(()=>{setCurrentPrice(currentProduct.default_price); console.log('product: ', currentProduct)}, checkIfProductChangedArr)
-  useEffect(()=>{ console.log(currentStyle); if (currentStyle) {if (currentStyle.sale_price) {setHasSale(true); setCurrentPrice(currentStyle.sale_price)} else {setCurrentPrice(currentStyle.original_price); setHasSale(false)}}}, checkIfStyleChangedArr)
+  useEffect(()=>{setCurrentPrice(currentProduct.default_price)}, checkIfProductChangedArr)
+  useEffect(()=>{if (currentStyle) {if (currentStyle.sale_price) {setHasSale(true); setCurrentPrice(currentStyle.sale_price)} else {setCurrentPrice(currentStyle.original_price); setHasSale(false)}}}, checkIfStyleChangedArr)
 
 
   if (allRatingsObj) {
