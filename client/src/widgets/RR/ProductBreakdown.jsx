@@ -3,6 +3,7 @@ import axios from "axios";
 
 function ProductBreakdown ({currentProduct}) {
   const [productData, setProductData] = useState({});
+  const [descriptions, setDescriptions] = useState([]);
 
   useEffect(() => {
     axios.post('/reviewMetadata', {product_id: currentProduct.id})
@@ -23,8 +24,17 @@ function ProductBreakdown ({currentProduct}) {
     return "0%"
   }
 
+  const allDescriptions = {
+    Size: ["Too small", "Perfect", "Too big"],
+    Width: ["Too narrow", "Perfect", "Too wide"],
+    Comfort: ["Bad", "Good", "Perfect"],
+    Quality: ["Poor", "Good", "Perfect"],
+    Length: ["Runs short", "Perfect", "Runs long"],
+    Fit: ["Runs tight", "Perfect", "Runs long"]
+  }
+
   return (
-    <div className="Product-Breakdown">
+    <div className="Product-Breakdown" style={{height: "300px"}}>
       {Object.keys(productData).length > 0 ? (
         characteristics.map((characteristic, i) => (
           <div
@@ -65,6 +75,11 @@ function ProductBreakdown ({currentProduct}) {
                 }}
               >
               </div>
+            </div>
+            <div style={{display: "flex", justifyContent: "space-between", width: "75%", marginLeft: "6%", fontSize: "small"}}>
+                {allDescriptions[characteristic].map((description, i) => {
+                 return (<div key={i} style={{width: "10%"}}>{description}</div>)
+                })}
             </div>
           </div>
         ))
