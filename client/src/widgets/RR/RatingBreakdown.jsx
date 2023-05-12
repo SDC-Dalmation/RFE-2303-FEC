@@ -13,7 +13,6 @@ function RatingBreakdown ({currentProduct}) {
   }, [currentProduct])
 
   const calculateAveRating = (ratingData) => {
-
     let numerator = 0;
     let totalRatings = 0;
 
@@ -22,7 +21,7 @@ function RatingBreakdown ({currentProduct}) {
       numerator += (rating * Number(ratingData[rating]))
     }
 
-   let average = totalRatings !== 0 ? (numerator / totalRatings).toFixed(1) : 0;;
+   let average = totalRatings !== 0 ? (numerator / totalRatings) : 0;;
 
     return average;
   }
@@ -36,17 +35,34 @@ function RatingBreakdown ({currentProduct}) {
     return `${percent}%`
   }
 
+
   let averageRating = calculateAveRating(ratingData);
-  let starRating = Math.round(averageRating)
+  let displayAveRating = averageRating.toFixed(1);
+
+  let starRating = averageRating;
+  let oldDecimals = Number(starRating.toString()[2] + starRating.toString()[3]);
+  let newDecimals;
+
+  oldDecimals > 13 && oldDecimals <= 38
+  ? newDecimals = 25
+  : oldDecimals > 38 && oldDecimals <= 62
+  ? newDecimals = 50
+  : oldDecimals > 62 && oldDecimals <= 87
+  ? newDecimals = 75
+  : newDecimals = 0
+
+  let averageRatingRounded = Number(starRating.toString()[0] + "." + newDecimals.toString())
+
+  if(starRating > 0) {
   return(
     <div
     className="Rating-Breakdown"
     >
       <div style={{display: "flex", marginLeft: "10px", height: "25%"}}>
-        <h1>{averageRating}</h1>
+        <h1>{displayAveRating}</h1>
         <div style={{marginTop: "20px", marginLeft: "5px"}}>
           <StarRatings
-            rating={starRating}
+            rating={averageRatingRounded}
             starRatedColor="blue"
             numberOfStars={5}
             name="rating"
@@ -96,6 +112,9 @@ function RatingBreakdown ({currentProduct}) {
       })}
     </div>
   );
+  } else {
+    return (<div>Loading...</div>)
+  }
 }
 
 export default RatingBreakdown;
