@@ -8,7 +8,6 @@ function RatingBreakdown ({currentProduct}) {
   useEffect(() => {
     axios.post('/reviewMetadata', {product_id: currentProduct.id})
     .then((res) => {
-      console.log('review meta data: ', res.data.ratings);
       setRatingData(res.data.ratings);
     })
   }, [currentProduct])
@@ -36,8 +35,6 @@ function RatingBreakdown ({currentProduct}) {
     var percent = Math.round((num * 100) / total);
     return `${percent}%`
   }
-
-  console.log(totalRatings(ratingData, ratingData[1]))
 
   let averageRating = calculateAveRating(ratingData);
   let starRating = Math.round(averageRating)
