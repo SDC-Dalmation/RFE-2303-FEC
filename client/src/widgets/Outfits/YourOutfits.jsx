@@ -36,7 +36,6 @@ const YourOutfits = ({currentProduct}) => {
     }
   }
 
-
     return (
       <div className="carousel-container"
       style={{
@@ -79,7 +78,8 @@ const YourOutfits = ({currentProduct}) => {
               width: '100%',
               flexShrink: 0,
               flexGrow: 1,
-              transform: `translateX(-${currentIndex2 * 100}%)`
+              transform: `translateX(-${currentIndex2 * 100}%)`,
+              overflow: 'visible'
             }}>
               <div onClick={addOutfit} style={{
                 border: '1px solid grey',
@@ -88,8 +88,9 @@ const YourOutfits = ({currentProduct}) => {
                   {'+'}
               </div>
               {items.map((item, index) => (
-              <YourOutfitsEntry key={index} item={item} items={items} setItems={setItems}/>
-              ))}
+                  <YourOutfitsEntry key={index} item={item} items={items} setItems={setItems}/>
+                )
+              )}
           </div>
         </div>
         <button style={{

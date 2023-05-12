@@ -5,7 +5,16 @@ const CompareModal = ({showModal, setShowModal, product, currentProduct, oldProd
   const [currentCharacteristics, setCurrentCharacteristics] = useState([]);
   const [oldCharacteristics, setOldCharacteristics] = useState([]);
   const [totalCharacteristics, setTotalCharacteristics] = useState({});
+  const [currentProductName, setCurrentProductName] = useState('');
 
+  useEffect(() => {
+    axios.post('/productInformation', {
+      product_id: product
+    })
+      .then((info) => {
+        setCurrentProductName(info.data.name);
+    })
+  }, [])
 
   useEffect(() => {
     axios.post('/reviewMetadata', {
@@ -68,24 +77,26 @@ const CompareModal = ({showModal, setShowModal, product, currentProduct, oldProd
       alignItems: 'center',
       justifyContent: 'center',
       position: 'absolute',
+      flexDirection: 'column',
       top: '40%',
       left: '40%'
     }}>
       <button style={{width: 20, height: 20, position: 'absolute', right: 0, top: 0}} onClick={() => setShowModal(!showModal)}>X</button>
+      <h2 style={{position: 'absolute', left: 5, top: 5}}>Comparing</h2>
       <table>
         <thead>
           <tr>
-            <th>{oldProduct.name}</th>
+            <th style={{padding: 5, fontSize: 15, fontWeight: 'bold'}}>{oldProduct.name}</th>
             <th>Characteristics</th>
-            <th>{currentProduct.name}</th>
+            <th style={{padding: 5}}>{currentProductName}</th>
           </tr>
         </thead>
         <tbody>
           {Object.entries(totalCharacteristics).sort().map((characteristic, index) =>
           <tr key={index}>
-            <td>{characteristic[1].oldValue || null}</td>
-            <td>{characteristic[0]}</td>
-            <td>{characteristic[1].currentValue}</td>
+            <td style={{padding: 5}}>{characteristic[1].oldValue || null}</td>
+            <td style={{padding: 5}}>{characteristic[0]}</td>
+            <td style={{padding: 5}}>{characteristic[1].currentValue}</td>
           </tr>
           )}
         </tbody>

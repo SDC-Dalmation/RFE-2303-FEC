@@ -6,7 +6,7 @@ import YourOutfits from "./YourOutfits.jsx";
 
 const Outfit = ({products, currentProduct, setCurrentProduct}) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const [relatedProductsArray, setRelatedProductsArray] = useState([]);
+
 
   useEffect(() => {
     axios.post('/relatedProducts', {
@@ -15,7 +15,7 @@ const Outfit = ({products, currentProduct, setCurrentProduct}) => {
       .then((relatedItems) => {
       setRelatedProducts(relatedItems.data);
     })
-  }, [])
+  }, [currentProduct])
 
   if (relatedProducts.length > 0) {
 
