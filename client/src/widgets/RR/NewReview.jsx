@@ -20,7 +20,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     recommend: null,
     name: "",
     email: "",
-    photos: ['photo.url', 'nextphoto.url'],
+    photos: ['https://media.cnn.com/api/v1/images/stellar/prod/200906155336-04-thompson-farm-sunflowers.jpg?q=x_2,y_112,h_898,w_1596,c_crop/h_540,w_960/f_webp'],
     characteristics: null
   })
 
