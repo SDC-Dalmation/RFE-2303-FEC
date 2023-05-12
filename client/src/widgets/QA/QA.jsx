@@ -54,7 +54,12 @@ function QA ({currentProduct}) {
   }
   return(
     <div>
-      No Questions Yet... Add One!
+      <button onClick={() => setShowQuestionModal(true)}>Add a Question</button>
+        {showQuestionModal && createPortal(
+          <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)}
+          prodName={currentProduct.name}/>,
+          document.getElementById("modal")
+        )}
     </div>
   )
 

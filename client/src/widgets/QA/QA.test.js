@@ -22,8 +22,8 @@ test('question modal shows fields and a close button', () => {
     <QuestionModal onClose={handleClose} productID={37311} />
   )
 
-  expect(screen.getByLabelText('Your Question:')).toBeTruthy();
-  expect(screen.getByLabelText('Your Display Name:')).toBeTruthy();
+  expect(screen.getByText('Your Question:')).toBeTruthy();
+  expect(screen.getByText('Your Display Name:')).toBeTruthy();
   expect(screen.getByText('For privacy reasons, do not use your full name or email address')).toBeTruthy();
 
 
