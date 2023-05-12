@@ -4,7 +4,12 @@ import Answer from './Answer.jsx';
 
 function AnswerList ({answers, markHelpful, helpfulQA, setHelpfulQA}) {
 
-  let [shownAnswers, setShownAnswers] = useState(answers.slice(0, 2));
+  // let [shownAnswers, setShownAnswers] = useState(answers.slice(0, 2));
+  let [shownAnswers, setShownAnswers] = useState([]);
+
+  useEffect(() => {
+    setShownAnswers(answers.slice(0, 2));
+  }, [answers]);
 
   const displayCSS = {
     color : "black",
