@@ -90,12 +90,12 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
           }
           </div>
           <div onClick={changeProduct}>
-          <img style={{width: 200, height: 200}} src={productStyle}/>
-          <div>{productInfo.category}</div>
-          <div>{productInfo.name}</div>
-          <div>{`$${productInfo.default_price}`}</div>
-          <div>
-          <StarRatings
+            <img style={{width: 200, height: 200}} src={productStyle}/>
+            <div>{productInfo.category}</div>
+            <div>{productInfo.name}</div>
+            <div>{`$${productInfo.default_price}`}</div>
+            <div>
+            <StarRatings
               name="average-rating"
               editing='false'
               starCount={5}
@@ -123,12 +123,12 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
           }
           </div>
           <div onClick={changeProduct}>
-          <img style={{width: 200, height: 200}} src={'https://previews.123rf.com/images/roxanabalint/roxanabalint1904/roxanabalint190400154/123529842-temporarily-out-of-stock-sign-or-stamp-on-white-background-vector-illustration.jpg'}/>
-          <div>{productInfo.category}</div>
-          <div>{productInfo.name}</div>
-          <div>{`$${productInfo.default_price}`}</div>
-          <div>
-          <StarRatings
+            <img style={{width: 200, height: 200}} src={'https://previews.123rf.com/images/roxanabalint/roxanabalint1904/roxanabalint190400154/123529842-temporarily-out-of-stock-sign-or-stamp-on-white-background-vector-illustration.jpg'}/>
+            <div>{productInfo.category}</div>
+            <div>{productInfo.name}</div>
+            <div>{`$${productInfo.default_price}`}</div>
+            <div>
+            <StarRatings
               name="average-rating"
               editing='false'
               starCount={5}
