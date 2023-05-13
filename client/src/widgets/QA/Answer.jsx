@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import AnswerPhotoModal from './AnswerPhotoModal.jsx'
 
 function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
 
@@ -18,20 +19,6 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
     padding: "1vh",
   }
 
-  // let imgStyle;
-  // if (zoomedIn) {
-  //   imgStyle = {
-  //     margin: "2vh",
-  //     transition: "transform 0.25s ease",
-  //     transform: "scale(2)",
-  //     cursor: "zoom-out",
-  //   }} else {
-  //     imgStyle = {
-  //       margin: "2vh",
-  //       transition: "transform 0.25s ease",
-  //       cursor: "zoom-in",
-  //     }
-  // }
 
   let defaultImgStyle = {
     margin: "2vh",
@@ -86,10 +73,13 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
       <div style={bodyStyle}>
         A: {answer.body}
       </div>
-      <div>
+      <div style={{display: "flex", flexDirection: "row"}}>
         {answer.photos.map((picture, index) => {
+          // return (
+          //   <img src={picture} style={zoomedImages[index] ? defaultImgStyle : zoomImgStyle} height="50px" key={index} onClick={() => {zoomImage(index)}}></img>
+          // )
           return (
-            <img src={picture} style={zoomedImages[index] ? defaultImgStyle : zoomImgStyle} height="50px" key={index} onClick={() => {zoomImage(index)}}></img>
+            <AnswerPhotoModal photo={picture} key={index}/>
           )
         })}
       </div>
