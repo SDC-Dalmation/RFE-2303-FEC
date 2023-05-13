@@ -37,18 +37,15 @@ const YourOutfits = ({currentProduct}) => {
   }
 
     return (
-      <div className="carousel-container"
-      style={{
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      }}>
-      <div className="carousel-wrapper"
-        style={{
-        display: 'flex',
-        width: '100%',
+      <div style={{
         position: 'relative',
-        }}>
+        display: 'flex',
+        border: '1px solid black',
+        borderRadius: 3,
+        padding: 5,
+        margin: 10,
+        width: '50%'
+      }}>
         <button style={{
           position: 'absolute',
           zIndex: 1,
@@ -63,36 +60,18 @@ const YourOutfits = ({currentProduct}) => {
         }} onClick={prev}>
         {"<"}
         </button>
-        <div className="carousel-content-wrapper"
-          style={{
-          overflow: 'hidden',
-          width: '100%',
-          height: '100%',
-          }}>
-            <div className="carousel-content"
-              style={{
-              display: 'flex',
-              transition: 'all 250ms linear',
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none',
-              width: '100%',
-              flexShrink: 0,
-              flexGrow: 1,
-              transform: `translateX(-${currentIndex2 * 100}%)`,
-              overflow: 'visible'
-            }}>
-              <div onClick={addOutfit} style={{
+        <div onClick={addOutfit} style={{
                 border: '1px solid grey',
                 padding: 100,
                 }}>
                   {'+'}
-              </div>
-              {items.map((item, index) => (
-                  <YourOutfitsEntry key={index} item={item} items={items} setItems={setItems}/>
-                )
-              )}
           </div>
-        </div>
+          {items.map((item, index) => (
+            <div key={index}>
+              {index === currentIndex2 && <YourOutfitsEntry item={item} items={items} setItems={setItems}/>}
+            </div>
+            )
+          )}
         <button style={{
           position: 'absolute',
           zIndex: 1,
@@ -108,7 +87,6 @@ const YourOutfits = ({currentProduct}) => {
           {">"}
         </button>
       </div>
-    </div>
     )
 }
 

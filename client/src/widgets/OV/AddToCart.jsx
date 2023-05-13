@@ -1,12 +1,22 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 
-function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedArr}) {
+function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIfProductChangedArr}) {
 
   // definitely a better way to do this, went a lil crazy with useState
   const [currentSize, setCurrentSize] = useState('')
   const [currentQuantity, setCurrentQuantity] = useState(0)
   const [quantityArr, setQuantityArr] = useState([])
   const [firstLoad, setFirstLoad] = useState(true)
+
+
+  const addToCartBtnHandler = function(e) {
+    e.preventDefault;
+    var index = document.getElementById('size-selector').selectedIndex;
+    var currentSku = Number(arrOfOptions[index][1][0]);
+    axios.post('/postCartItem', {sku_id: currentSku}).catch((err)=>console.log(err))
+    axios.get('/getCartItems').then((res)=>{console.log('CART: ', res.data)})
+  }
 
   var arrOfOptions;
 
@@ -93,6 +103,11 @@ function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedA
                     return(
                       <option disabled>OUT OF STOCK</option>
                     )
+                  } else if (option[1][1].size === currentSize) {
+                    return(
+                      <option value={option[1][1].size} name={index} selected>{option[1][1].size}</option>
+                      //! WILL NEED TO CHANGE THIS, REACT DOESNT LIKE IT ^^^^  'selected' does not work well with react
+                    )
                   } else {
                     return(
                       <option value={option[1][1].size} name={index}>{option[1][1].size}</option>
@@ -108,7 +123,7 @@ function AddToCart({currentStyle, checkIfStyleChangedArr, checkIfProductChangedA
               {firstLoad ? <option disabled default>-</option> : quantityArr.map((num, index) => {return (<option>{num}</option>)})}
             </select>
         </div>
-        {firstLoad ?  <button style={{'marginTop': '3px'}} disabled>Add To Cart</button> :  <button style={{'marginTop': '3px'}}>Add To Cart</button>}
+        {firstLoad ?  <button style={{'marginTop': '3px'}} disabled>Add To Cart</button> :  <button style={{'marginTop': '3px'}} onClick={addToCartBtnHandler} >Add To Cart</button>}
       </div>
     )
   } else {

@@ -59,7 +59,7 @@ function ProductBreakdown ({currentProduct}) {
                 height: "5px",
                 width: "80%",
                 backgroundColor: "grey",
-                marginTop: "10px",
+                marginTop: "0",
                 marginLeft: "10px",
               }}
             >

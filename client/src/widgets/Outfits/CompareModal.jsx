@@ -57,15 +57,6 @@ const CompareModal = ({showModal, setShowModal, product, currentProduct, oldProd
     })
   }, [currentCharacteristics, oldCharacteristics])
 
-  // const sortingFunction = (a,b) => {
-  //   if (a[0] < b[0]) return -1;
-  //   if (a[0] > b[0]) return 1;
-  //   return 0;
-  // }
-  // console.log('old', oldCharacteristics.sort(sortingFunction))
-  // console.log('current',currentCharacteristics.sort(sortingFunction))
-  // console.log('total',Object.entries(totalCharacteristics));
-
   return (
     <div style={{
       zIndex: 1,
