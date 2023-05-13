@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import StarRatings from "react-star-ratings";
 import axios from "axios";
-import Characteristics from "./Characteristics.jsx"
+import Characteristics from "./Characteristics.jsx";
+import AddPhoto from "./AddPhoto.jsx";
 
 function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const [rating, setRating] = useState(0);
@@ -12,6 +13,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [photos, setPhotos] = useState([]);
   const [responses, setResponses] = useState({
     product_id: currentProduct.id,
     rating: null,
@@ -20,10 +22,9 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     recommend: null,
     name: "",
     email: "",
-    photos: ['https://media.cnn.com/api/v1/images/stellar/prod/200906155336-04-thompson-farm-sunflowers.jpg?q=x_2,y_112,h_898,w_1596,c_crop/h_540,w_960/f_webp'],
+    photos: ["https://media.cnn.com/api/v1/images/stellar/prod/200906155336-04-thompson-farm-sunflowers.jpg?q=x_2,y_112,h_898,w_1596,c_crop/h_540,w_960/f_webp"],
     characteristics: null
   })
-
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -58,7 +59,8 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     setShowModal(false);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     let form = e.target;
 
   }
@@ -98,8 +100,6 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     4: "Good",
     5: "Great"
   }
-
-  console.log(responses);
 
   return(
     <div className="modal">
@@ -186,7 +186,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
                 : "Minimum reached"}
               </div>
 
-              <button>Add Photos</button>
+              <AddPhoto photos={photos} setPhotos={setPhotos}/>
 
               <label style={{"marginTop": "10px"}}>
               Username
