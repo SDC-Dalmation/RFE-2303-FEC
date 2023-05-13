@@ -40,12 +40,17 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     }
   }
 
+  let display = shownQuestions;
+  if (filterString.length > 2) {
+    display = questions;
+  }
+
 
   return(
     <div style = {listStyle}>
       <QuestionSearch filterString={filterString} setFilterString={setFilterString}/>
     <div id="questionList" style={shownCSS}>
-      {shownQuestions.map((question, index) => {
+      {display.map((question, index) => {
         if (question.question_body.toLowerCase().includes(filterString.toLowerCase())) {
           return (<Question question={question}
             prodName={prodName}
