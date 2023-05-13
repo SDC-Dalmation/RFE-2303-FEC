@@ -18,7 +18,6 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
     axios.get('/getCartItems').then((res)=>{console.log('CART: ', res.data)})
   }
 
-
   var arrOfOptions;
 
   // This function grabs the value of the size selector and sets the currentSize state
@@ -103,6 +102,11 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
                   if (option[1][1].quantity === 0 || option[1][1].quantity === null) {
                     return(
                       <option disabled>OUT OF STOCK</option>
+                    )
+                  } else if (option[1][1].size === currentSize) {
+                    return(
+                      <option value={option[1][1].size} name={index} selected>{option[1][1].size}</option>
+                      //! WILL NEED TO CHANGE THIS, REACT DOESNT LIKE IT ^^^^  'selected' does not work well with react
                     )
                   } else {
                     return(
