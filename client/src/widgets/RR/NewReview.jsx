@@ -27,10 +27,6 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   })
 
 
-
-  console.log(responses);
-
-
   const changeRating = (newRating, name) => {
     setRating(newRating);
     let updatedResponse = {...responses, rating: newRating};
