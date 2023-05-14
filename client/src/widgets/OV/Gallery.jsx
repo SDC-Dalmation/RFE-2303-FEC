@@ -12,7 +12,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
     setShowModal(!showModal);
   }
 
-  const handlePicBtn = function(photo) {
+  const handlePicBtn = function(photo, index) {
     return function(e) {
       e.preventDefault;
       setMainGalleryPic(photo);
@@ -21,13 +21,13 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   if (currentStyle) {
     return (
-      <div>
+      <div style={{'width': '31vw', 'height': '53vh'}}>
         <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
-        <div style={{'display': 'flex', 'flexDirection': 'column', 'marginRight': '20px', 'padding': '5px', 'border': '1px solid black', 'borderRadius': '3px'}}>
+        <div style={{'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'maxHeight': '100%'}}>
           <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
-            <div className="gallery-carousel" style={{'display': 'flex', 'justifyContent': 'center', 'alignSelf': 'flex-start', 'marginTop': '10px'}}>
+            <div className="gallery-carousel" style={{'display': 'flex','flexDirection': 'column' ,'justifyContent': 'center', 'marginTop': '10px', 'marginLeft': '0.5vw', 'position':'absolute', 'backgroundColor': 'rgba(0,0,0,0.5)'}}>
             {currentStyle.photos.map((photo, index) => (
-              <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn}/>
+              <GalleryPhoto photo={photo} key={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic}/>
             ))}
             </div>
         </div>
