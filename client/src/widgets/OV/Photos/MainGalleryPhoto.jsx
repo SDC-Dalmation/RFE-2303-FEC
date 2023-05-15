@@ -10,7 +10,9 @@ function MainGalleryPhoto({handleExtendedBtn, setMainGalleryPic, mainGalleryPic,
 
   if (mainGalleryPic) {
     return(
-      <img onClick={handleExtendedBtn} src={mainGalleryPic} style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh'}}/>
+      <div style={{ 'width': '31vw','height': '51vh'}}>
+        <img onClick={handleExtendedBtn} src={mainGalleryPic} style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh'}}/>
+      </div>
     )
   } else {
     return(
