@@ -123,7 +123,7 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
               {firstLoad ? <option disabled default>-</option> : quantityArr.map((num, index) => {return (<option>{num}</option>)})}
             </select>
         </div>
-        {firstLoad ?  <button style={{'marginTop': '3px'}} disabled>Add To Cart</button> :  <button style={{'marginTop': '3px'}} onClick={addToCartBtnHandler} >Add To Cart</button>}
+        {firstLoad ?  <button className="add-to-cart-btn" disabled>Add To Cart</button> :  <button className="add-to-cart-btn" onClick={addToCartBtnHandler} >Add To Cart</button>}
       </div>
     )
   } else {
