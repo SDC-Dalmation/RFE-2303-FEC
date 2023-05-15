@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import ExtendedViewMainPhoto from './Photos/ExtendedViewMainPhoto.jsx';
 
-function ExtendedGallery({handleExtendedBtn, showModal}) {
+function ExtendedGallery({handleExtendedBtn, setMainGalleryPic, showModal, mainGalleryPic, rangeOfGallery, indexOfGallery, setCurrentlySelected, currentStyle, checkIfProductChangedArr, checkIfStyleChangedArr}) {
+
 
 
   var modalClassName = 'default-gallery-view';
@@ -9,10 +11,17 @@ function ExtendedGallery({handleExtendedBtn, showModal}) {
     modalClassName = 'extended-gallery-bg';
     return (
       <div className={modalClassName}>
-        <div className='extended-gallery-view'>
-        PHOTOS GONNA GO HERE
+        <div className='extended-gallery'>
+        <button onClick={handleExtendedBtn} className="extended-btn">back</button>
+          <div className='extended-gallery-main'>
+            <div className='extended-gallery-buttons'>&#8592;</div>
+            <ExtendedViewMainPhoto handleExtendedBtn={handleExtendedBtn} mainGalleryPic={mainGalleryPic}/>
+            <div className='extended-gallery-buttons'>&#8594;</div>
+          </div>
+          <div style={{backgroundColor: 'white', textAlign: 'center'}}>
+            CAROUSEL
+          </div>
         </div>
-        <button onClick={handleExtendedBtn}>back</button>
       </div>
     )
   } else {

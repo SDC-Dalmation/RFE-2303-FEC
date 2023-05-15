@@ -11,9 +11,25 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
   const [indexOfGallery, setIndexOfGallery] = useState([0,6])
   const [currentlySelected, setCurrentlySelected] = useState(0)
 
+  var disableScroll = function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = function() {
+    window.scrollTo(scrollLeft, scrollTop);
+    };
+  }
+
+  const enableScroll = function() {
+    window.onscroll = function() {};
+  }
 
   const handleExtendedBtn = function(e) {
     e.preventDefault;
+    if (showModal) {
+      enableScroll()
+    } else {
+      disableScroll()
+    }
     setShowModal(!showModal);
   }
 
@@ -44,7 +60,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
   if (currentStyle) {
     return (
       <div style={{'width': '31vw', 'height': '53vh'}}>
-        <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
+        <ExtendedGallery currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} setMainGalleryPic={setMainGalleryPic} handleExtendedBtn={handleExtendedBtn} showModal={showModal} mainGalleryPic={mainGalleryPic} rangeOfGallery={rangeOfGallery} indexOfGallery={indexOfGallery} setCurrentlySelected={setCurrentlySelected}/>
         <div style={{'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'maxHeight': '100%'}}>
           <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
           <div className="gallery-carousel" style={{'display': 'flex','flexDirection': 'column' ,'justifyContent': 'top', 'marginTop': '1vh', 'marginLeft': '0.5vw', 'position':'absolute', 'maxHeight': '50vh'}}>

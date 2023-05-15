@@ -19,7 +19,6 @@ function GalleryCarousel({currentStyle, handlePicBtn, mainGalleryPic, checkIfSty
       return (
         <div className="gallery-carousel" style={{'display': 'flex','flexDirection': 'column' ,'justifyContent': 'top', 'backgroundColor': 'rgba(0,0,0,0.5)', 'maxHeight': '41vh'}}>
         {currentStyle.photos.map((photo, index) => {
-          console.log(indexOfGallery)
           if (index >= indexOfGallery[0] && index <= indexOfGallery[1]) {
             return(
               <GalleryPhoto photo={photo} key={index} index={index} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} setCurrentlySelected={setCurrentlySelected}/>
