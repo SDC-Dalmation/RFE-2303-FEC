@@ -4,7 +4,7 @@ import CompareModal from "./CompareModal.jsx"
 import { createPortal } from 'react-dom';
 import StarRatings from "react-star-ratings";
 
-const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldProduct}) => {
+const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldProduct, setOldProduct}) => {
   const [productInfo, setProductInfo] = useState({});
   const [productStyle, setProductStyle] = useState({});
   const [showModal, setShowModal] = useState(false);

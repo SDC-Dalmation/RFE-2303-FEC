@@ -58,7 +58,7 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
       </button> : null}
         {relatedProducts.map((product, index) => (
           <div key={index} style={{transform: `translateX(${listTranslateXIndex}px)`}}>
-            {<RelatedProductsEntry product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} oldProduct={oldProduct}/>}
+            {<RelatedProductsEntry product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} oldProduct={oldProduct} setOldProduct={setOldProduct}/>}
           </div>
           )
         )}
