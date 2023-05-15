@@ -65,10 +65,10 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
       }}>
       <button style={{position: 'absolute', right: 0, top: 0}}
       onClick={deleteOutfit}>X</button>
-      <img style={{width: 200, height: 200}} src={productStyle}/>
-      <div>{item.category}</div>
-      <div>{item.name}</div>
-      <div>{`$${item.default_price}`}</div>
+      <img style={{width: 350, height: 350}} src={productStyle}/>
+      <div style={{fontSize: 20}}>{item.category}</div>
+      <div style={{fontSize: 25, fontWeight: 'bold'}}>{item.name}</div>
+      <div style={{fontSize: 20}}>{`$${item.default_price}`}</div>
       <StarRatings
               name="average-rating"
               editing='false'
@@ -76,7 +76,7 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
               rating={averageRatingRounded}
               starRatedColor="blue"
               starSpacing="3px"
-              starDimension="15px"
+              starDimension="20px"
             />
     </div>
   )

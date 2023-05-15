@@ -3,22 +3,27 @@ import YourOutfitsEntry from "./YourOutfitsEntry.jsx"
 
 const YourOutfits = ({currentProduct}) => {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || [])
-  const [currentIndex2, setCurrentIndex2] = useState(0)
+  const [currentIndex2, setCurrentIndex2] = useState(1)
   const [length2, setLength2] = useState(items.length)
+  const [listTranslateXIndex, setListTranslateXIndex] = useState(0);
+  const showLeft = currentIndex2;
+  const showRight = currentIndex2;
 
   useEffect(() => {
     setLength2(items.length)
   }, [items])
 
   const next = () => {
-    if (currentIndex2 < (length2 - 1)) {
+    if (currentIndex2 <= (length2 - 1)) {
         setCurrentIndex2(prevState => prevState + 1)
+        setListTranslateXIndex(listTranslateXIndex-355);
     }
   }
 
   const prev = () => {
-    if (currentIndex2 > 0) {
+    if (currentIndex2 > 1) {
         setCurrentIndex2(prevState => prevState - 1)
+        setListTranslateXIndex(listTranslateXIndex+355);
     }
   }
 
@@ -44,48 +49,56 @@ const YourOutfits = ({currentProduct}) => {
         borderRadius: 3,
         padding: 5,
         margin: 10,
-        width: '50%'
+        width: 1055,
+        height: 'auto',
+        overflow: 'hidden'
       }}>
-        <button style={{
+        {showLeft > 1 ? <button style={{
           position: 'absolute',
           zIndex: 1,
           top: '50%',
           transform: `translateY(-50%)`,
-          width: 24,
-          height: 48,
+          width: 60,
+          height: 200,
           borderRadius: 5,
           backgroundColor: 'white',
           border: '1px solid #ddd',
-          left: 24
+          left: 0,
+          fontSize: 30,
+          fontWeight: 'bold',
+          opacity: 0.7
         }} onClick={prev}>
         {"<"}
-        </button>
+        </button> : null}
         <div onClick={addOutfit} style={{
                 border: '1px solid grey',
-                padding: 100,
+                padding: 175,
                 }}>
                   {'+'}
           </div>
           {items.map((item, index) => (
-            <div key={index}>
-              {index === currentIndex2 && <YourOutfitsEntry item={item} items={items} setItems={setItems}/>}
+            <div key={index} style={{transform: `translateX(${listTranslateXIndex}px)`}}>
+              {<YourOutfitsEntry item={item} items={items} setItems={setItems}/>}
             </div>
             )
           )}
-        <button style={{
+        { showRight < length2 - 1 ?<button style={{
           position: 'absolute',
           zIndex: 1,
           top: '50%',
           transform: 'translateY(-50%)',
-          width: 24,
-          height: 48,
+          width: 60,
+          height: 200,
           borderRadius: 5,
           backgroundColor: 'white',
           border: '1px solid #ddd',
-          right: 24
+          right: 0,
+          fontSize: 30,
+          fontWeight: 'bold',
+          opacity: 0.7
         }} onClick={next}>
           {">"}
-        </button>
+        </button> : null}
       </div>
     )
 }

@@ -20,19 +20,19 @@ const Outfit = ({products, currentProduct, setCurrentProduct}) => {
   if (relatedProducts.length > 0) {
 
     return (
-      <div data-testid="normalRender" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+      <div data-testid="normalRender" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '50%', height: 'auto'}}>
         <br></br>
-        <>Related Products</>
+        <div style={{fontSize: 30}}>Related Products</div>
         <br></br>
         <RelatedProductsCarousel currentProduct={currentProduct} relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>
         <br></br>
-        <>Your Outfit</>
+        <div style={{fontSize: 30}}>Your Outfit</div>
         <br></br>
         <YourOutfits currentProduct={currentProduct}/>
       </div>
     )
   } else {
-    return (<div data-testid="loadRender">Loading...</div>)
+    return (<div data-testid="loadRender" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '75%', height: 'auto'}}>Loading...</div>)
   }
 };
 

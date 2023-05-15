@@ -4,11 +4,10 @@ import CompareModal from "./CompareModal.jsx"
 import { createPortal } from 'react-dom';
 import StarRatings from "react-star-ratings";
 
-const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
+const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldProduct}) => {
   const [productInfo, setProductInfo] = useState({});
   const [productStyle, setProductStyle] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const [oldProduct, setOldProduct] = useState(currentProduct)
   const [allRatingsObj, setAllRatingsObj] = useState(0)
   const checkIfProductChangedArr = [currentProduct]
 
@@ -28,7 +27,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
       .then((info) => {
         setProductInfo(info.data);
     })
-  }, [])
+  }, [product, oldProduct])
 
   useEffect(() => {
     axios.post('/productStyles', {
@@ -37,7 +36,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
       .then((info) => {
         setProductStyle(info.data.results[0].photos[0].thumbnail_url);
     })
-  }, [])
+  }, [product, oldProduct])
 
   const changeProduct = () => {
     axios.post('/productInformation', {
@@ -45,6 +44,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
     })
       .then((info) => {
         setCurrentProduct(info.data);
+        setOldProduct(info.data)
     })
   }
 
@@ -85,15 +85,15 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
           <div>
           <img onClick={openModal} style={{width: 20, height: 20, position: 'relative', float: "right"}} src={'https://t3.ftcdn.net/jpg/01/82/37/42/360_F_182374246_4f3x34AyBdCii4kGtK6s8PNT4AVYgHRa.jpg'}/>
           {showModal &&
-            createPortal(<CompareModal showModal={showModal} setShowModal={setShowModal} product={product} currentProduct={currentProduct} oldProduct={oldProduct}/>,
+            createPortal(<CompareModal showModal={showModal} setShowModal={setShowModal} product={product} oldProduct={oldProduct}/>,
             document.getElementById("modal"))
           }
           </div>
           <div onClick={changeProduct}>
-            <img style={{width: 200, height: 200}} src={productStyle}/>
-            <div>{productInfo.category}</div>
-            <div>{productInfo.name}</div>
-            <div>{`$${productInfo.default_price}`}</div>
+            <img style={{width: 350, height: 350}} src={productStyle}/>
+            <div style={{fontSize: 20}}>{productInfo.category}</div>
+            <div style={{fontSize: 25, fontWeight: 'bold'}}>{productInfo.name}</div>
+            <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div>
             <div>
             <StarRatings
               name="average-rating"
@@ -102,7 +102,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
               rating={averageRatingRounded}
               starRatedColor="blue"
               starSpacing="3px"
-              starDimension="15px"
+              starDimension="20px"
             />
             </div>
           </div>
@@ -113,7 +113,6 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
       <div style={{
         border: '1px solid grey',
         position: 'relative',
-        padding: 5
         }} >
           <div>
           <img onClick={openModal} style={{width: 20, height: 20, position: 'relative', float: "right"}} src={'https://t3.ftcdn.net/jpg/01/82/37/42/360_F_182374246_4f3x34AyBdCii4kGtK6s8PNT4AVYgHRa.jpg'}/>
@@ -123,10 +122,10 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
           }
           </div>
           <div onClick={changeProduct}>
-            <img style={{width: 200, height: 200}} src={'https://previews.123rf.com/images/roxanabalint/roxanabalint1904/roxanabalint190400154/123529842-temporarily-out-of-stock-sign-or-stamp-on-white-background-vector-illustration.jpg'}/>
-            <div>{productInfo.category}</div>
-            <div>{productInfo.name}</div>
-            <div>{`$${productInfo.default_price}`}</div>
+            <img style={{width: 350, height: 350}} src={'https://previews.123rf.com/images/roxanabalint/roxanabalint1904/roxanabalint190400154/123529842-temporarily-out-of-stock-sign-or-stamp-on-white-background-vector-illustration.jpg'}/>
+            <div style={{fontSize: 20}}>{productInfo.category}</div>
+            <div style={{fontSize: 25, fontWeight: 'bold'}}>{productInfo.name}</div>
+            <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div>
             <div>
             <StarRatings
               name="average-rating"
@@ -135,7 +134,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct}) => {
               rating={averageRatingRounded}
               starRatedColor="blue"
               starSpacing="3px"
-              starDimension="15px"
+              starDimension="20px"
             />
             </div>
           </div>
