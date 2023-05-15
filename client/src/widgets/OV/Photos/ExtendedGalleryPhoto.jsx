@@ -5,7 +5,7 @@ function ExtendedGalleryPhoto({photo, currentStyle, handlePicBtn, mainGalleryPic
   if (currentlySelected === index) {
     return(
       <div className="extended-gallery-carousel-piece">
-        <p style={{'position': 'absolute'}}>&#9989;</p>
+        <p id="extended-thumbnail-checkmark">&#9989;</p>
         <img src={photo.thumbnail_url} className="extended-gallery-thumbnail" style={{'border': '1px solid green'}} onClick={handlePicBtn(photo.url, index)}/>
       </div>
     )
@@ -13,7 +13,7 @@ function ExtendedGalleryPhoto({photo, currentStyle, handlePicBtn, mainGalleryPic
     if (index === 0) {
       return(
         <div className="extended-gallery-carousel-piece">
-          <p style={{'position': 'absolute'}}>&#9989;</p>
+          <p id="extended-thumbnail-checkmark">&#9989;</p>
           <img src={photo.thumbnail_url} className="extended-gallery-thumbnail" style={{'border': '1px solid green'}} onClick={handlePicBtn(photo.url, index)}/>
         </div>
       )
