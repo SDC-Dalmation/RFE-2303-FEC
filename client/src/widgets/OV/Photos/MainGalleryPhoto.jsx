@@ -10,11 +10,13 @@ function MainGalleryPhoto({handleExtendedBtn, setMainGalleryPic, mainGalleryPic,
 
   if (mainGalleryPic) {
     return(
-      <img onClick={handleExtendedBtn} src={mainGalleryPic} style={{'border': '2px solid black',  'maxHeight': '400px', 'maxWidth': '300px'}}/>
+      <div style={{ 'width': '31vw','height': '51vh'}}>
+        <img onClick={handleExtendedBtn} src={mainGalleryPic} className='main-gallery-pic' style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh', 'minHeight': '50vh'}}/>
+      </div>
     )
   } else {
     return(
-      <img onClick={handleExtendedBtn} src={imageToShow} style={{'border': '2px solid black', 'maxHeight': '400px', 'maxWidth': '300px'}}/>
+      <img onClick={handleExtendedBtn} src={imageToShow} style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh', 'minHeight': '50vh'}}/>
     )
   }
 }

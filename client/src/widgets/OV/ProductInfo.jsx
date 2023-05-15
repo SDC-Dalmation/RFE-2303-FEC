@@ -51,7 +51,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
               starRatedColor="blue"
               starSpacing="10px"
             />
-            <p onClick={(e)=>{e.preventDefault; console.log('average: ', averageRating, ' rounded: ', averageRatingRounded)}}>read all reviews</p>
+            <p onClick={(e)=>{e.preventDefault; console.log('average: ', averageRating, ' rounded: ', averageRatingRounded); document.querySelector('.RR').scrollIntoView()}}>read all reviews</p>
           </div>
           <p className="product-category">{currentProduct.category}</p>
           <h3 className="product-name">{currentProduct.name}</h3>
