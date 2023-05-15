@@ -30,6 +30,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
     } else {
       disableScroll()
     }
+    setMainGalleryPic(currentStyle.photos[currentlySelected].url)
     setShowModal(!showModal);
   }
 
@@ -86,13 +87,13 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
   if (currentStyle) {
     return (
       <div style={{'width': '31vw', 'height': '53vh', 'display': 'flex', 'justifyContent': 'flex-start', 'marginLeft': '1vw'}}>
-        <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal}/>
+        <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} setMainGalleryPic={setMainGalleryPic}/>
         {currentlySelected !== 0 ? <p style={{'alignSelf': 'center', 'border': '1px solid black', 'height': '2h', 'textAlign': 'center'}} onClick={handleLeftBtn}>&lt;</p> : <p style={{'alignSelf': 'center', 'height': '2h', 'textAlign': 'center'}}></p>}
         <div style={{'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'maxHeight': '100%', 'marginLeft': '1vw'}}>
           <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} currentlySelected={currentlySelected}/>
           <div className="gallery-carousel" style={{'display': 'flex','flexDirection': 'column' ,'justifyContent': 'top', 'marginTop': '1vh', 'marginLeft': '0.5vw', 'position':'absolute', 'maxHeight': '50vh'}}>
             {currentStyle.photos.length > 7 && currentlySelected !== 0 ? <p id='up-button' onClick={handleUpBtn}>↑</p> : null}
-            <GalleryCarousel currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected}/>
+            <GalleryCarousel currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} showModal={showModal}/>
             {currentStyle.photos.length > 7 && currentlySelected !== rangeOfGallery - 1 ? <p id='down-button' onClick={handleDownBtn}>↓</p> : null}
           </div>
         </div>

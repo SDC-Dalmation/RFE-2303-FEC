@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 
-function ExtendedViewMainPhoto({handleExtendedBtn, mainGalleryPic}) {
+function ExtendedViewMainPhoto({handleExtendedBtn, mainGalleryPic, currentStyle, currentlySelected}) {
+
   if (mainGalleryPic) {
     return(
-      <img src={mainGalleryPic} className='extended-gallery-main-pic' ></img>
+      <img src={currentStyle.photos[currentlySelected].url} className='extended-gallery-main-pic' ></img>
     )
   } else {
     return(
