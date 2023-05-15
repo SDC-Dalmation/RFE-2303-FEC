@@ -33,7 +33,7 @@ function Overview({currentProduct}) {
         Overview
        <div style={{'display': 'flex', 'border': '1px solid black', 'borderRadius': '3px', 'padding': '5px'}} >
         <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
-        <div >
+        <div style={{'marginLeft': '4vw'}}>
           <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} allRatingsObj={allRatingsObj} />
           <StyleSelector currentProduct={currentProduct} setCurrentStyle={setCurrentStyle} allProductStyles={allProductStyles} currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} selectedStyle={selectedStyle} setSelectedStyle={setSelectedStyle}/>
           <AddToCart selectedStyle={selectedStyle} currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
