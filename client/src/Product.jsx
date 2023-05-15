@@ -32,7 +32,9 @@ if (products.length > 0) {
         }
       }}>next product</button>
       <OV currentProduct={currentProduct}/>
+      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <Outfit products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
+      </div>
       <QA currentProduct={currentProduct}/>
       <RR currentProduct={currentProduct}/>
     </div>
