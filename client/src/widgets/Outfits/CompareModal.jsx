@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-const CompareModal = ({showModal, setShowModal, product, currentProduct, oldProduct}) => {
+const CompareModal = ({showModal, setShowModal, product, oldProduct}) => {
   const [currentCharacteristics, setCurrentCharacteristics] = useState([]);
   const [oldCharacteristics, setOldCharacteristics] = useState([]);
   const [totalCharacteristics, setTotalCharacteristics] = useState({});
@@ -60,34 +60,34 @@ const CompareModal = ({showModal, setShowModal, product, currentProduct, oldProd
   return (
     <div style={{
       zIndex: 1,
-      width: 500,
-      height: 500,
+      width: 600,
+      height: 600,
       background: 'white',
       border: '1px solid black',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'absolute',
+      position: 'fixed',
       flexDirection: 'column',
       top: '40%',
       left: '40%'
     }}>
-      <button style={{width: 20, height: 20, position: 'absolute', right: 0, top: 0}} onClick={() => setShowModal(!showModal)}>X</button>
+      <button style={{width: 25, height: 25, position: 'absolute', right: 0, top: 0}} onClick={() => setShowModal(!showModal)}>X</button>
       <h2 style={{position: 'absolute', left: 5, top: 5}}>Comparing</h2>
       <table>
         <thead>
           <tr>
-            <th style={{padding: 5, fontSize: 15, fontWeight: 'bold'}}>{oldProduct.name}</th>
-            <th>Characteristics</th>
-            <th style={{padding: 5}}>{currentProductName}</th>
+            <th style={{padding: 5, fontSize: 20, fontWeight: 'bold'}}>{oldProduct.name}</th>
+            <th style={{padding: 5, fontSize: 20, fontWeight: 'bold'}}>Characteristics</th>
+            <th style={{padding: 5, fontSize: 20, fontWeight: 'bold'}}>{currentProductName}</th>
           </tr>
         </thead>
         <tbody>
           {Object.entries(totalCharacteristics).sort().map((characteristic, index) =>
           <tr key={index}>
-            <td style={{padding: 5}}>{characteristic[1].oldValue || null}</td>
-            <td style={{padding: 5}}>{characteristic[0]}</td>
-            <td style={{padding: 5}}>{characteristic[1].currentValue}</td>
+            <td style={{padding: 5, fontSize: 15}}>{characteristic[1].oldValue || null}</td>
+            <td style={{padding: 5, fontSize: 15}}>{characteristic[0]}</td>
+            <td style={{padding: 5, fontSize: 15}}>{characteristic[1].currentValue}</td>
           </tr>
           )}
         </tbody>

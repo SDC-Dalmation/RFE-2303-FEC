@@ -2,8 +2,12 @@ import React, {useState, useEffect} from "react";
 import RelatedProductsEntry from "./RelatedProductsEntry.jsx"
 
 const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentProduct}) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(2)
   const [length, setLength] = useState(relatedProducts.length)
+  const [listTranslateXIndex, setListTranslateXIndex] = useState(0);
+  const [oldProduct, setOldProduct] = useState(currentProduct)
+  const showLeft = currentIndex;
+  const showRight = currentIndex;
 
   useEffect(() => {
     setLength(relatedProducts.length)
@@ -11,13 +15,15 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
 
   const next = () => {
     if (currentIndex < (length - 1)) {
-        setCurrentIndex(prevState => prevState + 1)
+        setCurrentIndex(prevState => prevState + 1);
+        setListTranslateXIndex(listTranslateXIndex-355);
     }
   }
 
   const prev = () => {
-    if (currentIndex > 0) {
-        setCurrentIndex(prevState => prevState - 1)
+    if (currentIndex > 1) {
+        setCurrentIndex(prevState => prevState - 1);
+        setListTranslateXIndex(listTranslateXIndex+355);
     }
   }
 
@@ -29,42 +35,50 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
       borderRadius: 3,
       padding: 5,
       margin: 10,
-      width: '50%'
+      width: 1055,
+      height: 'auto',
+      overflow: 'hidden'
     }}>
-      <button style={{
-        position: 'absolute',
-        zIndex: 1,
-        top: '50%',
-        transform: `translateY(-50%)`,
-        width: 24,
-        height: 48,
-        borderRadius: 5,
-        backgroundColor: 'white',
-        border: '1px solid #ddd',
-        left: 24
-      }} onClick={prev}>
-      {"<"}
-      </button>
-        {relatedProducts.map((product, index) => (
-          <div key={index}>
-            {index === currentIndex && <RelatedProductsEntry product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/>}
-          </div>
-          )
-        )}
-      <button style={{
+      {showLeft !== 2 ? <button style={{
         position: 'absolute',
         zIndex: 1,
         top: '50%',
         transform: 'translateY(-50%)',
-        width: 24,
-        height: 48,
+        width: 60,
+        height: 200,
         borderRadius: 5,
         backgroundColor: 'white',
         border: '1px solid #ddd',
-        right: 24
+        left: 0,
+        fontSize: 30,
+        fontWeight: 'bold',
+        opacity: 0.7
+      }} onClick={prev}>
+      {"<"}
+      </button> : null}
+        {relatedProducts.map((product, index) => (
+          <div key={index} style={{transform: `translateX(${listTranslateXIndex}px)`}}>
+            {<RelatedProductsEntry product={product} setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} oldProduct={oldProduct}/>}
+          </div>
+          )
+        )}
+      {showRight !== length - 1 ? <button style={{
+        position: 'absolute',
+        zIndex: 1,
+        top: '50%',
+        transform: 'translateY(-50%)',
+        width: 60,
+        height: 200,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        border: '1px solid #ddd',
+        right: 0,
+        fontSize: 30,
+        fontWeight: 'bold',
+        opacity: 0.7
       }} onClick={next}>
         {">"}
-      </button>
+      </button> : null}
     </div>
   )
 }
