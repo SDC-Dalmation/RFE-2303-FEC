@@ -1,19 +1,19 @@
 import React from 'react';
 
-function GalleryPhoto({photo, currentStyle, handlePicBtn, mainGalleryPic}) {
+function GalleryPhoto({photo, currentStyle, handlePicBtn, mainGalleryPic, setCurrentlySelected, index}) {
 
 
   if (photo.url === mainGalleryPic) {
     return(
-      <div>
+      <div className="gallery-carousel-piece">
         <p style={{'position': 'absolute'}}>&#9989;</p>
-        <img src={photo.thumbnail_url} className="gallery-thumbnail" style={{'width': '3.5vw', 'height': '5vh', 'border': '1px solid green',  'margin': '0.1vh', 'objectFit': 'cover'}} onClick={handlePicBtn(photo.url)}/>
+        <img src={photo.thumbnail_url} className="gallery-thumbnail" style={{'border': '1px solid green'}} onClick={handlePicBtn(photo.url, index)}/>
       </div>
     )
   } else {
     return(
-      <div>
-        <img src={photo.thumbnail_url} className="gallery-thumbnail" style={{'width': '3.5vw', 'height': '5vh', 'border': '1px solid black',  'margin': '0.1vh', 'objectFit': 'cover'}} onClick={handlePicBtn(photo.url)}/>
+      <div className="gallery-carousel-piece">
+        <img src={photo.thumbnail_url} className="gallery-thumbnail" onClick={handlePicBtn(photo.url, index)}/>
       </div>
     )
   }

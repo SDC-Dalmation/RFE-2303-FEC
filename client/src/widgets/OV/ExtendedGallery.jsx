@@ -8,7 +8,7 @@ function ExtendedGallery({handleExtendedBtn, showModal}) {
   if (showModal) {
     modalClassName = 'extended-gallery-bg';
     return (
-      <div className={modalClassName} style={{'position': 'absolute'}}>
+      <div className={modalClassName}>
         <div className='extended-gallery-view'>
         PHOTOS GONNA GO HERE
         </div>
