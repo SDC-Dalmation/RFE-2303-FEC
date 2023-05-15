@@ -42,7 +42,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
     if (currentStyle) {
       return (
         <div>
-          <div style={{'display': 'flex', 'flexDirection': 'column'}}>
+          <div className="product-info">
           <StarRatings
               name="average-rating"
               editing='false'
@@ -56,7 +56,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
           <p className="product-category">{currentProduct.category}</p>
           <h3 className="product-name">{currentProduct.name}</h3>
           <p>{currentProduct.slogan}</p>
-          {hasSale ? <div><strike >{currentStyle.original_price}</strike> <p style={{'color': 'red'}}>{currentPrice}</p></div> : <p>{currentPrice}</p>}
+          {hasSale ? <div><strike >{currentStyle.original_price}</strike> <p className="product-price-discounted">{currentPrice}</p></div> : <p className="product-price">{currentPrice}</p>}
           <div className="product-description">{currentProduct.description}</div>
         </div>
       )
