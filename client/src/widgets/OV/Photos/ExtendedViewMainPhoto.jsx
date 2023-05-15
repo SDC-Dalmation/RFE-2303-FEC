@@ -22,7 +22,6 @@ function ExtendedViewMainPhoto({handleExtendedBtn, mainGalleryPic, currentStyle,
     if (document.getElementById('extended-gallery-main-pic').style.cursor === "zoom-out") {
       document.getElementById('extended-gallery-main-pic').style.cursor = "zoom-in"
     }
-    document.getElementById('extended-gallery-main-pic').addEventListener
 
   }
 
