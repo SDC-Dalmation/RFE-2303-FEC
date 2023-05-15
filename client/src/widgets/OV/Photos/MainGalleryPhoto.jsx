@@ -11,20 +11,16 @@ function MainGalleryPhoto({handleExtendedBtn, setMainGalleryPic, mainGalleryPic,
   if (mainGalleryPic) {
     if (currentStyle.photos[currentlySelected]) {
       return(
-        <div style={{ 'width': '31vw','height': '51vh'}}>
-          <img onClick={handleExtendedBtn} src={currentStyle.photos[currentlySelected].url} className='main-gallery-pic' style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh', 'minHeight': '50vh'}}/>
-        </div>
+        <img onClick={handleExtendedBtn} src={currentStyle.photos[currentlySelected].url} className='main-gallery-pic' />
       )
     } else {
       return(
-        <div style={{ 'width': '31vw','height': '51vh'}}>
-          <img onClick={handleExtendedBtn} src={currentStyle.photos[0].url} className='main-gallery-pic' style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh', 'minHeight': '50vh'}}/>
-        </div>
+        <img onClick={handleExtendedBtn} src={currentStyle.photos[0].url} className='main-gallery-pic' />
       )
     }
   } else {
     return(
-      <img className='main-gallery-pic' onClick={handleExtendedBtn} src={imageToShow} style={{'border': '2px solid black', 'width': '30vw','maxHeight': '50vh', 'minHeight': '50vh'}}/>
+      <img className='main-gallery-pic' onClick={handleExtendedBtn} src={imageToShow}/>
     )
 
   }

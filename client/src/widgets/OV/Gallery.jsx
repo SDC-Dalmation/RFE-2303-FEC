@@ -86,18 +86,18 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   if (currentStyle) {
     return (
-      <div style={{'width': '31vw', 'height': '53vh', 'display': 'flex', 'justifyContent': 'flex-start', 'marginLeft': '1vw'}}>
+      <div className="gallery-main">
         <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} setMainGalleryPic={setMainGalleryPic}/>
-        {currentlySelected !== 0 ? <p style={{'alignSelf': 'center', 'border': '1px solid black', 'height': '2h', 'textAlign': 'center'}} onClick={handleLeftBtn}>&lt;</p> : <p style={{'alignSelf': 'center', 'height': '2h', 'textAlign': 'center'}}></p>}
-        <div style={{'display': 'flex', 'flexDirection': 'column', 'width': '100%', 'maxHeight': '100%', 'marginLeft': '1vw'}}>
+        {currentlySelected !== 0 ? <p className="gallery-btn" style={{position: 'absolute'}}onClick={handleLeftBtn}>&lt;</p> : <p></p>}
+        <div className="default-gallery-view">
           <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} currentlySelected={currentlySelected}/>
-          <div className="gallery-carousel" style={{'display': 'flex','flexDirection': 'column' ,'justifyContent': 'top', 'marginTop': '1vh', 'marginLeft': '0.5vw', 'position':'absolute', 'maxHeight': '50vh'}}>
+          <div className="gallery-carousel-main" >
             {currentStyle.photos.length > 7 && currentlySelected !== 0 ? <p id='up-button' onClick={handleUpBtn}>↑</p> : null}
             <GalleryCarousel currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} showModal={showModal}/>
             {currentStyle.photos.length > 7 && currentlySelected !== rangeOfGallery - 1 ? <p id='down-button' onClick={handleDownBtn}>↓</p> : null}
           </div>
         </div>
-        {currentlySelected !== rangeOfGallery - 1 ? <p style={{'alignSelf': 'center', 'border': '1px solid black', 'height': '2vh', 'textAlign': 'center'}} onClick={handleRightBtn} >&gt;</p> : <p style={{'alignSelf': 'center', 'height': '2h', 'textAlign': 'center'}}></p>}
+        {currentlySelected !== rangeOfGallery - 1 ? <p className="gallery-btn" style={{marginLeft: '0.5vw'}}onClick={handleRightBtn} >&gt;</p> : <p></p>}
       </div>
     )
   } else {
