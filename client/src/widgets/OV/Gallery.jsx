@@ -86,18 +86,18 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   if (currentStyle) {
     return (
-      <div className="gallery-main">
+      <div data-testid="mainGallery" className="gallery-main">
         <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} setMainGalleryPic={setMainGalleryPic}/>
-        {currentlySelected !== 0 ? <p className="gallery-btn" style={{position: 'absolute'}}onClick={handleLeftBtn}>&lt;</p> : <p></p>}
+        {currentlySelected !== 0 ? <p className="gallery-btn" style={{position: 'absolute'}}onClick={handleLeftBtn} data-testid="leftGalleryBtn">&lt;</p> : <p></p>}
         <div className="default-gallery-view">
           <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} currentlySelected={currentlySelected}/>
           <div className="gallery-carousel-main" >
-            {currentStyle.photos.length > 7 && currentlySelected !== 0 ? <p id='up-button' onClick={handleUpBtn}>↑</p> : null}
+            {currentStyle.photos.length > 7 && currentlySelected !== 0 ? <p id='up-button' onClick={handleUpBtn} data-testid="topGalleryBtn">↑</p> : null}
             <GalleryCarousel currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} showModal={showModal}/>
-            {currentStyle.photos.length > 7 && currentlySelected !== rangeOfGallery - 1 ? <p id='down-button' onClick={handleDownBtn}>↓</p> : null}
+            {currentStyle.photos.length > 7 && currentlySelected !== rangeOfGallery - 1 ? <p id='down-button' onClick={handleDownBtn} data-testid="bottomGalleryBtn">↓</p> : null}
           </div>
         </div>
-        {currentlySelected !== rangeOfGallery - 1 ? <p className="gallery-btn" style={{marginLeft: '0.5vw'}}onClick={handleRightBtn} >&gt;</p> : <p></p>}
+        {currentlySelected !== rangeOfGallery - 1 ? <p className="gallery-btn" style={{marginLeft: '0.5vw'}}onClick={handleRightBtn} data-testid="rightGalleryBtn">&gt;</p> : <p></p>}
       </div>
     )
   } else {

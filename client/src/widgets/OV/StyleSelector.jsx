@@ -17,7 +17,7 @@ function StyleSelector({currentProduct, setCurrentStyle, allProductStyles, check
   }
 
   return (
-    <div className="style-selector-main">
+    <div data-testid="styleSelectorMain" className="style-selector-main">
       <p style={{'fontWeight': '700'}}>Styles</p>
       <div className="style-selector">
         {allProductStyles.map((style, index) => {

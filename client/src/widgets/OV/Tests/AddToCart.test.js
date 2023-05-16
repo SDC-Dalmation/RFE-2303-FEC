@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
-import ProductInfo from '../ProductInfo.jsx';
+import AddToCart from '../AddToCart.jsx';
 
-describe(ProductInfo, ()=>{
-  test('shows all relevant product info', () => {
+describe(AddToCart, ()=>{
+  test('renders add to cart when current product & style are truthy', () => {
 
     const currentProduct = {
       id: 37311,
@@ -16,7 +16,8 @@ describe(ProductInfo, ()=>{
       created_at: '2021-08-13T14:37:33.145Z',
       updated_at: '2021-08-13T14:37:33.145Z'
     }
-
+    const checkIfProductChangedArr = [currentProduct]
+    const checkIfStyleChangedArr = [currentStyle]
     const currentStyle = {
       "style_id": 220998,
       "name": "Forest Green & Black",
@@ -76,20 +77,39 @@ describe(ProductInfo, ()=>{
           }
       }
   }
-    const checkIfProductChangedArr = [currentProduct]
-    const checkIfStyleChangedArr = [currentStyle]
-    const allRatingsObj = {
-      "1": "84",
-      "2": "59",
-      "3": "133",
-      "4": "160",
-      "5": "398"
-  }
+    const selectedStyle = currentStyle.style_id
 
-    const {getByText} = render(
-      <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} allRatingsObj={allRatingsObj}/>
+    render(
+      <AddToCart selectedStyle={selectedStyle} currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
     )
 
-    expect(screen.getByText(currentProduct.name)).toBeTruthy();
+    const addToCartMain = screen.getByTestId('addToCartMain');
+    expect(addToCartMain).toBeTruthy();
+  });
+
+  test('renders LOADING when the currentStyle is falsy', () => {
+
+    const currentProduct = {
+      id: 37311,
+      campus: 'hr-rfe',
+      name: 'Camo Onesie',
+      slogan: 'Blend in to your crowd',
+      description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+      category: 'Jackets',
+      default_price: '140.00',
+      created_at: '2021-08-13T14:37:33.145Z',
+      updated_at: '2021-08-13T14:37:33.145Z'
+    }
+    const checkIfProductChangedArr = [currentProduct]
+    const checkIfStyleChangedArr = [currentStyle]
+    const currentStyle = undefined
+    const selectedStyle = undefined
+
+    render(
+      <AddToCart selectedStyle={selectedStyle} currentStyle={currentStyle} checkIfStyleChangedArr={checkIfStyleChangedArr} checkIfProductChangedArr={checkIfProductChangedArr}/>
+    )
+
+    const addToCartMain = screen.queryByTestId('addToCartMain');
+    expect(addToCartMain).toBeFalsy();
   });
 })

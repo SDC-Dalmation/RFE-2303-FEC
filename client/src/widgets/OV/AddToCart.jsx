@@ -79,7 +79,7 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
 
 
     return(
-      <div>
+      <div data-testid="addToCartMain">
         <div style={{'marginTop': '3px'}}>Size Selector</div>
           <div>
               {/* if its the first load, it will start on an empty selection */}
