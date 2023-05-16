@@ -9,8 +9,11 @@ function Characteristics ({currentProduct, charOptions, setCharOptions, response
   useEffect(() => {
     axios.post('/reviewMetadata', {product_id: currentProduct.id})
     .then((res) => {
-      setCharacteristics(Object.keys(res.data.characteristics));
-      setDetails(res.data.characteristics);
+      const characteristicsData = res.data.characteristics;
+      if(characteristicsData) {
+        setCharacteristics(Object.keys(characteristicsData));
+        setDetails(characteristicsData);
+      }
     })
   }, [])
 

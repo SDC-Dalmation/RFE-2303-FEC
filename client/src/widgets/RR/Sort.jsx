@@ -16,8 +16,8 @@ function Sort ({currentProduct, reviews, setReviews}) {
 
   return(
     <div>
-      <label>Reviews sorted by:</label>
-      <select value={value} onChange={handleChange}>
+      <label htmlFor="sortSelect">Reviews sorted by:</label>
+      <select id="sortSelect" value={value} onChange={handleChange}>
         <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>
         <option value="helpful">Helpfulness</option>
