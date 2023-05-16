@@ -10,62 +10,49 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
     photoButton= (
       <div>
         <label htmlFor="addPhoto" style={{"marginBottom": "2vh"}}>Add a Photo</label>
-        <br></br>
+          <br></br>
         <input id="addPhoto"type="file" accept="image/*" style={{"marginBottom": "2vh"}}></input>
-        <br></br>
+          <br></br>
         <button type="submit" style={{"marginBottom": "2vh"}}>Submit Photo</button>
       </div>
     )
   }
 
-  async function addThumbnail(photoFile) {
+  const modalStyle = {"display": "flex",
+  "flexDirection": "column",
+  "justifyContent": "center",
+  "alignItems": "left",
+  "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
+  "backgroundColor": "white",
+  "border": "2px solid rgb(240, 240, 240)",
+  "borderRadius": "12px",
+  "padding": "1vh",
+  "paddingLeft": "20vh",
+  "paddingRight": "20vh",
+  "position": "fixed",
+  "top": "5vh",
+  "left": "40vh",
+  "right": "20vh",
+  "bottom": "5vh",
+  }
 
+  async function addThumbnail(photoFile) {
     let allPhotos = photos.slice();
     let photoURL = URL.createObjectURL(photoFile);
     allPhotos.push(photoURL);
     setPhotos(allPhotos);
     addedPhoto(lessThan5Photos + 1);
-
-
-    // const reader = new FileReader();
-    // await reader.readAsDataURL(photoFile);
-    // reader.addEventListener("load", function () {
-    //   let allPhotos = photos.slice();
-    //   console.log(reader.result);
-    //   let photoURL = URL.createObjectURL(photoFile);
-    //   allPhotos.push(photoURL);
-    //   setPhotos(allPhotos);
-    //   addedPhoto(lessThan5Photos + 1);
-    // })
-
 }
 
   function submitPhoto (e) {
     e.preventDefault();
-    // Read the form data
     let photo = e.target[0].files[0];
     addThumbnail(photo);
-
     onClose();
   }
 
   return(
-    <div style={{"display": "flex",
-    "flexDirection": "column",
-    "justifyContent": "center",
-    "alignItems": "left",
-    "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
-    "backgroundColor": "white",
-    "border": "2px solid rgb(240, 240, 240)",
-    "borderRadius": "12px",
-    "padding": "1vh",
-    "paddingLeft": "20vh",
-    "paddingRight": "20vh",
-    "position": "fixed",
-    "top": "5vh",
-    "left": "40vh",
-    "right": "20vh",
-    "bottom": "5vh"}}>
+    <div style={modalStyle}>
       <h3>Submit Your Photo</h3>
       <form onSubmit={submitPhoto}>
         {photoButton}

@@ -4,7 +4,6 @@ import Answer from './Answer.jsx';
 
 function AnswerList ({answers, markHelpful, helpfulQA, setHelpfulQA}) {
 
-  // let [shownAnswers, setShownAnswers] = useState(answers.slice(0, 2));
   let [shownAnswers, setShownAnswers] = useState([]);
 
   useEffect(() => {
@@ -21,25 +20,41 @@ function AnswerList ({answers, markHelpful, helpfulQA, setHelpfulQA}) {
     overflow : "auto",
   };
 
+  const buttonStyle = {
+    "backgroundColor" : "#eee",
+    "color": "#444",
+    "cursor": "pointer",
+    "display": "inline",
+    "padding": "1vh",
+    "width": "15%",
+    "border": "none",
+    "textAlign": "center",
+    "outline": "none",
+    "fontSize": "10px",
+    "transition": "0.4s",
+  };
+
   let shownCSS = displayCSS;
 
   let additionalAnswerButton = (<div></div>);
 
   if (answers.length > 2) {
-    additionalAnswerButton = (<span onClick={() => setShownAnswers(answers)}>More Answers</span>);
+    additionalAnswerButton = (<span onClick={() => setShownAnswers(answers)} style={buttonStyle}>More Answers</span>);
     if (shownAnswers.length > 2) {
       shownCSS = scrollCSS;
-      additionalAnswerButton = (<span onClick={() => setShownAnswers(answers.slice(0, 2))}>Collapse Answer List</span>)
+      additionalAnswerButton = (<span onClick={() => setShownAnswers(answers.slice(0, 2))} style={buttonStyle}>Collapse Answer List</span>)
     }
   }
-
 
   return(
     <div>
     <div style={shownCSS}>
       {shownAnswers.map((answer, index) => {
-        return (<Answer answer={answer} markHelpful={markHelpful} helpfulQA={helpfulQA}
-          setHelpfulQA={setHelpfulQA} key={index}/>)
+        return (<Answer answer={answer}
+          markHelpful={markHelpful}
+          helpfulQA={helpfulQA}
+          setHelpfulQA={setHelpfulQA}
+          key={index}/>)
       })}
     </div>
     <div>
