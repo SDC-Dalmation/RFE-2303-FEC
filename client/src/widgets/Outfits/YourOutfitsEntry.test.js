@@ -83,8 +83,8 @@ describe(YourOutfitsEntry, () => {
   jest.mock('axios');
 
   const mock = jest.spyOn(axios, "get");
-  mock.mockImplementation(() => Promise.resolve(allRatingsObj));
-  mock.mockImplementation(() => Promise.resolve(productStyle));
+  mock.mockImplementation(() => Promise.resolve());
+
 
   const setItems = jest.fn();
 
