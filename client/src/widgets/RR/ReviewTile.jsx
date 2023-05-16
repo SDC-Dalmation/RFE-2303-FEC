@@ -89,29 +89,14 @@ function ReviewTile ({review, reviews}) {
         />
 
         <div>
-          <div style={{
-            fontSize: "small",
-            display: "flex",
-            justifyContent: "right"
-          }}>
+          <div style={{fontSize: "small"}}>
           {formatDate(review.date)}
           </div>
           <div
           style={{fontSize: "small",
           display: "flex",
           justifyContent: "right"}}>
-            {review.reviewer_name}
-          </div>
-          <div
-            style={{fontSize: "small",
-            fontStyle: "italic",
-            color: "grey",
-            display: "flex",
-            justifyContent: "right"}}
-            >
-          {isVerifiedUser(review.reviewer_name)
-            ?  "Verified Purchaser"
-            : null}
+            {isVerifiedUser(review.reviewer_name) ? `✓ ${review.reviewer_name}`: review.reviewer_name}
           </div>
         </div>
 
@@ -143,7 +128,7 @@ function ReviewTile ({review, reviews}) {
 
       <PhotoModal review={review}/>
 
-      {review.recommend ? <div>I recommend this product ✔️</div>: null}
+      {review.recommend ? <div>I recommend this product ✓</div>: null}
 
 
       <div style={{display: "flex", fontSize: "small", marginTop: "10px"}}>
