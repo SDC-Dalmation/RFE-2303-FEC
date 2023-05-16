@@ -65,7 +65,9 @@ function ReviewTile ({review}) {
         numberOfStars={5}
         name="rating"
         starDimension="20px"
-        starSpacing="1px"/>
+        starSpacing="1px"
+        data-testid="star-ratings"
+        />
 
         <div>
           <div style={{fontSize: "small"}}>

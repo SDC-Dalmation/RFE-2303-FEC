@@ -10,6 +10,9 @@ function RatingBreakdown ({currentProduct}) {
     .then((res) => {
       setRatingData(res.data.ratings);
     })
+    .catch((err) => {
+      console.log('err in receiving metadata: ', err);
+    })
   }, [currentProduct])
 
   const calculateAveRating = (ratingData) => {

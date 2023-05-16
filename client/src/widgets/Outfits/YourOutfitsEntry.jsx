@@ -5,6 +5,7 @@ import StarRatings from "react-star-ratings";
 const YourOutfitsEntry = ({item, items, setItems}) => {
   const [productStyle, setProductStyle] = useState({});
   const [allRatingsObj, setAllRatingsObj] = useState(0);
+  const [hasSale2, setHasSale2] = useState(null)
   const checkIfProductChangedArr = [item];
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
     })
       .then((info) => {
         setProductStyle(info.data.results[0].photos[0].thumbnail_url);
+        setHasSale2(info.data.results[0].sale_price)
     })
   }, [items])
 
@@ -59,7 +61,7 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
   }
 
   return (
-    <div style={{
+    <div data-testid="YourOutfitsEntry" style={{
       position: 'relative',
       border: '1px solid grey',
       }}>
@@ -68,7 +70,11 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
       <img style={{width: 350, height: 350}} src={productStyle}/>
       <div style={{fontSize: 20}}>{item.category}</div>
       <div style={{fontSize: 25, fontWeight: 'bold'}}>{item.name}</div>
-      <div style={{fontSize: 20}}>{`$${item.default_price}`}</div>
+      {hasSale2 === null ? <div style={{fontSize: 20}}>{`$${item.default_price}`}</div> :
+      <div>
+        <div style={{fontSize: 20, color: 'red', textDecoration: 'line-through'}}>{`$${item.default_price}`}</div>
+        <div style={{fontSize: 20}}>{`$${hasSale2}`}</div>
+       </div>}
       <StarRatings
               name="average-rating"
               editing='false'
