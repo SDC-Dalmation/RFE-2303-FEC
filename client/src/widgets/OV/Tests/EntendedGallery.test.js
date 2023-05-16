@@ -1,22 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
-import Gallery from '../Gallery.jsx';
+import ExtendedGallery from '../ExtendedGallery.jsx';
 
-describe(Gallery, ()=>{
-  test('renders main gallery when current product & style is given', () => {
+describe(ExtendedGallery, ()=>{
+  test('shouldnt show extended gallery if showModal is false', () => {
 
-    const currentProduct = {
-      id: 37311,
-      campus: 'hr-rfe',
-      name: 'Camo Onesie',
-      slogan: 'Blend in to your crowd',
-      description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
-      category: 'Jackets',
-      default_price: '140.00',
-      created_at: '2021-08-13T14:37:33.145Z',
-      updated_at: '2021-08-13T14:37:33.145Z'
-    }
 
+    const checkIfStyleChangedArr = [currentStyle]
     const currentStyle = {
       "style_id": 220998,
       "name": "Forest Green & Black",
@@ -76,33 +66,30 @@ describe(Gallery, ()=>{
           }
       }
   }
-    const checkIfProductChangedArr = [currentProduct]
-    const checkIfStyleChangedArr = [currentStyle]
+    const handleExtendedBtn = jest.fn();
+    const showModal = false;
+    const handlePicBtn = jest.fn();
     const mainGalleryPic = currentStyle.photos[0].url
     const setMainGalleryPic = jest.fn()
+    const rangeOfGallery = 7
+    const setRangeOfGallery = jest.fn()
+    const indexOfGallery = [0,6]
+    const setIndexOfGallery = jest.fn()
+    const setCurrentlySelected = jest.fn()
+    const currentlySelected = 0;
 
     render(
-      <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
+    <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} setMainGalleryPic={setMainGalleryPic}/>
     )
 
-    const mainGallery = screen.getByTestId('mainGallery');
-    expect(mainGallery).toBeTruthy();
+    const extendedGalleryMain = screen.queryByTestId('extendedGalleryMain');
+    expect(extendedGalleryMain).toBeFalsy();
   });
 
-  test('shouldnt show left or top gallery button on initial load', () => {
+  test('should show extended gallery if showModal is true', () => {
 
-    const currentProduct = {
-      id: 37311,
-      campus: 'hr-rfe',
-      name: 'Camo Onesie',
-      slogan: 'Blend in to your crowd',
-      description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
-      category: 'Jackets',
-      default_price: '140.00',
-      created_at: '2021-08-13T14:37:33.145Z',
-      updated_at: '2021-08-13T14:37:33.145Z'
-    }
 
+    const checkIfStyleChangedArr = [currentStyle]
     const currentStyle = {
       "style_id": 220998,
       "name": "Forest Green & Black",
@@ -162,16 +149,24 @@ describe(Gallery, ()=>{
           }
       }
   }
-    const checkIfProductChangedArr = [currentProduct]
-    const checkIfStyleChangedArr = [currentStyle]
+    const handleExtendedBtn = jest.fn();
+    const showModal = true;
+    const handlePicBtn = jest.fn();
     const mainGalleryPic = currentStyle.photos[0].url
     const setMainGalleryPic = jest.fn()
+    const rangeOfGallery = 7
+    const setRangeOfGallery = jest.fn()
+    const indexOfGallery = [0,6]
+    const setIndexOfGallery = jest.fn()
+    const setCurrentlySelected = jest.fn()
+    const currentlySelected = 0;
 
     render(
-      <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
+    <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} setMainGalleryPic={setMainGalleryPic}/>
     )
 
-    expect(screen.queryByTestId('leftGalleryBtn')).toBeFalsy();
-    expect(screen.queryByTestId('topGalleryBtn')).toBeFalsy();
+    const extendedGalleryMain = screen.getByTestId('extendedGalleryMain');
+    expect(extendedGalleryMain).toBeTruthy();
   });
+
 })

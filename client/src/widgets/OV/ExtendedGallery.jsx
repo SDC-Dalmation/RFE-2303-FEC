@@ -37,7 +37,7 @@ function ExtendedGallery({handleExtendedBtn, showModal, mainGalleryPic, currentl
   if (showModal) {
     modalClassName = 'extended-gallery-bg';
     return (
-      <div className={modalClassName}>
+      <div data-testid="extendedGalleryMain" className={modalClassName}>
         <div className='extended-gallery'>
         <button onClick={handleExtendedBtn} className="extended-btn">back</button>
           <div className='extended-gallery-main'>
