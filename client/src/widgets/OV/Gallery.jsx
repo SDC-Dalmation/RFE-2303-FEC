@@ -86,7 +86,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   if (currentStyle) {
     return (
-      <div className="gallery-main">
+      <div data-testid="mainGallery" className="gallery-main">
         <ExtendedGallery handleExtendedBtn={handleExtendedBtn} showModal={showModal} currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} setMainGalleryPic={setMainGalleryPic}/>
         {currentlySelected !== 0 ? <p className="gallery-btn" style={{position: 'absolute'}}onClick={handleLeftBtn}>&lt;</p> : <p></p>}
         <div className="default-gallery-view">

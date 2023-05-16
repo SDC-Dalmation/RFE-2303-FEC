@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
-import ProductInfo from '../ProductInfo.jsx';
+import Gallery from '../Gallery.jsx';
 
-describe(ProductInfo, ()=>{
-  test('shows all relevant product info', () => {
+describe(Gallery, ()=>{
+  test('renders main gallery when current product & style is given', () => {
 
     const currentProduct = {
       id: 37311,
@@ -78,18 +78,14 @@ describe(ProductInfo, ()=>{
   }
     const checkIfProductChangedArr = [currentProduct]
     const checkIfStyleChangedArr = [currentStyle]
-    const allRatingsObj = {
-      "1": "84",
-      "2": "59",
-      "3": "133",
-      "4": "160",
-      "5": "398"
-  }
+    const mainGalleryPic = currentStyle.photos[0].url
+    const setMainGalleryPic = jest.fn()
 
-    const {getByText} = render(
-      <ProductInfo currentProduct={currentProduct} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} allRatingsObj={allRatingsObj}/>
+    render(
+      <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
     )
 
-    expect(screen.getByText(currentProduct.name)).toBeTruthy();
+    const mainGallery = screen.getByTestId('mainGallery');
+    expect(mainGallery).toBeTruthy();
   });
 })

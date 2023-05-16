@@ -13,6 +13,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
 
 
   if (allRatingsObj) {
+    console.log(allRatingsObj)
     var ratingsArr = Object.entries(allRatingsObj)
 
     // oh my god this has got to be the LEAST efficient way to do this
