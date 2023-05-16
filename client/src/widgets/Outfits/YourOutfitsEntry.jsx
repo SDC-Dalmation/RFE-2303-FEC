@@ -72,8 +72,8 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
       <div style={{fontSize: 25, fontWeight: 'bold'}}>{item.name}</div>
       {hasSale2 === null ? <div style={{fontSize: 20}}>{`$${item.default_price}`}</div> :
       <div>
-        <div style={{fontSize: 20, color: 'red', textDecoration: 'line-through'}}>{`$${item.default_price}`}</div>
-        <div style={{fontSize: 20}}>{`$${hasSale2}`}</div>
+        <div style={{fontSize: 20, textDecoration: 'line-through'}}>{`$${item.default_price}`}</div>
+        <div style={{fontSize: 20, color: 'red'}}>{`$${hasSale2}`}</div>
        </div>}
       <StarRatings
               name="average-rating"
