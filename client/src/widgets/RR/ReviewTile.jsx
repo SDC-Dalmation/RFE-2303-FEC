@@ -3,7 +3,7 @@ import StarRatings from "react-star-ratings";
 import axios from "axios";
 import PhotoModal from "./PhotoModal.jsx"
 
-function ReviewTile ({review}) {
+function ReviewTile ({review, reviews}) {
   const [rating, setRating] = useState(review.rating);
   const [helpfulness, setHelpfulness] = useState(review.helpfulness);
   const [clickedYes, setClickedYes] = useState(false);
@@ -15,6 +15,25 @@ function ReviewTile ({review}) {
   }, [review])
 
   const body = review.body;
+
+  const isVerifiedUser = (username) => {
+   const allUsernames = reviews.map((reviewObj) => {
+      return reviewObj.reviewer_name;
+    })
+
+    const currentUserList = []
+    allUsernames.map((user) => {
+      if (username === user) {
+        currentUserList.push(username)
+      }
+    })
+
+    if (currentUserList.length > 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   const formatDate = (string) => {
     let date = new Date(string);
@@ -77,7 +96,7 @@ function ReviewTile ({review}) {
           style={{fontSize: "small",
           display: "flex",
           justifyContent: "right"}}>
-          {review.reviewer_name}
+            {isVerifiedUser(review.reviewer_name) ? `✓ ${review.reviewer_name}`: review.reviewer_name}
           </div>
         </div>
 
@@ -109,7 +128,7 @@ function ReviewTile ({review}) {
 
       <PhotoModal review={review}/>
 
-      {review.recommend ? <div>I recommend this product ✔️</div>: null}
+      {review.recommend ? <div>I recommend this product ✓</div>: null}
 
 
       <div style={{display: "flex", fontSize: "small", marginTop: "10px"}}>
