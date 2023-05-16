@@ -33,6 +33,55 @@ const currentProduct = {
   ]
 }
 
+const reviewsList = [
+  {
+      "review_id": 1279874,
+      "rating": 2,
+      "summary": "Hated it",
+      "recommend": false,
+      "response": null,
+      "body": "Worst ever",
+      "date": "2023-05-12T00:00:00.000Z",
+      "reviewer_name": "hello123",
+      "helpfulness": 0,
+      "photos": [
+          {
+              "id": 2458802,
+              "url": "https://media.cnn.com/api/v1/images/stellar/prod/200906155336-04-thompson-farm-sunflowers.jpg?q=x_2,y_112,h_898,w_1596,c_crop/h_540,w_960/f_webp"
+          }
+      ]
+  },
+  {
+      "review_id": 1279218,
+      "rating": 3,
+      "summary": "THIS IS A TEST",
+      "recommend": false,
+      "response": null,
+      "body": "THIS IS ALSO A TEST",
+      "date": "2023-03-21T00:00:00.000Z",
+      "reviewer_name": "TEST123 ",
+      "helpfulness": 0,
+      "photos": [
+          {
+              "id": 2457753,
+              "url": "http://res.cloudinary.com/dmmzqckuu/image/upload/v1667506778/mwsvroray4fie6rakkqj.jpg"
+          }
+      ]
+  },
+  {
+      "review_id": 1279208,
+      "rating": 4,
+      "summary": "idk",
+      "recommend": true,
+      "response": null,
+      "body": "ummm meh",
+      "date": "2023-03-20T00:00:00.000Z",
+      "reviewer_name": "testbob123",
+      "helpfulness": 2,
+      "photos": []
+  }
+]
+
 test('Ratings and Reviews has correct heading', async () => {
   const reviews = {
     data: {
@@ -167,55 +216,6 @@ test('Displays all characteristics for current product', async () => {
 //Sort
 
 test('Should correctly render the  Sort component', async () => {
-  const reviewsList = [
-    {
-        "review_id": 1279874,
-        "rating": 2,
-        "summary": "Hated it",
-        "recommend": false,
-        "response": null,
-        "body": "Worst ever",
-        "date": "2023-05-12T00:00:00.000Z",
-        "reviewer_name": "hello123",
-        "helpfulness": 0,
-        "photos": [
-            {
-                "id": 2458802,
-                "url": "https://media.cnn.com/api/v1/images/stellar/prod/200906155336-04-thompson-farm-sunflowers.jpg?q=x_2,y_112,h_898,w_1596,c_crop/h_540,w_960/f_webp"
-            }
-        ]
-    },
-    {
-        "review_id": 1279218,
-        "rating": 3,
-        "summary": "THIS IS A TEST",
-        "recommend": false,
-        "response": null,
-        "body": "THIS IS ALSO A TEST",
-        "date": "2023-03-21T00:00:00.000Z",
-        "reviewer_name": "TEST123 ",
-        "helpfulness": 0,
-        "photos": [
-            {
-                "id": 2457753,
-                "url": "http://res.cloudinary.com/dmmzqckuu/image/upload/v1667506778/mwsvroray4fie6rakkqj.jpg"
-            }
-        ]
-    },
-    {
-        "review_id": 1279208,
-        "rating": 4,
-        "summary": "idk",
-        "recommend": true,
-        "response": null,
-        "body": "ummm meh",
-        "date": "2023-03-20T00:00:00.000Z",
-        "reviewer_name": "testbob123",
-        "helpfulness": 2,
-        "photos": []
-    }
-  ]
-
   let setReviews;
 
   jest.mock('axios');
@@ -240,54 +240,6 @@ test('Should correctly render the  Sort component', async () => {
 })
 
 test('Sort component should update reviews when the option is changed', async () => {
-  const reviewsList = [
-    {
-        "review_id": 1279874,
-        "rating": 2,
-        "summary": "Hated it",
-        "recommend": false,
-        "response": null,
-        "body": "Worst ever",
-        "date": "2023-05-12T00:00:00.000Z",
-        "reviewer_name": "hello123",
-        "helpfulness": 0,
-        "photos": [
-            {
-                "id": 2458802,
-                "url": "https://media.cnn.com/api/v1/images/stellar/prod/200906155336-04-thompson-farm-sunflowers.jpg?q=x_2,y_112,h_898,w_1596,c_crop/h_540,w_960/f_webp"
-            }
-        ]
-    },
-    {
-        "review_id": 1279218,
-        "rating": 3,
-        "summary": "THIS IS A TEST",
-        "recommend": false,
-        "response": null,
-        "body": "THIS IS ALSO A TEST",
-        "date": "2023-03-21T00:00:00.000Z",
-        "reviewer_name": "TEST123 ",
-        "helpfulness": 0,
-        "photos": [
-            {
-                "id": 2457753,
-                "url": "http://res.cloudinary.com/dmmzqckuu/image/upload/v1667506778/mwsvroray4fie6rakkqj.jpg"
-            }
-        ]
-    },
-    {
-        "review_id": 1279208,
-        "rating": 4,
-        "summary": "idk",
-        "recommend": true,
-        "response": null,
-        "body": "ummm meh",
-        "date": "2023-03-20T00:00:00.000Z",
-        "reviewer_name": "testbob123",
-        "helpfulness": 2,
-        "photos": []
-    }
-  ]
   const setReviews = jest.fn();
 
   jest.mock('axios');
@@ -350,6 +302,7 @@ test('Review Tile is correctly rendered', async () => {
   const {getByText} = render(
     <ReviewTile
     review={review}
+    reviews={reviewsList}
     />
   );
   const body = getByText("Worst ever");
@@ -419,7 +372,7 @@ test('Each review tile should display the photos', async () => {
 
   mock.mockImplementation(() => Promise.resolve(review));
 
-  await act(() => render( <ReviewTile review={review}/>));
+  await act(() => render( <ReviewTile review={review} reviews={reviewsList}/>));
   const photos = review.photos;
   expect(photos.length === 1).toBeTruthy();
 })
@@ -456,7 +409,7 @@ test('Can mark review tile as helpful', async() => {
 
   mock.mockResolvedValue(response);
 
-  const {getByText} = render( <ReviewTile review={review}/>);
+  const {getByText} = render( <ReviewTile review={review} reviews={reviewsList}/>);
 
   const button = getByText('Yes');
 
