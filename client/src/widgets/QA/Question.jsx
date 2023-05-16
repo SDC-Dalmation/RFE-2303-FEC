@@ -13,12 +13,26 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
   const bodyStyle = {
     fontFamily: "Arial",
     fontSize: "15px",
+    marginBottom: "1vh",
   }
+
+  const questionStyle = {
+    width: "80%",
+    border: "1px solid black",
+    borderRadius: "1%",
+    marginTop: "2vh",
+    padding: "1vh",
+    paddingBottom: "3vh",
+  };
 
   const helperStyle = {
     float: "right",
     fontFamily: "Arial",
     fontSize: "8px",
+  }
+
+  const markHelpfulStyle = {
+    "textDecoration" : "underline",
   }
 
   useEffect(() => {
@@ -35,16 +49,20 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
   let displayAnswers = (<div></div>);
   if (answers.length > 0) {
-    displayAnswers = <AnswerList answers={answers} markHelpful={markHelpful} helpfulQA={helpfulQA} setHelpfulQA={setHelpfulQA}/>
+    displayAnswers = <AnswerList
+                       answers={answers}
+                       markHelpful={markHelpful}
+                       helpfulQA={helpfulQA}
+                       setHelpfulQA={setHelpfulQA}/>
   }
 
   return(
-    <div>
-      <div>
+    <div style={questionStyle}>
+      <div style={{marginBottom: "1vh"}}>
         <span style={bodyStyle}>Q: {question.question_body}</span>
         <span style={helperStyle}>
-          <span onClick={() => markQuestionHelpful()}> Helpful? Yes{`(${helpfulness})`}</span> |
-          <span onClick={() => setShowAnswerModal(true)}> Add Answer</span>
+          <span style={markHelpfulStyle} onClick={() => markQuestionHelpful()}> Helpful? Yes{`(${helpfulness})`}</span> |
+          <span style={markHelpfulStyle} onClick={() => setShowAnswerModal(true)}> Add Answer</span>
         </span>
       </div>
       {displayAnswers}

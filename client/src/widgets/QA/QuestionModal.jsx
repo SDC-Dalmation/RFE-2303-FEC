@@ -3,10 +3,27 @@ import axios from 'axios';
 
 function QuestionModal ({ productID, onClose, prodName }) {
 
+  const modalStyle = {"display": "flex",
+  "flexDirection": "column",
+  "fontFamily": "Arial",
+  "justifyContent": "center",
+  "alignItems": "left",
+  "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
+  "backgroundColor": "white",
+  "border": "2px solid rgb(240, 240, 240)",
+  "borderRadius": "12px",
+  "padding": "1vh",
+  "paddingLeft": "20vh",
+  "paddingRight": "20vh",
+  "position": "fixed",
+  "top": "5vh",
+  "left": "40vh",
+  "right": "20vh",
+  "bottom": "5vh",
+  }
+
   function submitQuestion(e) {
     e.preventDefault();
-
-    // Read the form data
     const form = e.target;
     let body = e.target[0].value;
     let name = e.target[1].value;
@@ -17,25 +34,10 @@ function QuestionModal ({ productID, onClose, prodName }) {
   }
 
   return(
-    <div style={{"display": "flex",
-      "flexDirection": "column",
-      "justifyContent": "center",
-      "alignItems": "left",
-      "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
-      "backgroundColor": "white",
-      "border": "2px solid rgb(240, 240, 240)",
-      "borderRadius": "12px",
-      "padding": "1vh",
-      "paddingLeft": "20vh",
-      "paddingRight": "20vh",
-      "position": "fixed",
-      "top": "5vh",
-      "left": "40vh",
-      "right": "20vh",
-      "bottom": "5vh"}}>
+    <div style={modalStyle}>
       <h3>Ask Your Question</h3>
       <h4>About the {prodName}</h4>
-      <form onSubmit={submitQuestion}>
+      <form onSubmit={submitQuestion} data-testid="form">
         <h5>Your Question:</h5>
       <label>
         <textarea name="myQuestion" placeholder="Question..." maxLength="1000" style={{"width": "100%"}}required/>

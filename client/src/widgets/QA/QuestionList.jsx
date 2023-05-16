@@ -9,8 +9,21 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     fontFamily: "Arial"
   }
 
+  const buttonStyle = {
+    "backgroundColor" : "#eee",
+    "color": "#444",
+    "cursor": "pointer",
+    "display": "inline",
+    "padding": "1vh",
+    "width": "15%",
+    "border": "none",
+    "textAlign": "center",
+    "outline": "none",
+    "fontSize": "14px",
+    "transition": "0.4s",
+  };
+
   let [shownQuestions, setShownQuestions] = useState([]);
-  // let [shownQuestions, setShownQuestions] = useState(questions.slice(0, 4));
 
   useEffect(() => {
     setShownQuestions(questions.slice(0, 4));
@@ -20,11 +33,13 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
 
   const displayCSS = {
     color : "black",
+    marginBottom : "2vh",
   }
 
   const scrollCSS = {
     color : "black",
     height : "90vh",
+    marginBottom : "2vh",
     overflow : "auto",
   };
 
@@ -32,11 +47,11 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
 
   let additionalQuestionButton = (<div></div>);
   if (questions.length > 4) {
-    additionalQuestionButton = (<span onClick={() => {
+    additionalQuestionButton = (<span style={buttonStyle} onClick={() => {
       setShownQuestions(questions)}}>More Answered Questions</span>);
     if (shownQuestions.length > 4) {
       shownCSS = scrollCSS;
-      additionalQuestionButton = (<span onClick={() => setShownQuestions(shownQuestions.slice(0, 4))}>Collapse Question List</span>)
+      additionalQuestionButton = (<span style={buttonStyle} onClick={() => setShownQuestions(shownQuestions.slice(0, 4))}>Collapse Question List</span>)
     }
   }
 
