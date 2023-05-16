@@ -49,8 +49,9 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
               editing='false'
               starCount={5}
               rating={averageRatingRounded}
-              starRatedColor="blue"
-              starSpacing="10px"
+              starRatedColor="green"
+              starSpacing="0.5vw"
+              starDimension="5vh"
             />
             <p onClick={(e)=>{e.preventDefault; console.log('average: ', averageRating, ' rounded: ', averageRatingRounded); document.querySelector('.RR').scrollIntoView()}}>read all reviews</p>
           </div>
