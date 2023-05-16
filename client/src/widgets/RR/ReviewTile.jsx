@@ -3,7 +3,7 @@ import StarRatings from "react-star-ratings";
 import axios from "axios";
 import PhotoModal from "./PhotoModal.jsx"
 
-function ReviewTile ({review}) {
+function ReviewTile ({review, reviews}) {
   const [rating, setRating] = useState(review.rating);
   const [helpfulness, setHelpfulness] = useState(review.helpfulness);
   const [clickedYes, setClickedYes] = useState(false);
@@ -15,6 +15,25 @@ function ReviewTile ({review}) {
   }, [review])
 
   const body = review.body;
+
+  const isVerifiedUser = (username) => {
+   const allUsernames = reviews.map((reviewObj) => {
+      return reviewObj.reviewer_name;
+    })
+
+    const currentUserList = []
+    allUsernames.map((user) => {
+      if (username === user) {
+        currentUserList.push(username)
+      }
+    })
+
+    if (currentUserList.length > 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   const formatDate = (string) => {
     let date = new Date(string);
@@ -70,14 +89,29 @@ function ReviewTile ({review}) {
         />
 
         <div>
-          <div style={{fontSize: "small"}}>
+          <div style={{
+            fontSize: "small",
+            display: "flex",
+            justifyContent: "right"
+          }}>
           {formatDate(review.date)}
           </div>
           <div
           style={{fontSize: "small",
           display: "flex",
           justifyContent: "right"}}>
-          {review.reviewer_name}
+            {review.reviewer_name}
+          </div>
+          <div
+            style={{fontSize: "small",
+            fontStyle: "italic",
+            color: "grey",
+            display: "flex",
+            justifyContent: "right"}}
+            >
+          {isVerifiedUser(review.reviewer_name)
+            ?  "Verified Purchaser"
+            : null}
           </div>
         </div>
 
