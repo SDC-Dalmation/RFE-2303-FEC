@@ -8,7 +8,9 @@ function ReviewTile ({review, reviews}) {
   const [helpfulness, setHelpfulness] = useState(review.helpfulness);
   const [clickedYes, setClickedYes] = useState(false);
   const [buttonYesColor, setButtonYesColor] = useState("blue");
+  const [buttonReportColor, setButtonReportColor] = useState("blue");
   const [showMore, setShowMore] = useState(false);
+  const [reported, setReported] = useState(false)
 
   useEffect(() => {
     setHelpfulness(review.helpfulness);
@@ -74,6 +76,15 @@ function ReviewTile ({review, reviews}) {
     }
   }
 
+  const reportReview = function () {
+    axios.post('/reportReview', {
+      review_id: review.review_id
+    })
+      .then((res) => {console.log('reported review: ', res.data)});
+    setButtonReportColor("grey");
+    setReported(true);
+  }
+
   return(
     <div className="tile">
       <div className="rating-and-date">
@@ -133,7 +144,6 @@ function ReviewTile ({review, reviews}) {
 
       <div style={{display: "flex", fontSize: "small", marginTop: "10px"}}>
         <div style={{marginRight: "5px"}}>Was this review helpful? </div>
-
         <button
         onClick={handleHelpfulClick}
         style={{ textDecoration: "underline",
@@ -143,8 +153,17 @@ function ReviewTile ({review, reviews}) {
         color: buttonYesColor }}>
           Yes
         </button>
-
         <div>({helpfulness})</div>
+        <div style={{marginLeft: "5px", fontSize: "large"}}> | </div>
+        <button
+        onClick={reportReview}
+        style={{ textDecoration: "underline",
+        border: "none",
+        background: "none",
+        cursor: "pointer",
+        color: buttonReportColor }}>
+          Report
+        </button>
       </div>
 
       {review.response ? <div style={{backgroundColor:"rgb(187, 185, 185)"}}> Response from seller: {review.response}</div>: null}
