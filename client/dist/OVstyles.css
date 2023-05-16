@@ -50,12 +50,21 @@
 }
 
 .gallery-main{
-  width: 31vw;
-  height: 53vh;
+  max-width: 31vw;
+  max-height: 71vh;
   display: flex;
   justify-content: flex-start;
   margin-left: 1vw;
 }
+
+.main-gallery-pic{
+  border: 2px solid black;
+  width: 30vw;
+  max-height: 70vh;
+  min-height: 50vh;
+  object-fit: cover;
+}
+
 .gallery-btn{
   align-self: center;
   border: 1px solid black;
@@ -169,6 +178,7 @@
   max-height: 80vh;
   transition: transform .1s;
   cursor: zoom-in;
+  display: block;
 }
 
 #extended-thumbnail-checkmark{
@@ -200,13 +210,4 @@
 .extended-gallery-carousel-piece{
   display: flex;
   justify-content: center;
-}
-
-
-.main-gallery-pic{
-  height: 50vh;
-  border: 2px solid black;
-  width: 30vw;
-  max-height: 50vh;
-  min-height: 50vh;
 }
