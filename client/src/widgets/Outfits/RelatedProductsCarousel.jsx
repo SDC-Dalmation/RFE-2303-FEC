@@ -28,7 +28,7 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
   }
 
   return (
-    <div style={{
+    <div data-testid="ProductsCarousel" style={{
       position: 'relative',
       display: 'flex',
       border: '1px solid black',

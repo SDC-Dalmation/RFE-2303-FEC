@@ -58,7 +58,7 @@ const CompareModal = ({showModal, setShowModal, product, oldProduct}) => {
   }, [currentCharacteristics, oldCharacteristics])
 
   return (
-    <div style={{
+    <div data-testid="CompareModal" style={{
       zIndex: 1,
       width: 600,
       height: 600,

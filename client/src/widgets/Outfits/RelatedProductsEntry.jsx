@@ -9,6 +9,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
   const [productStyle, setProductStyle] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [allRatingsObj, setAllRatingsObj] = useState(0)
+  const [hasSale, setHasSale2] = useState(null)
   const checkIfProductChangedArr = [currentProduct]
 
   useEffect(() => {
@@ -35,6 +36,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
     })
       .then((info) => {
         setProductStyle(info.data.results[0].photos[0].thumbnail_url);
+        setHasSale2(info.data.results[0].sale_price)
     })
   }, [product, oldProduct])
 
@@ -78,7 +80,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
   }
   if (productStyle) {
     return (
-      <div style={{
+      <div data-testid="inStock" style={{
         border: '1px solid grey',
         position: 'relative'
         }} >
@@ -89,11 +91,15 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
             document.getElementById("modal"))
           }
           </div>
-          <div onClick={changeProduct}>
+          <div data-testid="changeProduct" onClick={changeProduct}>
             <img style={{width: 350, height: 350}} src={productStyle}/>
             <div style={{fontSize: 20}}>{productInfo.category}</div>
             <div style={{fontSize: 25, fontWeight: 'bold'}}>{productInfo.name}</div>
-            <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div>
+            {hasSale === null ? <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div> :
+            <div>
+              <div style={{fontSize: 20, color: 'red', textDecoration: 'line-through'}}>{`$${productInfo.default_price}`}</div>
+              <div style={{fontSize: 20}}>{`$${hasSale}`}</div>
+            </div>}
             <div>
             <StarRatings
               name="average-rating"
@@ -110,7 +116,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
     )
   } else {
     return (
-      <div style={{
+      <div data-testid="soldOut" style={{
         border: '1px solid grey',
         position: 'relative',
         }} >
@@ -125,7 +131,11 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
             <img style={{width: 350, height: 350}} src={'https://previews.123rf.com/images/roxanabalint/roxanabalint1904/roxanabalint190400154/123529842-temporarily-out-of-stock-sign-or-stamp-on-white-background-vector-illustration.jpg'}/>
             <div style={{fontSize: 20}}>{productInfo.category}</div>
             <div style={{fontSize: 25, fontWeight: 'bold'}}>{productInfo.name}</div>
-            <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div>
+            {hasSale === null ? <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div> :
+            <div>
+              <div style={{fontSize: 20, color: 'red', textDecoration: 'line-through'}}>{`$${productInfo.default_price}`}</div>
+              <div style={{fontSize: 20}}>{`$${hasSale}`}</div>
+            </div>}
             <div>
             <StarRatings
               name="average-rating"
