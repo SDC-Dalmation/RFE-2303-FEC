@@ -110,7 +110,7 @@
   max-height: 41vh;
 }
 .gallery-carousel-piece{
-  margin: 0;
+  margin-bottom: 0.5vh;
   width: 3.7vw;
   height: 5.3vh;
 }
