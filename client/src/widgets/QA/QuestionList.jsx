@@ -6,8 +6,8 @@ import QuestionSearch from './QuestionSearch.jsx';
 function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA, currentProduct}) {
   const listStyle = {
     margin: "2vh",
-    marginBottom: "3vh",
-    fontFamily: "Arial"
+    fontFamily: "Arial",
+    width: "90%",
   }
 
   const buttonStyle = {
@@ -16,7 +16,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",
-    "width": "15%",
+    "width": "100%",
     "border": "none",
     "textAlign": "center",
     "outline": "none",
@@ -35,6 +35,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
   const displayCSS = {
     color : "black",
     marginBottom : "2vh",
+    width: "99%",
   }
 
   const scrollCSS = {
@@ -42,6 +43,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     height : "90vh",
     marginBottom : "2vh",
     overflow : "auto",
+    width: "99%",
   };
 
   let shownCSS = displayCSS;

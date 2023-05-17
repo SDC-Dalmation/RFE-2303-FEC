@@ -11,12 +11,12 @@ function RR ({currentProduct}) {
     <div className="RR"
     style={{
     marginTop: "10px",
-    border: "solid 1px black",
-    width: "65%",
-    height: "550px",
+    borderTop: "solid 1px black",
+    height: "750px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
+    width: "100%"
     }}
     >
       <div
@@ -42,7 +42,7 @@ function RR ({currentProduct}) {
         <div
         className="Breakdowns"
         style={{
-          width: "200px",
+          width: "30%",
           height: "200px",
           display: "flex",
           flexDirection: "column",
@@ -56,8 +56,8 @@ function RR ({currentProduct}) {
         className="Reviews-List"
         style={{
           marginLeft: "20px",
-          width: "550px",
-          height: "650px"
+          width: "80%",
+          height: "100%"
         }}
         >
           <ReviewsList currentProduct={currentProduct}/>

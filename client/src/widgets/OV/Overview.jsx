@@ -30,7 +30,6 @@ function Overview({currentProduct}) {
   if (currentProduct) {
     return(
       <div data-testid="overviewMain">
-        Overview
        <div className="main-overview">
         <Gallery currentProduct={currentProduct} currentStyle={currentStyle} mainGalleryPic={mainGalleryPic} setMainGalleryPic={setMainGalleryPic} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr}/>
         <div className="all-product-info">

@@ -21,7 +21,13 @@ if (products.length > 0) {
 
 
   return(
-    <div style={{"display": "flex", "flexDirection": "column", "alignItems": "center",}}>
+    <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
+    }}
+    >
       <button onClick={() => {
         console.log(products[num])
         setCurrentProduct(products[num])
@@ -32,7 +38,7 @@ if (products.length > 0) {
         }
       }}>next product</button>
       <OV currentProduct={currentProduct}/>
-      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <div>
       <Outfit products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
       </div>
       <QA currentProduct={currentProduct}/>

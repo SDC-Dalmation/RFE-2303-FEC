@@ -33,7 +33,7 @@ function ReviewsList ({currentProduct}) {
         className="scrollable"
         style={{
           border: "solid 1px black",
-          height: "380px",
+          height: "450px",
           overflow: "auto",
           textAlign: "justify",
           marginBottom: "20px",

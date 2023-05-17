@@ -4,19 +4,19 @@ function Style({style, styleBtnHandler, index, selectedStyle}) {
 
   if (selectedStyle === style.style_id) {
     return (
-      <div onClick={styleBtnHandler(index, style.style_id)} className="style" style={{'border': '2px solid green'}}>
+      <div onClick={styleBtnHandler(index, style.style_id)} className="style">
         <div >{style.name}</div>
-        <div style={{'display':'flex'}}>
+        <p style={{'position': 'absolute'}}>&#9989;</p>
+        <div style={{'display':'flex', 'border': '0.2vw solid green', 'borderRadius': '2.1vw', 'width': '5vw'}}>
           <img src={style.photos[0].thumbnail_url} className="style-thumbnail"/>
-          <p style={{'marginLeft': '5px'}}>&#9989;</p>
         </div>
       </div>
     )
   } else {
     return (
-      <div onClick={styleBtnHandler(index, style.style_id)} className="style" style={{'border': '2px solid black'}}>
+      <div onClick={styleBtnHandler(index, style.style_id)} className="style" >
         <div >{style.name}</div>
-        <div style={{'display':'flex'}}>
+        <div style={{'display':'flex', 'border': '0.2vw solid black', 'borderRadius': '2.1vw', 'width': '5vw'}}>
           <img src={style.photos[0].thumbnail_url} className="style-thumbnail" />
         </div>
       </div>
