@@ -17,7 +17,7 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
   }
 
   const questionStyle = {
-    width: "80%",
+    width: "100%",
     border: "1px solid black",
     borderRadius: "1%",
     marginTop: "2vh",

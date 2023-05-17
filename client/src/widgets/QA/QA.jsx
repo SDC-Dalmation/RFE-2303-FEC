@@ -8,21 +8,25 @@ import { createPortal } from 'react-dom';
 function QA ({currentProduct}) {
 
   const titleStyle = {
-    fontSize: "15px",
-    margin: "2vh",
-    fontFamily: "Arial"
+    borderTop: "2px solid black",
+    paddingTop: "2vh",
+    fontSize: "20px",
+    fontFamily: "Arial",
+    justifyContent: "left",
+    alignItems: "flex-start",
+    width: "90%"
   }
 
   const buttonStyle = {
+    "alignSelf": "start",
     "backgroundColor" : "#eee",
     "color": "#444",
     "cursor": "pointer",
     "display": "inline",
     "fontFamily": "Arial",
     "padding": "1vh",
-    "marginLeft": "2vh",
-    "marginTop": "2vh",
-    "width": "25%",
+    "marginLeft": "5%",
+    "width": "12vw",
     "border": "none",
     "textAlign": "center",
     "outline": "none",
@@ -31,9 +35,10 @@ function QA ({currentProduct}) {
   };
 
   const componentBoxStyle = {
-    width: "60%",
-    border: "1px solid black",
-    borderRadius: "1%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
     padding: "1vh",
     paddingBottom: "3vh",
   };
@@ -62,7 +67,7 @@ function QA ({currentProduct}) {
 
     return(
       <div style={componentBoxStyle}>
-        <span style={titleStyle}>Questions & Answers</span>
+        <h3 style={titleStyle}>Questions & Answers</h3>
         <QuestionList questions={questions}
           prodName={currentProduct.name}
           markHelpful={markHelpful}
@@ -79,7 +84,7 @@ function QA ({currentProduct}) {
     );
   }
   return(
-    <div>
+    <div style={{alignItems: "left",}}>
       <span style={buttonStyle} onClick={() => setShowQuestionModal(true)}>Add a Question</span>
         {showQuestionModal && createPortal(
           <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)}

@@ -1,7 +1,8 @@
 .main-overview{
   display: flex;
-  border-bottom: 2px solid black;
   padding: 2vh;
+  border-bottom: 2px solid black;
+  width: 100%
 }
 .product-info{
   display: flex;
