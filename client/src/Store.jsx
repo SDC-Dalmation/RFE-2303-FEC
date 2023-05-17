@@ -32,20 +32,24 @@ function Store () {
   }
 
   return(
-    <div style={{background: background, color: color}}>
+    <div style={{background: background, color: color, border: "1px solid black"}}>
+    <div style={{display: "flex", justifyContent: "space-between"}}>
       <div style={{display: "flex"}}>
         <img style={{width: '25wh', height: '25vh'}} src={Logo} />
         <div style={{
-          fontSize: '6vh',
+          fontSize: '5vh',
           fontFamily: 'Orbitron, sans-serif',
           display: "flex",
           alignItems: "center",
           color: "white",
           marginTop: "10px",
-          textShadow: "2px 2px 4px #000000"
-          }}>MART</div>
+          textShadow: "3px 2px 2px #808080"
+        }}>MART
+        </div>
       </div>
-      <button onClick={changeMode}>{modeName}</button>
+      <button style={{height: "20px"}} onClick={changeMode}>{modeName}</button>
+      </div>
+
       <Product products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
     </div>
   );

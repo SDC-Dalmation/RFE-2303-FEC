@@ -166,7 +166,8 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
           <StarRatings
           rating={rating}
           changeRating={changeRating}
-          starRatedColor="blue"
+          starRatedColor="green"
+          starEmptyColor="grey"
           numberOfStars={5}
           name="rating"
           starDimension="20px"

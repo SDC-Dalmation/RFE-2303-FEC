@@ -81,6 +81,7 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
               starCount={5}
               rating={averageRatingRounded}
               starRatedColor="green"
+              starEmptyColor="grey"
               starSpacing="3px"
               starDimension="20px"
             />

@@ -16,7 +16,7 @@ function RR ({currentProduct}) {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "100%"
+    width: "95%"
     }}
     >
       <div
