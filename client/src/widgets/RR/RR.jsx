@@ -15,7 +15,7 @@ function RR ({currentProduct}) {
     height: "750px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
     width: "100%"
     }}
     >
