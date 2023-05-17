@@ -74,7 +74,11 @@ const YourOutfits = ({currentProduct}) => {
                 border: '1px solid grey',
                 padding: 175,
                 }}>
-                  {'+'}
+                  <div>
+                    <div>+</div>
+                    <br></br>
+                    <div style={{position: 'absolute', left: 145, top: 200}}>{'Add to Outfit'}</div>
+                  </div>
           </div>
           {items.map((item, index) => (
             <div key={index} style={{transform: `translateX(${listTranslateXIndex}px)`}}>
