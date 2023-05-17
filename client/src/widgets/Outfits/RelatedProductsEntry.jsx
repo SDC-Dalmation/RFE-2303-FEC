@@ -107,6 +107,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
               starCount={5}
               rating={averageRatingRounded}
               starRatedColor="green"
+              starEmptyColor="grey"
               starSpacing="3px"
               starDimension="20px"
             />
