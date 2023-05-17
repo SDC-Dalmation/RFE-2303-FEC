@@ -19,8 +19,7 @@ function QA ({currentProduct}) {
 
   const buttonStyle = {
     "alignSelf": "start",
-    "backgroundColor" : "#eee",
-    "color": "#444",
+    "backgroundColor" : "rgb(216,216,216)",
     "cursor": "pointer",
     "display": "inline",
     "fontFamily": "Arial",

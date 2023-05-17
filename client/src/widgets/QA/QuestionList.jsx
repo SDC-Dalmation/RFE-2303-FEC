@@ -12,7 +12,6 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
 
   const buttonStyle = {
     "backgroundColor" : "rgb(216,216,216)",
-    "color": "black",
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",
@@ -33,13 +32,11 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
   let [filterString, setFilterString] = useState("");
 
   const displayCSS = {
-    color : "black",
     marginBottom : "2vh",
     width: "99%",
   }
 
   const scrollCSS = {
-    color : "black",
     height : "90vh",
     marginBottom : "2vh",
     overflow : "auto",

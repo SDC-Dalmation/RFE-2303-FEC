@@ -11,18 +11,15 @@ function AnswerList ({answers, markHelpful, helpfulQA, setHelpfulQA}) {
   }, [answers]);
 
   const displayCSS = {
-    color : "black",
   }
 
   const scrollCSS = {
-    color : "black",
     height : "50vh",
     overflow : "auto",
   };
 
   const buttonStyle = {
     "backgroundColor" : "rgb(216,216,216)",
-    "color": "#black",
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",
