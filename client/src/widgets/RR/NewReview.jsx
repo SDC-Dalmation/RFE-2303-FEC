@@ -103,17 +103,66 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
   }
 
   return(
-    <div className="modal">
-     <div className="modal-content">
-      <div className="modal-header">
-        <h4 className="modal-title">Write Your Review</h4>
-        <h5 className="modal-subtitle">{`About the ${currentProduct.name}`}</h5>
+    <div
+    className="modal"
+    style={{
+      position: "fixed",
+      left: "0",
+      top: "0",
+      right: "0",
+      bottom: "0",
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+    >
+     <div
+     className="modal-content"
+     style={{
+      width: "80%",
+      backgroundColor: "#fff"
+     }}
+     >
+      <div
+      className="modal-header"
+      style={{
+        padding: "10px"
+      }}
+      >
+        <h4
+        className="modal-title"
+        style={{margin: "0"}}
+        >
+        Write Your Review</h4>
+        <h5
+        className="modal-subtitle"
+        style={{margin: "0"}}
+        >{`About the ${currentProduct.name}`}</h5>
       </div>
-      <div className="modal-body">
+      <div
+      className="modal-body"
+      style={{
+        padding: "10px",
+        borderTop: "1px solid #eee",
+        borderBottom: "1px solid #eee"
+      }}
+      >
 
-        <form onSubmit={handleSubmit}>
+        <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column"
+        }}
+        >
 
-          <div className="modal-rating">Overall rating
+          <div
+          className="modal-rating"
+          style={{
+            display: "flex"
+          }}
+          >Overall rating
           <StarRatings
           rating={rating}
           changeRating={changeRating}
@@ -148,7 +197,13 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
               No
             </label>
           </div>
-          <div className="characteristic-and-inputs">
+          <div
+          className="characteristic-and-inputs"
+          style={{
+            display: "flex",
+            flexDirection: "row"
+          }}
+          >
             <Characteristics
             currentProduct={currentProduct}
             charOptions={charOptions}
@@ -157,7 +212,15 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
             setResponses={setResponses}
             />
 
-            <div className="add-review-inputs">
+            <div
+            className="add-review-inputs"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: "40px",
+              width: "75%"
+            }}
+            >
               <label style={{"marginTop": "10px"}}>Review Summary (60 characters max)</label>
 
               <input
@@ -221,7 +284,12 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
         </form>
 
       </div>
-      <div className="modal-footer">
+      <div
+      className="modal-footer"
+      style={{
+        padding: "10px"
+      }}
+      >
         <button className="button" type="submit" onClick={handleClose}>Submit Review</button>
       </div>
      </div>
