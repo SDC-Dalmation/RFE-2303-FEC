@@ -14,19 +14,21 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
     fontFamily: "Arial",
     fontSize: "15px",
     marginBottom: "1vh",
+    width: "90%",
   }
 
   const questionStyle = {
     width: "100%",
     border: "1px solid black",
-    borderRadius: "1%",
+    borderRadius: "2%",
     marginTop: "2vh",
     padding: "1vh",
     paddingBottom: "3vh",
   };
 
   const helperStyle = {
-    float: "right",
+    alignContent: "right",
+    marginLeft: "auto",
     fontFamily: "Arial",
     fontSize: "8px",
   }
@@ -58,7 +60,7 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
   return(
     <div style={questionStyle}>
-      <div style={{marginBottom: "1vh"}}>
+      <div style={{marginBottom: "1vh", display: "flex",}}>
         <span style={bodyStyle}>Q: {question.question_body}</span>
         <span style={helperStyle}>
           <span style={markHelpfulStyle} onClick={() => markQuestionHelpful()}> Helpful? Yes{`(${helpfulness})`}</span> |

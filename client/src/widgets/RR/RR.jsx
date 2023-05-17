@@ -12,11 +12,11 @@ function RR ({currentProduct}) {
     style={{
     marginTop: "10px",
     borderTop: "solid 1px black",
-    height: "750px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "95%"
+    width: "95%",
+    height: "50%"
     }}
     >
       <div

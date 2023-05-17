@@ -16,19 +16,35 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
 
   let pics = (<div></div>);
   if (photos.length > 0) {
-    pics = photos.map((photo, index) => {
-      return (<img height="50px" src={`${photo}`} key={index} style={{"marginLeft": "1vh",}}></img>)
-    })
+    pics = (<div style={{marginTop: "3vh"}}> {photos.map((photo, index) => {
+      return <img height="50px" src={`${photo}`} key={index} style={{"marginLeft": "1vh",}}></img>})}</div>)
   }
 
-  let modalStyle = {"display": "flex",
+  const buttonStyle = {
+    "backgroundColor" : "rgb(216,216,216)",
+    "color": "black",
+    "cursor": "pointer",
+    "display": "inline",
+    "fontFamily": "Arial",
+    "padding": "1vh",
+    "marginTop": "2vh",
+    "width": "25%",
+    "border": "none",
+    "textAlign": "center",
+    "outline": "none",
+    "fontSize": "14px",
+    "transition": "0.4s",
+  };
+
+  const modalStyle = {"display": "flex",
   "flexDirection": "column",
   "justifyContent": "center",
   "alignItems": "left",
   "boxShadow": "rgba(100, 100, 111, 0.3) 0px 7px 29px 0px",
   "backgroundColor": "white",
-  "border": "2px solid rgb(240, 240, 240)",
+  "border": "1px solid black",
   "borderRadius": "12px",
+  "fontFamily": "Arial",
   "padding": "1vh",
   "paddingLeft": "20vh",
   "paddingRight": "20vh",
@@ -89,13 +105,13 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
         </label>
           <br></br>
         <button onClick={() => {setShowPhotoModal(true)}} style={{"marginTop": "3vh",}}>Add Photo</button>
-        <div id="thumbnails" style={{"marginTop": "2vh",}}>
+        <div id="thumbnails" >
           {pics}
         </div>
         <br></br>
-          <button type="submit" style={{ "marginBottom": "3vh",}} >Submit Answer</button>
+          <button type="submit" style={buttonStyle} >Submit Answer</button>
       </form>
-      <button onClick={onClose}>Close out</button>
+      <button style={buttonStyle} onClick={onClose}>Close out</button>
     </div>
   );
 }
