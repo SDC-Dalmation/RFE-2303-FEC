@@ -49,6 +49,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
               starCount={5}
               rating={averageRatingRounded}
               starRatedColor="green"
+              starEmptyColor="grey"
               starSpacing="0.5vw"
               starDimension="5vh"
             />

@@ -73,9 +73,9 @@ function ProductBreakdown ({currentProduct}) {
                 style={{
                   width: "0",
                   height: "0",
-                  borderLeft: "10px solid transparent",
-                  borderRight: "10px solid transparent",
-                  borderTop: "13px solid blue",
+                  borderLeft: "8px solid transparent",
+                  borderRight: "8px solid transparent",
+                  borderTop: "13px solid green",
                   marginLeft: `${calculateMargin(productData, characteristic)}`
                 }}
               >

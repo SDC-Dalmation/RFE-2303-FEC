@@ -65,18 +65,28 @@ function RatingBreakdown ({currentProduct}) {
     }}
     >
       <div style={{display: "flex", marginLeft: "10px", height: "25%"}}>
-        <h1>{displayAveRating}</h1>
+        <p
+        style={{
+          fontWeight: "bold",
+          fontSize: "4vw",
+          display: "flex",
+          alignItems: "center"
+        }}>
+        {displayAveRating}
+        </p>
         <div style={{marginTop: "20px", marginLeft: "5px"}}>
           <StarRatings
             rating={averageRatingRounded}
-            starRatedColor="blue"
+            starRatedColor="green"
+            starEmptyColor="grey"
             numberOfStars={5}
             name="rating"
-            starDimension="15px"
+            starDimension="20px"
             starSpacing="1px"
             />
           </div>
         </div>
+        <div>
       {[5, 4, 3, 2, 1].map((num, i) => {
         return(
           <div key={i} style={{ display: "flex", alignItems: "center" }}>
@@ -101,7 +111,7 @@ function RatingBreakdown ({currentProduct}) {
                 style={{
                   height: "100%",
                   width: `${totalRatings(ratingData, ratingData[num])}`,
-                  backgroundColor: 'blue',
+                  backgroundColor: 'green',
                   borderRadius: "5px"
                 }}
                 >
@@ -114,8 +124,10 @@ function RatingBreakdown ({currentProduct}) {
                 fontSize: "small"
               }}>{ratingData[num]}</div>
             </div>
+
         )
       })}
+      </div>
     </div>
   );
   } else {

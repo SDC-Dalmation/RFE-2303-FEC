@@ -105,10 +105,11 @@ function ReviewTile ({review, reviews}) {
 
         <StarRatings
         rating={review.rating}
-        starRatedColor="blue"
+        starRatedColor="green"
+        starEmptyColor="grey"
         numberOfStars={5}
         name="rating"
-        starDimension="20px"
+        starDimension="18px"
         starSpacing="1px"
         data-testid="star-ratings"
         />
@@ -128,7 +129,7 @@ function ReviewTile ({review, reviews}) {
       </div>
 
       <div style={{marginBottom: "10px"}}>
-        <p style={{"fontWeight": "bold"}}>
+        <p style={{"fontWeight": "bold", marginTop: "0"}}>
         {review.summary}
         </p>
 
