@@ -65,11 +65,24 @@ function Characteristics ({currentProduct, charOptions, setCharOptions, response
   }
 
   return (
-    <div className="characteristics-radio">Characteristics
+    <div
+    className="characteristics-radio"
+    style={{
+      marginTop: "10px",
+      marginBottom: "15px",
+      width: "33%"
+    }}
+    >Characteristics
             {characteristics.map((characteristic, index) => {
               return (
                 <div className="single-characteristic" key={index}>
-                  <h4 className="characteristic-name">{characteristic}</h4>
+                  <h4
+                  className="characteristic-name"
+                  style={{
+                    marginBottom: "0px",
+                    marginTop: "5px"
+                  }}
+                  >{characteristic}</h4>
                   <p>
                     {descriptions[characteristic]}
                   </p>

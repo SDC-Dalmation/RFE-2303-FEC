@@ -86,8 +86,22 @@ function ReviewTile ({review, reviews}) {
   }
 
   return(
-    <div className="tile">
-      <div className="rating-and-date">
+    <div
+    className="tile"
+    style={{
+      border: "1px solid black",
+      margin: "10px",
+      padding: "10px"
+    }}
+    >
+      <div
+      className="rating-and-date"
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "5px"
+      }}
+      >
 
         <StarRatings
         rating={review.rating}
@@ -118,7 +132,11 @@ function ReviewTile ({review, reviews}) {
         {review.summary}
         </p>
 
-        <p>
+        <p
+        style={{
+          margin: "0"
+        }}
+        >
           {showMore ? body: `${body.substring(0, 250)}`}
           {body.length>250 ?
             <button

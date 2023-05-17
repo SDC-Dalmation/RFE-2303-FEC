@@ -29,7 +29,16 @@ function ReviewsList ({currentProduct}) {
     <div>
       <div>
         <Sort currentProduct={currentProduct} reviews={reviews} setReviews={setReviews} />
-        <div className="scrollable">
+        <div
+        className="scrollable"
+        style={{
+          border: "solid 1px black",
+          height: "380px",
+          overflow: "auto",
+          textAlign: "justify",
+          marginBottom: "20px",
+        }}
+        >
         {
           reviews.slice(0, limit).map((review, index) => {
             return (<ReviewTile key={index} review={review} reviews={reviews}/>)

@@ -8,14 +8,57 @@ function RR ({currentProduct}) {
 
 
   return(
-    <div className="RR">
-      <h4>Ratings and Reviews</h4>
-      <div className="Breakdown-List">
-        <div className="Breakdowns">
+    <div className="RR"
+    style={{
+    marginTop: "10px",
+    border: "solid 1px black",
+    width: "65%",
+    height: "550px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+    }}
+    >
+      <div
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "left",
+        marginLeft: "10%"
+      }}
+      >
+        <h3>
+        Ratings and Reviews
+        </h3>
+      </div>
+      <div
+      className="Breakdown-List"
+      style={{
+        display: "flex"
+      }}
+      >
+        <div
+        className="Breakdowns"
+        style={{
+          border: "solid 1px black",
+          width: "200px",
+          height: "200px",
+          display: "flex",
+          flexDirection: "column"
+        }}
+        >
           <RatingBreakdown currentProduct={currentProduct}/>
           <ProductBreakdown currentProduct={currentProduct}/>
         </div>
-        <div className="Reviews-List">
+        <div
+        className="Reviews-List"
+        style={{
+          marginLeft: "20px",
+          width: "550px",
+          height: "650px"
+        }}
+        >
           <ReviewsList currentProduct={currentProduct}/>
         </div>
       </div>
