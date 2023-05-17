@@ -13,7 +13,6 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
 
 
   if (allRatingsObj) {
-    console.log(allRatingsObj)
     var ratingsArr = Object.entries(allRatingsObj)
 
     // oh my god this has got to be the LEAST efficient way to do this
@@ -58,7 +57,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
           <p className="product-category">{currentProduct.category}</p>
           <h3 className="product-name">{currentProduct.name}</h3>
           <p>{currentProduct.slogan}</p>
-          {hasSale ? <div><strike >{currentStyle.original_price}</strike> <p className="product-price-discounted">{currentPrice}</p></div> : <p className="product-price">{currentPrice}</p>}
+          {hasSale ? <div  style={{'display': 'flex', 'marginBottom': '1vh'}}> <strike>{currentStyle.original_price}</strike> <div className="product-price-discounted">{currentPrice}</div> </div> : <div className="product-price">{currentPrice}</div>}
           <div className="product-description">{currentProduct.description}</div>
         </div>
       )
