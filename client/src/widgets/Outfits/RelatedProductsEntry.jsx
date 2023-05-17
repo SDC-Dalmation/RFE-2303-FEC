@@ -97,8 +97,8 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
             <div style={{fontSize: 25, fontWeight: 'bold'}}>{productInfo.name}</div>
             {hasSale === null ? <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div> :
             <div>
-              <div style={{fontSize: 20, color: 'red', textDecoration: 'line-through'}}>{`$${productInfo.default_price}`}</div>
-              <div style={{fontSize: 20}}>{`$${hasSale}`}</div>
+              <div style={{fontSize: 20, textDecoration: 'line-through'}}>{`$${productInfo.default_price}`}</div>
+              <div style={{fontSize: 20, color: 'red'}}>{`$${hasSale}`}</div>
             </div>}
             <div>
             <StarRatings
@@ -133,8 +133,8 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
             <div style={{fontSize: 25, fontWeight: 'bold'}}>{productInfo.name}</div>
             {hasSale === null ? <div style={{fontSize: 20}}>{`$${productInfo.default_price}`}</div> :
             <div>
-              <div style={{fontSize: 20, color: 'red', textDecoration: 'line-through'}}>{`$${productInfo.default_price}`}</div>
-              <div style={{fontSize: 20}}>{`$${hasSale}`}</div>
+              <div style={{fontSize: 20, textDecoration: 'line-through'}}>{`$${productInfo.default_price}`}</div>
+              <div style={{fontSize: 20, color: 'red'}}>{`$${hasSale}`}</div>
             </div>}
             <div>
             <StarRatings

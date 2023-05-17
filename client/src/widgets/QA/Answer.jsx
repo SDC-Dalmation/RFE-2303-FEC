@@ -8,9 +8,9 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
   const [zoomedImages, setZoomedImages] = useState(Array(answer.photos.length).fill(false));
 
   const bodyStyle = {
-    fontSize: "12px",
-    margin: "1vh",
+    fontSize: "14px",
     padding: "1vh",
+    borderTop: "1px solid black",
   }
 
   const helperStyle = {
@@ -18,7 +18,6 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
     margin: "1vh",
     padding: "1vh",
   }
-
 
   let defaultImgStyle = {
     margin: "2vh",
@@ -33,13 +32,15 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
     cursor: "zoom-in",
   }
 
+  const markHelpfulStyle = {
+    "textDecoration" : "underline",
+  }
+
   const zoomImage = function (index) {
     let zoomedImagesCopy = zoomedImages.slice();
     zoomedImagesCopy[index] = !zoomedImagesCopy[index];
     setZoomedImages(zoomedImagesCopy);
   }
-
-
 
   const [helpfulness, setHelpfulness] = useState(answer.helpfulness);
   let [reported, changeReport] = useState(false);
@@ -63,7 +64,6 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
       })
   }
 
-
   let answerDate = new Date(answer.date);
   const months = ["January","February","March","April","May","June","July",
   "August","September","October","November","December"];
@@ -75,9 +75,6 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
       </div>
       <div style={{display: "flex", flexDirection: "row"}}>
         {answer.photos.map((picture, index) => {
-          // return (
-          //   <img src={picture} style={zoomedImages[index] ? defaultImgStyle : zoomImgStyle} height="50px" key={index} onClick={() => {zoomImage(index)}}></img>
-          // )
           return (
             <AnswerPhotoModal photo={picture} key={index}/>
           )
@@ -85,8 +82,8 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
       </div>
       <div style={helperStyle}>
         by {answer.answerer_name}, {months[answerDate.getMonth()]} {answerDate.getDate()}, {answerDate.getFullYear()} |
-        <span onClick={() => {markAnswerHelpful()}}> Helpful? Yes{`(${helpfulness})`}</span> |
-        {reportTracker}
+        <span style={markHelpfulStyle} onClick={() => {markAnswerHelpful()}}> Helpful? Yes{`(${helpfulness})`}</span> |
+        <span style={markHelpfulStyle}> {reportTracker} </span>
       </div>
     </div>
   );

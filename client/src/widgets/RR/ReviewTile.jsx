@@ -3,18 +3,39 @@ import StarRatings from "react-star-ratings";
 import axios from "axios";
 import PhotoModal from "./PhotoModal.jsx"
 
-function ReviewTile ({review}) {
+function ReviewTile ({review, reviews}) {
   const [rating, setRating] = useState(review.rating);
   const [helpfulness, setHelpfulness] = useState(review.helpfulness);
   const [clickedYes, setClickedYes] = useState(false);
   const [buttonYesColor, setButtonYesColor] = useState("blue");
+  const [buttonReportColor, setButtonReportColor] = useState("blue");
   const [showMore, setShowMore] = useState(false);
+  const [reported, setReported] = useState(false)
 
   useEffect(() => {
     setHelpfulness(review.helpfulness);
   }, [review])
 
   const body = review.body;
+
+  const isVerifiedUser = (username) => {
+   const allUsernames = reviews.map((reviewObj) => {
+      return reviewObj.reviewer_name;
+    })
+
+    const currentUserList = []
+    allUsernames.map((user) => {
+      if (username === user) {
+        currentUserList.push(username)
+      }
+    })
+
+    if (currentUserList.length > 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   const formatDate = (string) => {
     let date = new Date(string);
@@ -55,6 +76,15 @@ function ReviewTile ({review}) {
     }
   }
 
+  const reportReview = function () {
+    axios.post('/reportReview', {
+      review_id: review.review_id
+    })
+      .then((res) => {console.log('reported review: ', res.data)});
+    setButtonReportColor("grey");
+    setReported(true);
+  }
+
   return(
     <div className="tile">
       <div className="rating-and-date">
@@ -77,7 +107,7 @@ function ReviewTile ({review}) {
           style={{fontSize: "small",
           display: "flex",
           justifyContent: "right"}}>
-          {review.reviewer_name}
+            {isVerifiedUser(review.reviewer_name) ? `✓ ${review.reviewer_name}`: review.reviewer_name}
           </div>
         </div>
 
@@ -109,12 +139,11 @@ function ReviewTile ({review}) {
 
       <PhotoModal review={review}/>
 
-      {review.recommend ? <div>I recommend this product ✔️</div>: null}
+      {review.recommend ? <div>I recommend this product ✓</div>: null}
 
 
       <div style={{display: "flex", fontSize: "small", marginTop: "10px"}}>
         <div style={{marginRight: "5px"}}>Was this review helpful? </div>
-
         <button
         onClick={handleHelpfulClick}
         style={{ textDecoration: "underline",
@@ -124,8 +153,17 @@ function ReviewTile ({review}) {
         color: buttonYesColor }}>
           Yes
         </button>
-
         <div>({helpfulness})</div>
+        <div style={{marginLeft: "5px", fontSize: "large"}}> | </div>
+        <button
+        onClick={reportReview}
+        style={{ textDecoration: "underline",
+        border: "none",
+        background: "none",
+        cursor: "pointer",
+        color: buttonReportColor }}>
+          Report
+        </button>
       </div>
 
       {review.response ? <div style={{backgroundColor:"rgb(187, 185, 185)"}}> Response from seller: {review.response}</div>: null}

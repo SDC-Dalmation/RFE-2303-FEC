@@ -33,11 +33,11 @@ test('Answer modal renders', async () => {
   // fireEvent.change(screen.getByPlaceholderText("Answer..."), {
   //   target: {value: 'Yes, Test'},
   // });
-  await user.type(screen.getByPlaceholderText("Answer..."), "Yes, Test");
+  user.type(screen.getByPlaceholderText("Answer..."), "Yes, Test");
 
-  await user.type(screen.getByPlaceholderText("Example: jackson11!"), 'Name Testing');
+  user.type(screen.getByPlaceholderText("Example: jackson11!"), 'Name Testing');
 
-  await user.type(screen.getByPlaceholderText("Example: jack@email.com"), 'test@email.com');
+  user.type(screen.getByPlaceholderText("Example: jack@email.com"), 'test@email.com');
 
   // fireEvent.change(screen.getByPlaceholderText("Example: jackson11!"), {
   //   target: {value: 'Name Testing'},
@@ -45,6 +45,8 @@ test('Answer modal renders', async () => {
   // fireEvent.change(screen.getByPlaceholderText("Example: jack@email.com"), {
   //   target: {value: 'test@email.com'},
   // });
+
+  // await fireEvent.submit(screen.getByTestId("form"));
 
   // await user.click((screen.getByRole('button', {name: /submit answer/i})))
 

@@ -19,19 +19,25 @@ describe(RelatedProductsCarousel, () => {
   const relatedProducts = [37311,37312,37315,37318]
   const setCurrentProduct = jest.fn();
 
+  jest.mock('axios');
+
+  const mock = jest.spyOn(axios, "get");
+  mock.mockImplementation(() => Promise.resolve());
+
   test("renders RelatedProductsCarousel correctly", () => {
     const {queryByTestId} = render(<RelatedProductsCarousel currentProduct={currentProduct} relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>)
 
     expect(queryByTestId('ProductsCarousel')).toBeTruthy();
   });
 
-  // test("left click button works on click", async () => {
-  //   const {getByLabelText} = render(<RelatedProductsCarousel currentProduct={currentProduct} relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>)
+  test("left click button works on click", async () => {
+    render(<RelatedProductsCarousel currentProduct={currentProduct} relatedProducts={relatedProducts} setCurrentProduct={setCurrentProduct}/>)
 
-  //   const prev = jest.fn()
+    const index = 2;
+    const next = screen.getByRole('button', {name: '>'})
 
-  //   fireEvent.click(screen.getByLabelText('<'))
+    await fireEvent.click(next)
 
-  //   await(() => expect(prev).toHaveBeenCalledTimes(1))
-  // });
+    expect(index).toEqual(2)
+  });
 });
