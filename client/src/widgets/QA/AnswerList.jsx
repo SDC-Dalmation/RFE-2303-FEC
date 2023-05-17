@@ -21,8 +21,8 @@ function AnswerList ({answers, markHelpful, helpfulQA, setHelpfulQA}) {
   };
 
   const buttonStyle = {
-    "backgroundColor" : "#eee",
-    "color": "#444",
+    "backgroundColor" : "rgb(216,216,216)",
+    "color": "#black",
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",

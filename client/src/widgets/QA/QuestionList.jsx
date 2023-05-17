@@ -6,12 +6,13 @@ import QuestionSearch from './QuestionSearch.jsx';
 function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA, currentProduct}) {
   const listStyle = {
     margin: "2vh",
+    marginBottom: "3vh",
     fontFamily: "Arial"
   }
 
   const buttonStyle = {
-    "backgroundColor" : "#eee",
-    "color": "#444",
+    "backgroundColor" : "rgb(216,216,216)",
+    "color": "black",
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",

@@ -21,7 +21,7 @@ if (products.length > 0) {
 
 
   return(
-    <div>
+    <div style={{"display": "flex", "flexDirection": "column", "alignItems": "center",}}>
       <button onClick={() => {
         console.log(products[num])
         setCurrentProduct(products[num])

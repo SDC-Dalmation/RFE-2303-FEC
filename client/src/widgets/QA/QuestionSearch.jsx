@@ -7,7 +7,7 @@ function QuestionSearch ({filterString, setFilterString}) {
     fontSize: "15px",
     height: "6vh",
     fontFamily: "Arial",
-    width: "81%",
+    width: "100%",
   }
 
   const [searchTerm, setSearchTerm] = useState("");

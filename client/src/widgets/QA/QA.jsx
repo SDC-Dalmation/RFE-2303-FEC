@@ -14,8 +14,8 @@ function QA ({currentProduct}) {
   }
 
   const buttonStyle = {
-    "backgroundColor" : "#eee",
-    "color": "#444",
+    "backgroundColor" : "rgb(216,216,216)",
+    "color": "black",
     "cursor": "pointer",
     "display": "inline",
     "fontFamily": "Arial",
@@ -31,7 +31,7 @@ function QA ({currentProduct}) {
   };
 
   const componentBoxStyle = {
-    width: "60%",
+    width: "64%",
     border: "1px solid black",
     borderRadius: "1%",
     padding: "1vh",
