@@ -61,14 +61,15 @@ function RatingBreakdown ({currentProduct}) {
     <div
     className="Rating-Breakdown"
     style={{
-      width: "100%"
+      width: "90%",
+      height: "200px"
     }}
     >
       <div style={{display: "flex", marginLeft: "10px", height: "25%"}}>
         <p
         style={{
           fontWeight: "bold",
-          fontSize: "4vw",
+          fontSize: "45px",
           display: "flex",
           alignItems: "center"
         }}>
@@ -100,10 +101,9 @@ function RatingBreakdown ({currentProduct}) {
               <div
               style={{
                 height: "15px",
-                width: "50%",
-                backgroundColor: 'grey',
-                marginTop: "10px",
-                marginLeft: "10px",
+                width: "75%",
+                backgroundColor: "grey",
+                margin: "10px",
                 borderRadius: "5px"
               }}
               >
