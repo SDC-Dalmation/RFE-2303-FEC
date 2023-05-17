@@ -8,11 +8,7 @@ const root = createRoot(document.getElementById("root"))
 
 
 root.render(
-  <div
-  style={{
-    backgroundColor: "#DEE4E7"
-  }}
-  >
+  <div>
     <App />
   </div>
 )

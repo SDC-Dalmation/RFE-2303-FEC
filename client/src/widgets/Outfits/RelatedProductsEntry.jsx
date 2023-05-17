@@ -106,7 +106,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
               editing='false'
               starCount={5}
               rating={averageRatingRounded}
-              starRatedColor="blue"
+              starRatedColor="green"
               starSpacing="3px"
               starDimension="20px"
             />
@@ -142,7 +142,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
               editing='false'
               starCount={5}
               rating={averageRatingRounded}
-              starRatedColor="blue"
+              starRatedColor="green"
               starSpacing="3px"
               starDimension="20px"
             />

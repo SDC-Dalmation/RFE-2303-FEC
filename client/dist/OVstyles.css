@@ -23,6 +23,8 @@
 }
 .product-description{
   color: green;
+  min-width: 25vw;
+  max-width: 40vw;
 }
 .style-selector-main{
   display: flex;
