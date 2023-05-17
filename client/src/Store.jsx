@@ -35,7 +35,7 @@ function Store () {
     <div style={{background: background, color: color, border: "1px solid black"}}>
     <div style={{display: "flex", justifyContent: "space-between"}}>
       <div style={{display: "flex"}}>
-        <img style={{width: '25wh', height: '25vh'}} src={Logo} />
+        <img style={{width: '25wh', height: '25vh', marginLeft: '10px'}} src={Logo} />
         <div style={{
           fontSize: '5vh',
           fontFamily: 'Orbitron, sans-serif',

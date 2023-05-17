@@ -62,7 +62,7 @@ function ProductBreakdown ({currentProduct}) {
               className="product-bar"
               style={{
                 height: "5px",
-                width: "80%",
+                width: "85%",
                 backgroundColor: "grey",
                 marginTop: "0",
                 marginLeft: "10px",
