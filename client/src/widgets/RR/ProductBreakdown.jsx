@@ -34,7 +34,12 @@ function ProductBreakdown ({currentProduct}) {
   }
 
   return (
-    <div className="Product-Breakdown" style={{height: "300px"}}>
+    <div
+    className="Product-Breakdown"
+    style={{
+      height: "300px",
+      width: "100%"
+    }}>
       {Object.keys(productData).length > 0 ? (
         characteristics.map((characteristic, i) => (
           <div

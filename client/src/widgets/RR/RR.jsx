@@ -35,17 +35,18 @@ function RR ({currentProduct}) {
       <div
       className="Breakdown-List"
       style={{
-        display: "flex"
+        display: "flex",
+        width: "90%"
       }}
       >
         <div
         className="Breakdowns"
         style={{
-          border: "solid 1px black",
           width: "200px",
           height: "200px",
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          margin: "0",
         }}
         >
           <RatingBreakdown currentProduct={currentProduct}/>

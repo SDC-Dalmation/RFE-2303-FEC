@@ -60,6 +60,9 @@ function RatingBreakdown ({currentProduct}) {
   return(
     <div
     className="Rating-Breakdown"
+    style={{
+      width: "100%"
+    }}
     >
       <div style={{display: "flex", marginLeft: "10px", height: "25%"}}>
         <h1>{displayAveRating}</h1>
