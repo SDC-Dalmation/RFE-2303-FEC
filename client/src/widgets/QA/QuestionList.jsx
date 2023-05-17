@@ -12,6 +12,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
 
   const buttonStyle = {
     "backgroundColor" : "rgb(216,216,216)",
+    "color": "black",
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",
@@ -76,7 +77,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
           }
       })}
     </div>
-    <div>
+    <div style={{"width": "20%"}}>
       {additionalQuestionButton}
     </div>
     </div>

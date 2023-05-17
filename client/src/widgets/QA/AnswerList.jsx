@@ -20,6 +20,7 @@ function AnswerList ({answers, markHelpful, helpfulQA, setHelpfulQA}) {
 
   const buttonStyle = {
     "backgroundColor" : "rgb(216,216,216)",
+    "color": "black",
     "cursor": "pointer",
     "display": "inline",
     "padding": "1vh",
