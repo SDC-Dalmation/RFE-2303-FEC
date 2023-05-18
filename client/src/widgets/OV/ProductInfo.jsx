@@ -26,18 +26,23 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
     var averageRating = total / divider;
     var oldDecimals = Number(averageRating.toString()[2] + averageRating.toString()[3])
     var newDecimals;
+    var newMainNum;
     if (oldDecimals >= 0 && oldDecimals <= 13) {
       newDecimals = 0;
     } else if (oldDecimals > 13 && oldDecimals <= 38) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 25;
     } else if (oldDecimals > 38 && oldDecimals <= 62) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 50;
     } else if (oldDecimals > 62 && oldDecimals <= 87) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 75;
     } else if (oldDecimals > 87 && oldDecimals <= 99) {
       newDecimals = 0;
+      newMainNum =  Number(averageRating.toString()[0]) + 1
     }
-    var averageRatingRounded = Number(averageRating.toString()[0] + '.' + newDecimals.toString())
+    var averageRatingRounded = Number(newMainNum.toString() + '.' + newDecimals.toString())
 
     if (currentStyle) {
       return (
