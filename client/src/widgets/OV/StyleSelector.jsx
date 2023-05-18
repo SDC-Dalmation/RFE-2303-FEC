@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Style from './Style.jsx';
+import PostAPIInteraction from '../PostAPIInteraction.jsx';
 
-function StyleSelector({currentProduct, setCurrentStyle, allProductStyles, checkIfStyleChangedArr, currentStyle, selectedStyle, setSelectedStyle}) {4
+function StyleSelector({currentProduct, setCurrentStyle, allProductStyles, checkIfStyleChangedArr, currentStyle, selectedStyle, setSelectedStyle}) {
 
 
 
   const styleBtnHandler = function(index, style_id) {
     return function(e) {
       e.preventDefault;
+      PostAPIInteraction('Style-Selector','Overview')
       if (selectedStyle !== style_id) {
         setSelectedStyle(style_id)
       }

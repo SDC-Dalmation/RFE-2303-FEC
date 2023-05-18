@@ -2,12 +2,14 @@ import React, {useState, useEffect} from 'react';
 import ExtendedViewMainPhoto from './Photos/ExtendedViewMainPhoto.jsx';
 import GalleryCarousel from './GalleryCarousel.jsx';
 import ExtendedGalleryCarousel from './ExtendedGalleryCarousel.jsx';
+import PostAPIInteraction from '../PostAPIInteraction.jsx';
 
 function ExtendedGallery({handleExtendedBtn, showModal, mainGalleryPic, currentlySelected, currentStyle, handlePicBtn, checkIfStyleChangedArr, rangeOfGallery, setRangeOfGallery, indexOfGallery, setIndexOfGallery, setCurrentlySelected, setMainGalleryPic}) {
 
 
   const handleRightBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Extended-Gallery-Right-Button','Overview')
     if (currentlySelected === rangeOfGallery - 1) {
       setCurrentlySelected(0)
     } else {
@@ -21,6 +23,7 @@ function ExtendedGallery({handleExtendedBtn, showModal, mainGalleryPic, currentl
 
   const handleLeftBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Extended-Gallery-Left-Button','Overview')
     if (currentlySelected ===  0) {
       setCurrentlySelected(rangeOfGallery - 1)
     } else {
