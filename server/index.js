@@ -174,7 +174,7 @@ app.post('/reportAnswer', (req, res) => {
 
 // INTERACTION ROUTES
 app.post('/logInteraction', (req, res) => {
-  helpers.logInteraction(req.body.element, req.body.widget, req.body.time)
+  helpers.logInteraction(req.body.element, req.body.widget)
     .then((interaction) => {
       console.log('interaction: ', interaction.data);
       res.send(interaction.data);
