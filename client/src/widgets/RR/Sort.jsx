@@ -27,7 +27,7 @@ useEffect(() => {
   return(
     <div
     style={{
-      marginBottom: "5px"
+      marginBottom: "10px"
     }}
     >
       <label htmlFor="sortSelect">{`${reviewsNum} reviews sorted by:`}</label>
