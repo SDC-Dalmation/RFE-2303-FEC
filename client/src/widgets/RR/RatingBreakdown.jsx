@@ -2,9 +2,18 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
 
-function RatingBreakdown ({currentProduct, metaData}) {
+function RatingBreakdown ({currentProduct, metaData, reviews, setReviews}) {
   const [ratingData, setRatingData] = useState({});
   const [percent, setPercent] = useState(0);
+  const [buttonStarNumColors, setButtonStarNumColors] = useState({
+    "1": "black",
+    "2": "black",
+    "3": "black",
+    "4": "black",
+    "5": "black",
+  });
+  const [filter, setFilter] = useState(false);
+  const [originalReviews, setOriginalReviews] = useState([]);
 
   useEffect(() => {
     if(metaData) {
@@ -15,6 +24,24 @@ function RatingBreakdown ({currentProduct, metaData}) {
       setPercent(percentage);
     }
   }, [metaData])
+
+  const handleStarNumClick = (starNum) => {
+    const updatedColors = {...buttonStarNumColors};
+    updatedColors[starNum] = buttonStarNumColors[starNum] === "black" ? "green" : "black";
+    setButtonStarNumColors(updatedColors);
+
+    if (!filter) {
+      const filteredReviews = reviews.filter((review) => review.rating === starNum);
+      numbers.push(starNum);
+      console.log(numbers);
+      setOriginalReviews([... reviews]);
+      setReviews(filteredReviews);
+    } else {
+      setReviews(originalReviews);
+    }
+
+    setFilter(!filter);
+  }
 
   const calculateAveRating = (ratingData) => {
     let numerator = 0;
@@ -72,7 +99,7 @@ function RatingBreakdown ({currentProduct, metaData}) {
     <div
     className="Rating-Breakdown"
     style={{
-      width: "90%",
+      width: "100%",
       height: "300px"
     }}
     >
@@ -119,16 +146,22 @@ function RatingBreakdown ({currentProduct, metaData}) {
       {[5, 4, 3, 2, 1].map((num, i) => {
         return(
           <div key={i} style={{ display: "flex", alignItems: "center" }}>
-            <div
+            <button
+            onClick={() => handleStarNumClick(num)}
             className="numStars"
             style = {{
+              textDecoration: "underline",
+              border: "none",
+              background: "none",
+              cursor: "pointer",
+              color: buttonStarNumColors[num],
               marginLeft: "10px",
               marginTop: "5px",
               fontSize: "small",
               display: "flex",
               alignItems: "center"
             }}
-              >{num} stars</div>
+              >{num} stars</button>
               <div
               style={{
                 height: "15px",
