@@ -5,6 +5,19 @@ import ProductBreakdown from "./ProductBreakdown.jsx"
 import ReviewsList from "./ReviewsList.jsx"
 
 function RR ({currentProduct}) {
+  const [metaData, setMetaData] = useState();
+
+  useEffect(() => {
+    axios.post('/reviewMetadata', {product_id: currentProduct.id})
+    .then((res) => {
+      setMetaData(res.data);
+    })
+    .catch((err) => {
+      console.log('err in receiving metadata: ', err);
+    })
+
+  }, [currentProduct])
+
 
 
   return(
@@ -49,8 +62,8 @@ function RR ({currentProduct}) {
           margin: "0",
         }}
         >
-          <RatingBreakdown currentProduct={currentProduct}/>
-          <ProductBreakdown currentProduct={currentProduct}/>
+          <RatingBreakdown currentProduct={currentProduct} metaData={metaData}/>
+          <ProductBreakdown currentProduct={currentProduct} metaData={metaData}/>
         </div>
         <div
         className="Reviews-List"
@@ -60,7 +73,7 @@ function RR ({currentProduct}) {
           height: "100%"
         }}
         >
-          <ReviewsList currentProduct={currentProduct}/>
+          <ReviewsList currentProduct={currentProduct} metaData={metaData}/>
         </div>
       </div>
     </div>

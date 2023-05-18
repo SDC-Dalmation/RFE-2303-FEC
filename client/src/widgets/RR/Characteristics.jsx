@@ -70,7 +70,8 @@ function Characteristics ({currentProduct, charOptions, setCharOptions, response
     style={{
       marginTop: "10px",
       marginBottom: "15px",
-      width: "33%"
+      width: "33%",
+      fontDecoration: "underline"
     }}
     >Characteristics
             {characteristics.map((characteristic, index) => {
@@ -79,11 +80,15 @@ function Characteristics ({currentProduct, charOptions, setCharOptions, response
                   <h4
                   className="characteristic-name"
                   style={{
-                    marginBottom: "0px",
-                    marginTop: "5px"
+                    marginTop: "10px",
+                    marginBottom: "0"
                   }}
                   >{characteristic}</h4>
-                  <p>
+                  <p
+                  style={{
+                    margin: "0",
+                  }}
+                  >
                     {descriptions[characteristic]}
                   </p>
 

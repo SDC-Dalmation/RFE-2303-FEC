@@ -89,9 +89,9 @@ function ReviewTile ({review, reviews}) {
     <div
     className="tile"
     style={{
-      border: "1px solid black",
+      borderBottom: "0.5px solid black",
       margin: "10px",
-      padding: "10px"
+      padding: "10px",
     }}
     >
       <div
