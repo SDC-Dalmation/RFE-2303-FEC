@@ -12,7 +12,7 @@ function QA ({currentProduct}) {
     borderTop: "2px solid black",
     paddingTop: "2vh",
     fontSize: "20px",
-    fontFamily: "Arial",
+    fontFamily: 'Orbitron, sans-serif',
     justifyContent: "left",
     alignItems: "flex-start",
     width: "90%"
