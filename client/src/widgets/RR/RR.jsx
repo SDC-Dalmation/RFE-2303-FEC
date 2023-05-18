@@ -43,7 +43,11 @@ function RR ({currentProduct}) {
         marginLeft: "10%"
       }}
       >
-        <h3>
+        <h3
+        style={{
+          fontFamily: 'Orbitron, sans-serif'
+        }}
+        >
         Ratings and Reviews
         </h3>
       </div>

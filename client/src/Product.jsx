@@ -8,17 +8,7 @@ function Product ({products, currentProduct, setCurrentProduct}) {
 
   const[num, setNum] = useState(0)
 
-  // const [currentProduct, setCurrentProduct] = useState({});
-
-
-  // setCurrentProduct(products[0]);
-
-
-  // setCurrentProduct(products[0])
 if (products.length > 0) {
-  //console.log('all products: ', products);
-  //console.log('current product ', currentProduct);
-
 
   return(
     <div
