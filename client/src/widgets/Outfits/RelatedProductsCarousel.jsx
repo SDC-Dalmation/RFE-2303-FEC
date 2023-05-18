@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import RelatedProductsEntry from "./RelatedProductsEntry.jsx"
+import PostAPIInteraction from "../PostAPIInteraction.jsx"
 
 const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentProduct}) => {
   const [currentIndex, setCurrentIndex] = useState(2)
@@ -14,6 +15,7 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
   }, [relatedProducts])
 
   const next = () => {
+    PostAPIInteraction("next button in RelatedProductsCarousel.jsx", "Outfits")
     if (currentIndex < (length - 1)) {
         setCurrentIndex(prevState => prevState + 1);
         setListTranslateXIndex(listTranslateXIndex-355);
@@ -21,6 +23,7 @@ const RelatedProductsCarousel = ({currentProduct, relatedProducts, setCurrentPro
   }
 
   const prev = () => {
+    PostAPIInteraction("prev button in RelatedProductsCarousel.jsx", "Outfits")
     if (currentIndex > 1) {
         setCurrentIndex(prevState => prevState - 1);
         setListTranslateXIndex(listTranslateXIndex+355);
