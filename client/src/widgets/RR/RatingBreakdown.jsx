@@ -75,13 +75,20 @@ function RatingBreakdown ({currentProduct, metaData}) {
       height: "300px"
     }}
     >
-      <div style={{display: "flex", marginLeft: "10px", height: "25%"}}>
+      <div
+      style={{
+        display: "flex",
+        marginLeft: "10px",
+        marginBottom: "10px",
+        height: "25%",
+        justifyContent: "center"
+      }}>
         <p
         style={{
           fontWeight: "bold",
-          fontSize: "45px",
+          fontSize: "60px",
           display: "flex",
-          alignItems: "center"
+          alignItems: "center",
         }}>
         {displayAveRating}
         </p>

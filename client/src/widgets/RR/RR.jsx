@@ -55,7 +55,7 @@ function RR ({currentProduct}) {
         <div
         className="Breakdowns"
         style={{
-          width: "50%",
+          width: "30%",
           height: "200px",
           display: "flex",
           flexDirection: "column",
