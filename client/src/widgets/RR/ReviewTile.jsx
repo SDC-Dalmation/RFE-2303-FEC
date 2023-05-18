@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import StarRatings from "react-star-ratings";
 import axios from "axios";
 import PhotoModal from "./PhotoModal.jsx"
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function ReviewTile ({review, reviews}) {
   const [rating, setRating] = useState(review.rating);
@@ -73,6 +74,7 @@ function ReviewTile ({review, reviews}) {
       })
       setClickedYes(true);
       setButtonYesColor("grey")
+      PostAPIInteraction('Helpful button', 'Ratings and Reviews');
     }
   }
 
@@ -83,6 +85,7 @@ function ReviewTile ({review, reviews}) {
       .then((res) => {console.log('reported review: ', res.data)});
     setButtonReportColor("grey");
     setReported(true);
+    PostAPIInteraction('Report button', 'Ratings and Reviews');
   }
 
   return(
