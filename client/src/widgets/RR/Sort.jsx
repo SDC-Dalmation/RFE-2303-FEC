@@ -1,8 +1,18 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-function Sort ({currentProduct, reviews, setReviews}) {
+function Sort ({currentProduct, reviews, setReviews, metaData}) {
   const [value, setValue] = useState("relevant");
+  const [reviewsNum, setReviewsNum] = useState(0);
+
+useEffect(() => {
+
+  if(metaData) {
+    const recommended = metaData.recommended
+    const total = Number(recommended.false) + Number(recommended.true);
+    setReviewsNum(total);
+  }
+}, [metaData])
 
   const handleChange = (e) => {
     let newValue = e.target.value
@@ -13,14 +23,14 @@ function Sort ({currentProduct, reviews, setReviews}) {
         setReviews(res.data.results)
         })
   }
-  console.log("reviews length:", reviews.length)
+
   return(
     <div
     style={{
       marginBottom: "5px"
     }}
     >
-      <label htmlFor="sortSelect">{`${reviews.length} reviews sorted by:`}</label>
+      <label htmlFor="sortSelect">{`${reviewsNum} reviews sorted by:`}</label>
       <select id="sortSelect" value={value} onChange={handleChange}>
         <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>

@@ -2,18 +2,19 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
 
-function RatingBreakdown ({currentProduct}) {
-  const [ratingData, setRatingData] = useState({})
+function RatingBreakdown ({currentProduct, metaData}) {
+  const [ratingData, setRatingData] = useState({});
+  const [percent, setPercent] = useState(0);
 
   useEffect(() => {
-    axios.post('/reviewMetadata', {product_id: currentProduct.id})
-    .then((res) => {
-      setRatingData(res.data.ratings);
-    })
-    .catch((err) => {
-      console.log('err in receiving metadata: ', err);
-    })
-  }, [currentProduct])
+    if(metaData) {
+      setRatingData(metaData.ratings);
+      const recommended = metaData.recommended
+      const total = Number(recommended.false) + Number(recommended.true);
+      const percentage = Math.round(Number(recommended.true) * 100 / total)
+      setPercent(percentage);
+    }
+  }, [metaData])
 
   const calculateAveRating = (ratingData) => {
     let numerator = 0;
@@ -88,20 +89,31 @@ function RatingBreakdown ({currentProduct}) {
           </div>
         </div>
         <div>
+        <p
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          fontStyle: "italic",
+          margin: "0"
+        }}
+        >
+        {`${percent}% people recommend this product`}
+        </p>
+      <div>
       {[5, 4, 3, 2, 1].map((num, i) => {
         return(
           <div key={i} style={{ display: "flex", alignItems: "center" }}>
             <div
             style = {{
               marginLeft: "10px",
-              marginTop: "10px",
+              marginTop: "5px",
               fontSize: "small"
             }}
               >{num} stars</div>
               <div
               style={{
                 height: "15px",
-                width: "75%",
+                width: "76%",
                 backgroundColor: "grey",
                 margin: "10px",
                 borderRadius: "5px"
@@ -119,14 +131,18 @@ function RatingBreakdown ({currentProduct}) {
               </div>
               <div
               style={{
+                display: "flex",
+                alignItems: "center",
                 marginLeft: "10px",
                 marginTop: "10px",
+                marginBottom: "5px",
                 fontSize: "small"
               }}>{ratingData[num]}</div>
             </div>
 
         )
       })}
+      </div>
       </div>
     </div>
   );

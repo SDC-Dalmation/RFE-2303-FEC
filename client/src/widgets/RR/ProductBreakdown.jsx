@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 
-function ProductBreakdown ({currentProduct}) {
+function ProductBreakdown ({currentProduct, metaData}) {
   const [productData, setProductData] = useState({});
   const [descriptions, setDescriptions] = useState([]);
 
+
   useEffect(() => {
-    axios.post('/reviewMetadata', {product_id: currentProduct.id})
-    .then((res) => {
-      setProductData(res.data.characteristics);
-    })
-  }, [currentProduct])
+    if(metaData) {
+      setProductData(metaData.characteristics);
+    }
+  }, [metaData])
 
   let characteristics = Object.keys(productData);
 

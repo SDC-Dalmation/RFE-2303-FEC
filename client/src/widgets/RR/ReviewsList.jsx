@@ -5,10 +5,11 @@ import Sort from "./Sort.jsx";
 import NewReview from "./NewReview.jsx";
 
 
-function ReviewsList ({currentProduct}) {
+function ReviewsList ({currentProduct, metaData}) {
   const [reviews, setReviews] = useState([]);
   const [limit, setLimit] = useState(2);
-  var [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showMoreReviews, setShowMoreReviews] = useState(true)
 
   const buttonStyle = {
     "alignSelf": "start",
@@ -42,14 +43,15 @@ function ReviewsList ({currentProduct}) {
    setLimit(limit + 2);
   }
 
-  console.log('reviews length: ', reviews.length)
-  console.log(limit)
-  console.log(limit===reviews.length)
-
   return(
     <div>
       <div>
-        <Sort currentProduct={currentProduct} reviews={reviews} setReviews={setReviews} />
+        <Sort
+        currentProduct={currentProduct}
+        reviews={reviews}
+        setReviews={setReviews}
+        metaData={metaData}
+        />
         <div
         className="scrollable"
         style={{
@@ -74,10 +76,16 @@ function ReviewsList ({currentProduct}) {
           marginBottom: "10%"
         }}
         >
-          <span
-          onClick={handleMoreReviews}
-          style={buttonStyle}
-          >More Reviews</span>
+          {
+            limit < reviews.length
+            ? <span
+            onClick={handleMoreReviews}
+            style={buttonStyle}
+            >More Reviews
+            </span>
+            : null
+          }
+
           <span
           onClick={handleClick}
           style={buttonStyle}
