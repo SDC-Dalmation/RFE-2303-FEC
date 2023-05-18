@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RelatedProductsCarousel from "./relatedProductsCarousel.jsx";
+import RelatedProductsCarousel from "./RelatedProductsCarousel.jsx";
 import YourOutfits from "./YourOutfits.jsx";
 
 
