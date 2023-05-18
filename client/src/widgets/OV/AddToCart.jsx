@@ -79,12 +79,11 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
 
 
     return(
-      <div data-testid="addToCartMain">
-        <div style={{'marginTop': '3px'}}>Size Selector</div>
-          <div>
+      <div data-testid="addToCartMain" className="add-to-cart">
+        <div className="size-selector-main">Size Selector
               {/* if its the first load, it will start on an empty selection */}
               {firstLoad ?
-              <select id="size-selector" name="size selector" onChange={sizeSelectorHandler}>
+              <select id="size-selector" name="size selector" className="size-selector" onChange={sizeSelectorHandler}>
                 <option id="placeholder" default>select size</option>
                 {arrOfOptions.map((option, index) => {
                   if (option[1][1].quantity === 0 || option[1][1].quantity === null) {
@@ -97,7 +96,7 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
                     )
                   }
               })}</select> :
-              <select id="size-selector" name="size selector" onChange={sizeSelectorHandler}>
+              <select id="size-selector" name="size selector" className="size-selector" onChange={sizeSelectorHandler}>
                 {arrOfOptions.map((option, index) => {
                   if (option[1][1].quantity === 0 || option[1][1].quantity === null) {
                     return(
@@ -115,11 +114,9 @@ function AddToCart({selectedStyle, currentStyle, checkIfStyleChangedArr, checkIf
                   }
              })}
               </select>}
-
         </div>
-        <div style={{'marginTop': '3px'}}>Quantity Selector</div>
-          <div>
-            <select id="quantity-selector" name="quantity selector" >
+        <div className='quantity-selector-main'>Quantity Selector
+            <select id="quantity-selector" name="quantity selector" className="quantity-selector">
               {firstLoad ? <option disabled default>-</option> : quantityArr.map((num, index) => {return (<option>{num}</option>)})}
             </select>
         </div>

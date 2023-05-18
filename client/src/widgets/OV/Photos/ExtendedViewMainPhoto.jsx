@@ -8,11 +8,9 @@ function ExtendedViewMainPhoto({handleExtendedBtn, mainGalleryPic, currentStyle,
     e.preventDefault;
     if (!isZoomed) {
       document.getElementById('extended-gallery-main-pic').style.transform += "scale(2.5)"
-      document.getElementById('extended-thumbnail-checkmark').style.display = 'none';
       document.getElementById('extended-gallery-main-pic').style.cursor = "zoom-out"
     } else {
       document.getElementById('extended-gallery-main-pic').style.cursor = "zoom-in"
-      document.getElementById('extended-thumbnail-checkmark').style.display = 'flex';
       document.getElementById('extended-gallery-main-pic').style.transform += "scale(0.4)"
     }
     setIsZoomed(!isZoomed)

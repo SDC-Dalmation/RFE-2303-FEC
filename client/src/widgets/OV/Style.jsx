@@ -6,7 +6,6 @@ function Style({style, styleBtnHandler, index, selectedStyle}) {
     return (
       <div onClick={styleBtnHandler(index, style.style_id)} className="style">
         <div >{style.name}</div>
-        <p style={{'position': 'absolute'}}>&#9989;</p>
         <div style={{'display':'flex', 'border': '0.2vw solid green', 'borderRadius': '2.1vw', 'width': '5vw'}}>
           <img src={style.photos[0].thumbnail_url} className="style-thumbnail"/>
         </div>
