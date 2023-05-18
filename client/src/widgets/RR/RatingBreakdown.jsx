@@ -32,8 +32,6 @@ function RatingBreakdown ({currentProduct, metaData, reviews, setReviews}) {
 
     if (!filter) {
       const filteredReviews = reviews.filter((review) => review.rating === starNum);
-      numbers.push(starNum);
-      console.log(numbers);
       setOriginalReviews([... reviews]);
       setReviews(filteredReviews);
     } else {
@@ -108,18 +106,20 @@ function RatingBreakdown ({currentProduct, metaData, reviews, setReviews}) {
         display: "flex",
         marginLeft: "20px",
         marginBottom: "10px",
-        height: "25%",
+        height: "30%",
       }}>
         <p
         style={{
           fontWeight: "bold",
-          fontSize: "60px",
+          fontSize: "65px",
           display: "flex",
           alignItems: "center",
+          fontFamily: 'Orbitron, sans-serif',
+          maringBottom: '10px'
         }}>
         {displayAveRating}
         </p>
-        <div style={{marginTop: "20px", marginLeft: "5px"}}>
+        <div style={{marginTop: "30px", marginLeft: "5px"}}>
           <StarRatings
             rating={averageRatingRounded}
             starRatedColor="green"
