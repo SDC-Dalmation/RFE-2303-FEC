@@ -6,8 +6,8 @@ import NewReview from "./NewReview.jsx";
 import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 
-function ReviewsList ({currentProduct, metaData}) {
-  const [reviews, setReviews] = useState([]);
+function ReviewsList ({currentProduct, metaData, reviews, setReviews}) {
+
   const [limit, setLimit] = useState(2);
   const [showModal, setShowModal] = useState(false);
   const [showMoreReviews, setShowMoreReviews] = useState(true)
@@ -34,12 +34,7 @@ function ReviewsList ({currentProduct, metaData}) {
     PostAPIInteraction('New Review button', 'Ratings and Reviews');
   }
 
-  useEffect(() => {
-    axios.post('/listReviews', {product_id: currentProduct.id, sortType: "relevant"})
-      .then((res) => {
-        setReviews(res.data.results)
-        })
-  }, [currentProduct])
+
 
   let handleMoreReviews = () => {
    setLimit(limit + 2);
