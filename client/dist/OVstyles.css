@@ -10,19 +10,21 @@
 }
 .all-product-info{
    margin-left: 3vw;
+   padding: 1vw;
 }
 .product-category, .style-title{
   font-weight: 800;
 }
 .product-price-discounted{
+  font-weight: 600;
   color: red;
   margin-left: 1vw;
 }
 .product-price{
+  font-weight: 600;
   margin-bottom: 1vh;
 }
 .product-description{
-  color: green;
   min-width: 25vw;
   max-width: 40vw;
 }
@@ -50,7 +52,7 @@
   height: 8vh;
   width: 5vw;
   object-fit: cover;
-  border-radius: 2vw;
+  border-radius: 1.8vw;
 }
 .add-to-cart{
   margin-top: 3vh;
