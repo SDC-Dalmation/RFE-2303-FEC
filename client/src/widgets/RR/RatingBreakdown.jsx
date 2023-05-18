@@ -49,6 +49,7 @@ function RatingBreakdown ({currentProduct, metaData}) {
   let newMainNum;
 
   if (oldDecimals >= 0 && oldDecimals <= 13) {
+    newMainNum = averageRating.toString()[0];
     newDecimals = 0;
   } else if (oldDecimals > 13 && oldDecimals <= 38) {
     newMainNum = averageRating.toString()[0];
