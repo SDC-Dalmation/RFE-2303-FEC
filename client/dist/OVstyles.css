@@ -2,7 +2,7 @@
   display: flex;
   padding: 2vh;
   border-bottom: 2px solid black;
-  width: 100%
+  width: 100%;
 }
 .product-info{
   display: flex;
@@ -12,6 +12,14 @@
    margin-left: 3vw;
    padding: 1vw;
 }
+.read-all-reviews-btn{
+  color: rgb(0, 148, 198);
+}
+.read-all-reviews-btn:hover{
+  color: rgb(88, 187, 220);
+  cursor: default;
+}
+
 .product-category, .style-title{
   font-weight: 800;
 }
@@ -175,6 +183,7 @@ align-items:flex-end;
   background-color: rgba(0,0,0,0.5);
   border-radius: 2vh;
   font-weight: 600;
+  margin-bottom: 1vh;
 }
 
 
@@ -191,6 +200,7 @@ align-items:flex-end;
   background-color: rgba(0,0,0,0.5);
   border-radius: 2vh;
   font-weight: 600;
+  margin-top: 1vh;
 }
 
 .down-button-disabled{

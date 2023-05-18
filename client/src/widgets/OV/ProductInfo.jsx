@@ -6,8 +6,9 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
 
   const [currentPrice, setCurrentPrice] = useState(currentProduct.default_price)
   const [hasSale, setHasSale] = useState(false)
+  const [numOfReviews, setNumOfReviews] = useState(0)
 
-
+  useEffect(()=>{axios.post('/listReviews', {product_id: currentProduct.id}).then((res)=>{setNumOfReviews(res.data.results.length)})}, checkIfProductChangedArr)
   useEffect(()=>{setCurrentPrice(currentProduct.default_price)}, checkIfProductChangedArr)
   useEffect(()=>{if (currentStyle) {if (currentStyle.sale_price) {setHasSale(true); setCurrentPrice(currentStyle.sale_price)} else {setCurrentPrice(currentStyle.original_price); setHasSale(false)}}}, checkIfStyleChangedArr)
 
@@ -28,6 +29,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
     var newDecimals;
     var newMainNum;
     if (oldDecimals >= 0 && oldDecimals <= 13) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 0;
     } else if (oldDecimals > 13 && oldDecimals <= 38) {
       newMainNum = averageRating.toString()[0]
@@ -58,7 +60,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
               starSpacing="0.5vw"
               starDimension="5vh"
             />
-            <p onClick={(e)=>{e.preventDefault; console.log('average: ', averageRating, ' rounded: ', averageRatingRounded); document.querySelector('.RR').scrollIntoView()}}>read all reviews</p>
+            <p className="read-all-reviews-btn" onClick={(e)=>{e.preventDefault; console.log('average: ', averageRating, ' rounded: ', averageRatingRounded); document.querySelector('.RR').scrollIntoView()}}>read all {numOfReviews ? numOfReviews : null} reviews</p>
           </div>
           <p className="product-category">{currentProduct.category}</p>
           <h3 className="product-name">{currentProduct.name}</h3>

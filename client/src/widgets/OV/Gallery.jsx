@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ExtendedGallery from './ExtendedGallery.jsx';
 import MainGalleryPhoto from './Photos/MainGalleryPhoto.jsx';
 import GalleryCarousel from './GalleryCarousel.jsx';
-
+import PostAPIInteraction from '../PostAPIInteraction.jsx';
 
 function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPic, checkIfProductChangedArr, checkIfStyleChangedArr}) {
 
@@ -25,6 +25,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   const handleExtendedBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Extended-Gallery', 'Overview')
     if (showModal) {
       enableScroll()
     } else {
@@ -37,6 +38,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
   const handlePicBtn = function(photo, index) {
     return function(e) {
       e.preventDefault;
+      PostAPIInteraction('Gallery-Thumbnail', 'Overview')
       setMainGalleryPic(photo);
       setCurrentlySelected(index);
     }
@@ -44,6 +46,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   const handleUpBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Gallery-Up-Button', 'Overview')
     if (indexOfGallery[0] !== 0) {
       setIndexOfGallery([indexOfGallery[0] - 1, indexOfGallery[1] - 1])
     }
@@ -51,6 +54,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   const handleDownBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Gallery-Down-Button', 'Overview')
     if (indexOfGallery[1] + 1 !== rangeOfGallery) {
       setIndexOfGallery([indexOfGallery[0] + 1, indexOfGallery[1] + 1])
     }
@@ -58,6 +62,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   const handleRightBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Gallery-Right-Button', 'Overview')
     if (currentlySelected === rangeOfGallery - 1) {
       setCurrentlySelected(0)
     } else {
@@ -71,6 +76,7 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
 
   const handleLeftBtn = function(e) {
     e.preventDefault;
+    PostAPIInteraction('Gallery-Left-Button', 'Overview')
     if (currentlySelected ===  0) {
       setCurrentlySelected(rangeOfGallery - 1)
     } else {
@@ -92,9 +98,9 @@ function Gallery({currentProduct, currentStyle, mainGalleryPic, setMainGalleryPi
         <div className="default-gallery-view">
           <MainGalleryPhoto handleExtendedBtn={handleExtendedBtn} setMainGalleryPic={setMainGalleryPic} mainGalleryPic={mainGalleryPic} currentStyle={currentStyle} checkIfProductChangedArr={checkIfProductChangedArr} checkIfStyleChangedArr={checkIfStyleChangedArr} currentlySelected={currentlySelected}/>
           <div className="gallery-carousel-main" >
-            {currentStyle.photos.length > 7 && currentlySelected !== 0 ? <p id='up-button' onClick={handleUpBtn} data-testid="topGalleryBtn">↑</p> : null}
+            {currentStyle.photos.length > 7 && currentlySelected !== 0 ? <div id='up-button' onClick={handleUpBtn} data-testid="topGalleryBtn">↑</div> : null}
             <GalleryCarousel currentStyle={currentStyle} handlePicBtn={handlePicBtn} mainGalleryPic={mainGalleryPic} checkIfStyleChangedArr={checkIfStyleChangedArr} rangeOfGallery={rangeOfGallery} setRangeOfGallery={setRangeOfGallery} indexOfGallery={indexOfGallery} setIndexOfGallery={setIndexOfGallery} setCurrentlySelected={setCurrentlySelected} currentlySelected={currentlySelected} showModal={showModal}/>
-            {currentStyle.photos.length > 7 && currentlySelected !== rangeOfGallery - 1 ? <p id='down-button' onClick={handleDownBtn} data-testid="bottomGalleryBtn">↓</p> : null}
+            {currentStyle.photos.length > 7 && currentlySelected !== rangeOfGallery - 1 ? <div id='down-button' onClick={handleDownBtn} data-testid="bottomGalleryBtn">↓</div> : null}
           </div>
         </div>
         {currentlySelected !== rangeOfGallery - 1 ? <p className="gallery-btn" style={{marginLeft: '0.5vw'}}onClick={handleRightBtn} data-testid="rightGalleryBtn">→</p> : <p></p>}
