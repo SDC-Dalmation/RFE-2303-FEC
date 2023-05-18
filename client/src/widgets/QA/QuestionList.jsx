@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import Question from './Question.jsx';
 import QuestionSearch from './QuestionSearch.jsx';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQA, currentProduct}) {
   const listStyle = {
@@ -14,12 +15,11 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
     "backgroundColor" : "rgb(216,216,216)",
     "color": "black",
     "cursor": "pointer",
-    "display": "inline",
     "padding": "1vh",
-    "width": "100%",
+    "width": "8vw",
     "border": "none",
     "textAlign": "center",
-    "outline": "none",
+    "outline": "1px solid grey",
     "fontSize": "14px",
     "transition": "0.4s",
   };
@@ -49,10 +49,12 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
   let additionalQuestionButton = (<div></div>);
   if (questions.length > 4) {
     additionalQuestionButton = (<span style={buttonStyle} onClick={() => {
-      setShownQuestions(questions)}}>More Answered Questions</span>);
+      setShownQuestions(questions);
+      PostAPIInteraction("Show More AnsweredQuestions", "Questions & Answers")}}>More Answered Questions</span>);
     if (shownQuestions.length > 4) {
       shownCSS = scrollCSS;
-      additionalQuestionButton = (<span style={buttonStyle} onClick={() => setShownQuestions(shownQuestions.slice(0, 4))}>Collapse Question List</span>)
+      additionalQuestionButton = (<span style={buttonStyle} onClick={() => {setShownQuestions(shownQuestions.slice(0, 4));
+        PostAPIInteraction("Collapse AnsweredQuestions", "Questions & Answers")}}>Collapse Question List</span>)
     }
   }
 
@@ -77,9 +79,7 @@ function QuestionList ({questions, prodName, markHelpful, helpfulQA, setHelpfulQ
           }
       })}
     </div>
-    <div style={{"width": "20%"}}>
       {additionalQuestionButton}
-    </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function QuestionModal ({ productID, onClose, prodName }) {
 
@@ -28,6 +29,7 @@ function QuestionModal ({ productID, onClose, prodName }) {
     let body = e.target[0].value;
     let name = e.target[1].value;
     let email = e.target[2].value;
+    PostAPIInteraction("Submitted Question", "Questions & Answers");
     axios.post('/addQuestion', {product_id: productID, body: body, name: name, email: email}).then(
       () => onClose()
     )

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import AnswerPhotoModal from './AnswerPhotoModal.jsx'
+import AnswerPhotoModal from './AnswerPhotoModal.jsx';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
 
@@ -45,7 +46,8 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
   const [helpfulness, setHelpfulness] = useState(answer.helpfulness);
   let [reported, changeReport] = useState(false);
 
-  let reportTracker = (<span onClick={() => {reportAnswer()}}> Report </span>);
+  let reportTracker = (<span onClick={() => {reportAnswer();
+    PostAPIInteraction("Reported Answer", "Questions & Answers")}}> Report </span>);
   if (reported) {
     reportTracker = (<span> Reported </span>);
   }
@@ -82,7 +84,8 @@ function Answer ({answer, markHelpful, helpfulQA, setHelpfulQA}) {
       </div>
       <div style={helperStyle}>
         by {answer.answerer_name}, {months[answerDate.getMonth()]} {answerDate.getDate()}, {answerDate.getFullYear()} |
-        <span style={markHelpfulStyle} onClick={() => {markAnswerHelpful()}}> Helpful? Yes{`(${helpfulness})`}</span> |
+        <span style={markHelpfulStyle} onClick={() => {markAnswerHelpful();
+        PostAPIInteraction("Mark Answer Helpful", "Questions & Answers")}}> Helpful? Yes{`(${helpfulness})`}</span> |
         <span style={markHelpfulStyle}> {reportTracker} </span>
       </div>
     </div>

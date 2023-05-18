@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import { createPortal } from 'react-dom';
 import PhotoModal from './PhotoModal.jsx';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function AnswerModal ({ questionID, onClose, productName, questionBody }) {
 
@@ -70,7 +71,8 @@ function AnswerModal ({ questionID, onClose, productName, questionBody }) {
     let email = e.target[2].value;
     axios.post('/addAnswer', {question_id: questionID, body: body, name: name, email: email, photos: imageArray}).then(
       () => onClose()
-    )
+    );
+    PostAPIInteraction("Submitted Answer", "Questions & Answers")
   }
 
   if (showPhotoModal) {

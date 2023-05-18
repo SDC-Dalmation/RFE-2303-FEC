@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
 
@@ -66,6 +67,7 @@ function PhotoModal ({ photos, setPhotos, onClose, count, addedPhoto }) {
     e.preventDefault();
     let photo = e.target[0].files[0];
     addThumbnail(photo);
+    PostAPIInteraction("Submitted Photo", "Questions & Answers")
     onClose();
   }
 
