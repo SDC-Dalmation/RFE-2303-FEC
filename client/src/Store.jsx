@@ -58,7 +58,7 @@ function Store () {
         </div>
         <div
         style={{
-          marginTop: "1%",
+          marginTop: "-2%",
           marginLeft: "1%",
           fontSize: "large",
           fontFamily: "Orbitron, sans-serif",
