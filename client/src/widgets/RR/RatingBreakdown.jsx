@@ -78,10 +78,9 @@ function RatingBreakdown ({currentProduct, metaData}) {
       <div
       style={{
         display: "flex",
-        marginLeft: "10px",
+        marginLeft: "20px",
         marginBottom: "10px",
         height: "25%",
-        justifyContent: "center"
       }}>
         <p
         style={{
