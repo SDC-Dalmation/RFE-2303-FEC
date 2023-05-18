@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import StarRatings from "react-star-ratings";
+import PostAPIInteraction from "../PostAPIInteraction.jsx"
 
 const YourOutfitsEntry = ({item, items, setItems}) => {
   const [productStyle, setProductStyle] = useState({});
@@ -29,6 +30,7 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
 
   const deleteOutfit = (e) => {
     e.preventDefault()
+    PostAPIInteraction("delete outfit in YourOutfitEntry.jsx", "Outfits")
     const filtered = items.filter((outfit) => {
       return outfit.id !== item.id
     })
@@ -46,18 +48,24 @@ const YourOutfitsEntry = ({item, items, setItems}) => {
     var averageRating = total / divider;
     var oldDecimals = Number(averageRating.toString()[2] + averageRating.toString()[3])
     var newDecimals;
+    var newMainNum;
     if (oldDecimals >= 0 && oldDecimals <= 13) {
       newDecimals = 0;
+      newMainNum = averageRating.toString()[0]
     } else if (oldDecimals > 13 && oldDecimals <= 38) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 25;
     } else if (oldDecimals > 38 && oldDecimals <= 62) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 50;
     } else if (oldDecimals > 62 && oldDecimals <= 87) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 75;
     } else if (oldDecimals > 87 && oldDecimals <= 99) {
       newDecimals = 0;
+      newMainNum =  Number(averageRating.toString()[0]) + 1
     }
-    var averageRatingRounded = Number(averageRating.toString()[0] + '.' + newDecimals.toString())
+    var averageRatingRounded = Number(newMainNum.toString() + '.' + newDecimals.toString())
   }
 
   return (

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import PostAPIInteraction from "../PostAPIInteraction.jsx"
 
 const CompareModal = ({showModal, setShowModal, product, oldProduct}) => {
   const [currentCharacteristics, setCurrentCharacteristics] = useState([]);
@@ -72,7 +73,7 @@ const CompareModal = ({showModal, setShowModal, product, oldProduct}) => {
       top: '40%',
       left: '40%'
     }}>
-      <button style={{width: 25, height: 25, position: 'absolute', right: 0, top: 0}} onClick={() => setShowModal(!showModal)}>X</button>
+      <button style={{width: 25, height: 25, position: 'absolute', right: 0, top: 0}} onClick={() => {setShowModal(!showModal);PostAPIInteraction("Closed compare modal in CompareModal.jsx", "Outfits")}}>X</button>
       <h2 style={{position: 'absolute', left: 5, top: 5}}>Comparing</h2>
       <table>
         <thead>

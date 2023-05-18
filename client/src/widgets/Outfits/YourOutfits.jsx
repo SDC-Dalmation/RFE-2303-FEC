@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import YourOutfitsEntry from "./YourOutfitsEntry.jsx"
+import PostAPIInteraction from "../PostAPIInteraction.jsx"
 
 const YourOutfits = ({currentProduct}) => {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || [])
@@ -14,6 +15,7 @@ const YourOutfits = ({currentProduct}) => {
   }, [items])
 
   const next = () => {
+    PostAPIInteraction("next button in YourOutfits.jsx", "Outfits")
     if (currentIndex2 <= (length2 - 1)) {
         setCurrentIndex2(prevState => prevState + 1)
         setListTranslateXIndex(listTranslateXIndex-355);
@@ -21,6 +23,7 @@ const YourOutfits = ({currentProduct}) => {
   }
 
   const prev = () => {
+    PostAPIInteraction("prev button in YourOutfits.jsx", "Outfits")
     if (currentIndex2 > 1) {
         setCurrentIndex2(prevState => prevState - 1)
         setListTranslateXIndex(listTranslateXIndex+355);
@@ -33,6 +36,7 @@ const YourOutfits = ({currentProduct}) => {
 
   const addOutfit = (e) => {
     e.preventDefault()
+    PostAPIInteraction("add outfit in YourOutfits.jsx", "Outfits")
     var test = items.map(item => {
       return item.id
     })
