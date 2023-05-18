@@ -33,24 +33,41 @@ function Store () {
 
   return(
     <div style={{background: background, color: color, border: "1px solid black"}}>
-      <div style={{display: "flex", justifyContent: "space-between"}}>
-        <div style={{display: "flex"}}>
-          <img style={{width: '25wh', height: '25vh', marginLeft: '8%'}} src={Logo} />
-          <div style={{
-            fontSize: '5vh',
-            fontFamily: 'Orbitron, sans-serif',
-            display: "flex",
-            alignItems: "center",
-            color: "white",
-            marginTop: "10px",
-            textShadow: "3px 2px 2px #808080"
-          }}>MART
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        background: "lightblue",
+        height: '25vh',
+        borderBottom: "0.5px solid black"
+      }}>
+        <div style={{display: "flex", justifyContent: "space-between", height: "18vh", marginLeft: "8%"}}>
+          <div style={{display: "flex"}}>
+            <img style={{width: '28wh', height: '20vh'}} src={Logo} />
+            <div style={{
+              fontSize: '4vh',
+              fontFamily: 'Orbitron, sans-serif',
+              display: "flex",
+              alignItems: "center",
+              color: "white",
+              marginTop: "10%",
+              textShadow: "3px 2px 2px #808080"
+            }}>MART
+            </div>
+          </div>
+          <button style={{height: "20px", margin: "10px"}} onClick={changeMode}>{modeName}</button>
         </div>
-        <div>"W"! "W" is for WALL-E, your very best friend."</div>
+        <div
+        style={{
+          marginTop: "1%",
+          marginLeft: "1%",
+          fontSize: "large",
+          fontFamily: "Orbitron, sans-serif",
+          color: "white",
+          textShadow: "3px 2px 2px #808080",
+          marginLeft: "9%"
+        }}
+        >"W"! "W" is for WALL-E, your very best friend."</div>
       </div>
-      <button style={{height: "20px"}} onClick={changeMode}>{modeName}</button>
-      </div>
-
       <Product products={products} currentProduct={currentProduct} setCurrentProduct={setCurrentProduct}/>
     </div>
   );
