@@ -30,10 +30,13 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
     if (oldDecimals >= 0 && oldDecimals <= 13) {
       newDecimals = 0;
     } else if (oldDecimals > 13 && oldDecimals <= 38) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 25;
     } else if (oldDecimals > 38 && oldDecimals <= 62) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 50;
     } else if (oldDecimals > 62 && oldDecimals <= 87) {
+      newMainNum = averageRating.toString()[0]
       newDecimals = 75;
     } else if (oldDecimals > 87 && oldDecimals <= 99) {
       newDecimals = 0;
