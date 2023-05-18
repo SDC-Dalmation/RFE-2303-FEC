@@ -46,16 +46,25 @@ function RatingBreakdown ({currentProduct, metaData}) {
   let starRating = averageRating;
   let oldDecimals = Number(starRating.toString()[2] + starRating.toString()[3]);
   let newDecimals;
+  let newMainNum;
 
-  oldDecimals > 13 && oldDecimals <= 38
-  ? newDecimals = 25
-  : oldDecimals > 38 && oldDecimals <= 62
-  ? newDecimals = 50
-  : oldDecimals > 62 && oldDecimals <= 87
-  ? newDecimals = 75
-  : newDecimals = 0;
+  if (oldDecimals >= 0 && oldDecimals <= 13) {
+    newDecimals = 0;
+  } else if (oldDecimals > 13 && oldDecimals <= 38) {
+    newMainNum = averageRating.toString()[0];
+    newDecimals = 25;
+  } else if (oldDecimals > 38 && oldDecimals <= 62) {
+    newMainNum = averageRating.toString()[0];
+    newDecimals = 50
+  } else if (oldDecimals > 62 && oldDecimals <= 87) {
+    newMainNum = averageRating.toString()[0];
+    newDecimals = 75;
+  } else {
+    newDecimals = 0;
+    newMainNum =  Number(averageRating.toString()[0]) + 1;
+  }
 
-  let averageRatingRounded = Number(starRating.toString()[0] + "." + newDecimals.toString())
+  let averageRatingRounded = Number(newMainNum.toString()[0] + "." + newDecimals.toString());
 
   if(starRating > 0) {
   return(
