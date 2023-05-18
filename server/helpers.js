@@ -194,11 +194,12 @@ module.exports.postCartItem = function (sku_id) {
 
 //Interactions API
 
-module.exports.logInteraction = function (element, widget, time) {
+module.exports.logInteraction = function (element, widget) {
+  let date = new Date();
   return axios.post(`${url}/interactions`, {
     element: element,
     widget: widget,
-    time: time
+    time: date
   }, {
     headers: {
       Authorization: process.env.API_KEY

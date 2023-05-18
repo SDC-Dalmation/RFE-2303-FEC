@@ -3,6 +3,7 @@ import axios from "axios"
 import CompareModal from "./CompareModal.jsx"
 import { createPortal } from 'react-dom';
 import StarRatings from "react-star-ratings";
+import PostAPIInteraction from "../PostAPIInteraction.jsx"
 
 const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldProduct, setOldProduct}) => {
   const [productInfo, setProductInfo] = useState({});
@@ -51,6 +52,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
   }
 
   const openModal = () => {
+    PostAPIInteraction("Open Modal in RelatedProductsEntry", "Outfits")
     setShowModal(!showModal);
   };
 
@@ -144,6 +146,7 @@ const RelatedProductsEntry = ({product, setCurrentProduct, currentProduct, oldPr
               starCount={5}
               rating={averageRatingRounded}
               starRatedColor="green"
+              starEmptyColor="grey"
               starSpacing="3px"
               starDimension="20px"
             />
