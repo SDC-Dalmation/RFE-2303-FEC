@@ -26,6 +26,9 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
     characteristics: null
   })
 
+  const closeModal = () => {
+    setShowModal(false);
+  }
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -114,7 +117,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
       backgroundColor: "rgba(0, 0, 0, 0.5)",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
     }}
     >
      <div
@@ -127,23 +130,40 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
       <div
       className="modal-header"
       style={{
-        padding: "10px"
+        padding: "10px",
+        display: "flex",
+        justifyContent: "space-between"
       }}
       >
-        <h4
-        className="modal-title"
-        style={{margin: "0"}}
-        >
-        Write Your Review</h4>
-        <h5
-        className="modal-subtitle"
-        style={{margin: "0"}}
-        >{`About the ${currentProduct.name}`}</h5>
+        <div>
+          <h4
+          className="modal-title"
+          style={{margin: "0"}}
+          >
+          Write Your Review</h4>
+          <h5
+          className="modal-subtitle"
+          style={{margin: "0"}}
+          >{`About the ${currentProduct.name}`}
+          </h5>
+        </div>
+        <div
+        className="close"
+        onClick={closeModal}
+        style={{
+          color: "white",
+          cursor: "pointer",
+          fontSize: "24px",
+          color: "black"
+        }}>
+        &times;
+        </div>
       </div>
       <div
       className="modal-body"
       style={{
-        padding: "10px",
+        padding: "20px",
+        height: "400px",
         borderTop: "1px solid #eee",
         borderBottom: "1px solid #eee"
       }}
@@ -218,8 +238,7 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
             style={{
               display: "flex",
               flexDirection: "column",
-              marginLeft: "40px",
-              width: "75%"
+              width: "70%"
             }}
             >
               <label style={{"marginTop": "10px"}}>Review Summary (60 characters max)</label>

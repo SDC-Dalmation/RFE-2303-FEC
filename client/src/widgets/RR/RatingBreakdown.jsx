@@ -62,7 +62,7 @@ function RatingBreakdown ({currentProduct}) {
     className="Rating-Breakdown"
     style={{
       width: "90%",
-      height: "200px"
+      height: "300px"
     }}
     >
       <div style={{display: "flex", marginLeft: "10px", height: "25%"}}>

@@ -13,10 +13,14 @@ function Sort ({currentProduct, reviews, setReviews}) {
         setReviews(res.data.results)
         })
   }
-
+  console.log("reviews length:", reviews.length)
   return(
-    <div>
-      <label htmlFor="sortSelect">Reviews sorted by:</label>
+    <div
+    style={{
+      marginBottom: "5px"
+    }}
+    >
+      <label htmlFor="sortSelect">{`${reviews.length} reviews sorted by:`}</label>
       <select id="sortSelect" value={value} onChange={handleChange}>
         <option value="relevant">Relevance</option>
         <option value="newest">Newest</option>
