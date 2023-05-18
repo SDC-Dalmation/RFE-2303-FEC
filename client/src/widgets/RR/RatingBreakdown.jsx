@@ -113,16 +113,19 @@ function RatingBreakdown ({currentProduct, metaData}) {
         return(
           <div key={i} style={{ display: "flex", alignItems: "center" }}>
             <div
+            className="numStars"
             style = {{
               marginLeft: "10px",
               marginTop: "5px",
-              fontSize: "small"
+              fontSize: "small",
+              display: "flex",
+              alignItems: "center"
             }}
               >{num} stars</div>
               <div
               style={{
                 height: "15px",
-                width: "76%",
+                width: "65%",
                 backgroundColor: "grey",
                 margin: "10px",
                 borderRadius: "5px"
