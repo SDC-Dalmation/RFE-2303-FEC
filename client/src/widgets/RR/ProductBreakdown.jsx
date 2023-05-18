@@ -51,7 +51,7 @@ function ProductBreakdown ({currentProduct, metaData}) {
           >
             <div
               style={{
-                marginLeft: "20px",
+                marginLeft: "30px",
                 marginTop: "10px",
                 marginBottom: "5px"
               }}
@@ -63,7 +63,7 @@ function ProductBreakdown ({currentProduct, metaData}) {
               className="product-bar"
               style={{
                 height: "5px",
-                width: "65%",
+                width: "68%",
                 backgroundColor: "grey",
                 marginTop: "0",
                 marginLeft: "30px",
@@ -82,7 +82,7 @@ function ProductBreakdown ({currentProduct, metaData}) {
               >
               </div>
             </div>
-            <div style={{display: "flex", justifyContent: "space-between", width: "65%", marginLeft: "6%", fontSize: "small"}}>
+            <div style={{display: "flex", justifyContent: "space-between", width: "65%", marginLeft: "30px", fontSize: "small"}}>
                 {allDescriptions[characteristic].map((description, i) => {
                  return (<div key={i} style={{width: "10%"}}>{description}</div>)
                 })}
