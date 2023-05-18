@@ -3,6 +3,7 @@ import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import { createPortal } from 'react-dom';
 import AnswerModal from './AnswerModal.jsx';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
 
@@ -63,8 +64,10 @@ function Question ({question, prodName, markHelpful, helpfulQA, setHelpfulQA}) {
       <div style={{marginBottom: "1vh", display: "flex",}}>
         <span style={bodyStyle}>Q: {question.question_body}</span>
         <span style={helperStyle}>
-          <span style={markHelpfulStyle} onClick={() => markQuestionHelpful()}> Helpful? Yes{`(${helpfulness})`}</span> |
-          <span style={markHelpfulStyle} onClick={() => setShowAnswerModal(true)}> Add Answer</span>
+          <span style={markHelpfulStyle} onClick={() => {markQuestionHelpful();
+           PostAPIInteraction("Mark Question Helpful", "Questions & Answers")}}> Helpful? Yes{`(${helpfulness})`}</span> |
+          <span style={markHelpfulStyle} onClick={() => {setShowAnswerModal(true);
+           PostAPIInteraction("Add Answer", "Questions & Answers")}}> Add Answer</span>
         </span>
       </div>
       {displayAnswers}

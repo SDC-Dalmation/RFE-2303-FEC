@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 import { createPortal } from 'react-dom';
 
 
@@ -26,10 +27,10 @@ function QA ({currentProduct}) {
     "fontFamily": "Arial",
     "padding": "1vh",
     "marginLeft": "5%",
-    "width": "13%",
+    "width": "13vw",
     "border": "none",
     "textAlign": "center",
-    "outline": "none",
+    "outline": "1px solid grey",
     "fontSize": "14px",
     "transition": "0.4s",
   };
@@ -74,7 +75,7 @@ function QA ({currentProduct}) {
           helpfulQA={helpfulQA}
           setHelpfulQA={setHelpfulQA}
           currentProduct={currentProduct}/>
-        <span style={buttonStyle} onClick={() => setShowQuestionModal(true)}>Add a Question</span>
+        <span style={buttonStyle} onClick={() => {PostAPIInteraction("Show Add Question Modal", "Q&A");setShowQuestionModal(true)}}>Add a Question</span>
           {showQuestionModal && createPortal(
             <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)}
             prodName={currentProduct.name}/>,
@@ -85,7 +86,10 @@ function QA ({currentProduct}) {
   }
   return(
     <div style={{alignItems: "left",}}>
-      <span style={buttonStyle} onClick={() => setShowQuestionModal(true)}>Add a Question</span>
+      <span style={buttonStyle} onClick={() => {
+        PostAPIInteraction("Show Add Question Modal", "Q&A");
+        setShowQuestionModal(true);
+        }}>Add a Question</span>
         {showQuestionModal && createPortal(
           <QuestionModal productID={currentProduct.id} onClose={() => setShowQuestionModal(false)}
           prodName={currentProduct.name}/>,
