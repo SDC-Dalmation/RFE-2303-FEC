@@ -3,6 +3,7 @@ import axios from "axios";
 import ReviewTile from "./ReviewTile.jsx";
 import Sort from "./Sort.jsx";
 import NewReview from "./NewReview.jsx";
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 
 function ReviewsList ({currentProduct, metaData}) {
@@ -30,6 +31,7 @@ function ReviewsList ({currentProduct, metaData}) {
 
   const handleClick = () => {
     setShowModal(true);
+    PostAPIInteraction('New Review button', 'Ratings and Reviews');
   }
 
   useEffect(() => {
@@ -41,6 +43,7 @@ function ReviewsList ({currentProduct, metaData}) {
 
   let handleMoreReviews = () => {
    setLimit(limit + 2);
+   PostAPIInteraction('More Reviews button', 'Ratings and Reviews');
   }
 
   return(

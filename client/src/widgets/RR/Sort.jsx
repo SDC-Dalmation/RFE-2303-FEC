@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import PostAPIInteraction from "../PostAPIInteraction.jsx";
 
 function Sort ({currentProduct, reviews, setReviews, metaData}) {
   const [value, setValue] = useState("relevant");
@@ -22,6 +23,7 @@ useEffect(() => {
       .then((res) => {
         setReviews(res.data.results)
         })
+    PostAPIInteraction('Sort dropdown', 'Ratings and Reviews');
   }
 
   return(
