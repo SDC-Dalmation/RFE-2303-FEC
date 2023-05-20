@@ -16,8 +16,6 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
   if (allRatingsObj) {
     var ratingsArr = Object.entries(allRatingsObj)
 
-    // oh my god this has got to be the LEAST efficient way to do this
-    // ... well, it works for now soooooo
     var total = 0;
     var divider = 0;
     for (var i = 0; i < ratingsArr.length; i++) {
@@ -60,7 +58,7 @@ function ProductInfo({currentProduct, currentStyle, checkIfProductChangedArr, ch
               starSpacing="0.5vw"
               starDimension="5vh"
             />
-            <p className="read-all-reviews-btn" onClick={(e)=>{e.preventDefault; console.log('average: ', averageRating, ' rounded: ', averageRatingRounded); document.querySelector('.RR').scrollIntoView()}}>read all {numOfReviews ? numOfReviews : null} reviews</p>
+            <p className="read-all-reviews-btn" onClick={(e)=>{e.preventDefault; document.querySelector('.RR').scrollIntoView()}}>read all {numOfReviews ? numOfReviews : null} reviews</p>
           </div>
           <p className="product-category">{currentProduct.category}</p>
           <h3 className="product-name">{currentProduct.name}</h3>

@@ -54,9 +54,6 @@ function NewReview ({reviews, setReviews, setShowModal, currentProduct}) {
 
   const handleClose = () => {
     axios.post('/addReview', responses)
-      .then((response) => {
-        console.log('review posted: ', response);
-      })
       .catch((err) => {
         console.log('Error in posting review: ', err);
       })

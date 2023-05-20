@@ -66,7 +66,6 @@ function ReviewTile ({review, reviews}) {
     if (!clickedYes) {
     axios.post('/markReviewHelpful', {review_id: review.review_id})
       .then((res) => {
-        console.log('marked review as helpful: ', res.data);
         setHelpfulness(review.helpfulness + 1);
       })
       .catch((err) => {
@@ -82,7 +81,7 @@ function ReviewTile ({review, reviews}) {
     axios.post('/reportReview', {
       review_id: review.review_id
     })
-      .then((res) => {console.log('reported review: ', res.data)});
+      .catch((err) => {console.log('could notreported review: ', err)});
     setButtonReportColor("grey");
     setReported(true);
     PostAPIInteraction('Report button', 'Ratings and Reviews');

@@ -9,8 +9,8 @@ const PostAPIInteraction = (element, widget) => {
     };
 
   axios.post('/logInteraction', params)
-  .then(result => console.log("INTERACTION",result))
-  .catch(err => console.log(err));
+  // .then(result => console.log("INTERACTION",result))
+  // .catch(err => console.log(err));
 }
 
 export default PostAPIInteraction;

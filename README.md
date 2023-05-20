@@ -1,7 +1,5 @@
 # Front-End Capstone: WALL-E MART
 
-![FEC Capstone](https://github.com/FEC-Wall-E/RFE-2303-FEC)
-
 Table of Contents
 - [Description](#description)
 - [Features](#features)
