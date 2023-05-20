@@ -18,11 +18,9 @@ function Overview({currentProduct}) {
   const checkIfStyleChangedArr = [currentStyle]
 
 
-    // when the page renders, grab all the styles for this product and set the current style to be the first style in the list
   useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); setCurrentStyle(res.data.results[0]); }) },[])
 
-  // might be a better way to do this, but this checks if the currentProduct has been changed at all
-  useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); console.log('styles: ', res.data.results); setCurrentStyle(res.data.results[0]); setSelectedStyle(res.data.results[0].style_id)})}, checkIfProductChangedArr)
+  useEffect(()=>{axios.post('/productStyles', {product_id: currentProduct.id}).then((res)=>{setAllProductStyles(res.data.results); setCurrentStyle(res.data.results[0]); setSelectedStyle(res.data.results[0].style_id)})}, checkIfProductChangedArr)
 
   useEffect(()=>{axios.post('/reviewMetadata', {product_id: currentProduct.id}).then((res) => {setAllRatingsObj(res.data.ratings)})}, checkIfProductChangedArr)
 
