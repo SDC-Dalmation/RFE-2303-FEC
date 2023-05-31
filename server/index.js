@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const routes = require(path.join(__dirname, './controllers'));
 
 const helpers = require('./helpers.js');
 
@@ -94,63 +95,73 @@ app.post('/postCartItem', (req, res) => {
       res.send(cartItem.data);
     })
 })
-
-
 // Q&A ROUTES
 app.get('/listQuestions/:product_id', (req, res) => {
-  helpers.listQuestions(req.params.product_id)
-    .then((questions) => {
-      res.send(questions.data);
-    })
+
+  routes.getQuestions(req, res);
+
+  // helpers.listQuestions(req.params.product_id)
+  //   .then((questions) => {
+  //     res.send(questions.data);
+  //   })
 })
 
 app.get('/listAnswers/:question_id', (req, res) => {
-  helpers.listAnswers(req.params.question_id)
-    .then((answers) => {
-      res.send(answers.data);
-    })
+
+  routes.getAnswers(req, res);
+  // helpers.listAnswers(req.params.question_id)
+  //   .then((answers) => {
+  //     res.send(answers.data);
+  //   })
 })
 
 app.post('/addQuestion', (req, res) => {
-  helpers.addQuestion(req.body.product_id, req.body.body, req.body.name, req.body.email)
-    .then((question) => {
-      res.send(question.data);
-    })
+routes.postQuestions(req,res);
+  // helpers.addQuestion(req.body.product_id, req.body.body, req.body.name, req.body.email)
+  //   .then((question) => {
+  //     res.send(question.data);
+  //   })
 })
 
 app.post('/addAnswer', (req, res) => {
-  helpers.addAnswer(req.body.question_id, req.body.body, req.body.name, req.body.email, req.body.photos)
-    .then((answer) => {
-      res.send(answer.data);
-    })
+
+  routes.postAnswers(req,res);
+  // helpers.addAnswer(req.body.question_id, req.body.body, req.body.name, req.body.email, req.body.photos)
+  //   .then((answer) => {
+  //     res.send(answer.data);
+  //   })
 })
 
 app.get('/markQuestionHelpful/:question_id', (req, res) => {
-  helpers.markQuestionHelpful(req.params.question_id)
-    .then((question) => {
-      res.send(question.data);
-    })
+  routes.putQuestionHelpful(req, res);
+  // helpers.markQuestionHelpful(req.params.question_id)
+  //   .then((question) => {
+  //     res.send(question.data);
+  //   })
 })
 
 app.post('/markAnswerHelpful', (req, res) => {
-  helpers.markAnswerHelpful(req.body.answer_id)
-    .then((answer) => {
-      res.send(answer.data);
-    })
+  routes.putAnswerHelpful(req, res);
+  // helpers.markAnswerHelpful(req.body.answer_id)
+  //   .then((answer) => {
+  //     res.send(answer.data);
+  //   })
 })
 
 app.post('/reportQuestion', (req, res) => {
-  helpers.reportQuestion(req.body.question_id)
-    .then((result) => {
-      res.send(result.data)
-    })
+  routes.putQuestionReport(req, res);
+  // helpers.reportQuestion(req.body.question_id)
+  //   .then((result) => {
+  //     res.send(result.data)
+  //   })
 })
 
 app.post('/reportAnswer', (req, res) => {
-  helpers.reportAnswer(req.body.answer_id)
-    .then((result) => {
-      res.send(result.data)
-    })
+  routes.putAnswerReport(req, res);
+  // helpers.reportAnswer(req.body.answer_id)
+  //   .then((result) => {
+  //     res.send(result.data)
+  //   })
 })
 
 
